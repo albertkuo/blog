@@ -1,6 +1,6 @@
 ---
 date: "2018-02-13T13:42:49-05:00"
-title: About
+title: about me
 ---
 
 Hi, I'm Albert. This is my brand new blog. As you can see, it's a work in progress. I also have an [academic website](https://albertkuo.me).
