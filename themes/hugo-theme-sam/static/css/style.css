@@ -63,12 +63,14 @@ a.splash {
     color: #ec2028; }
 
 a.menu {
+  color: #39424E;
   border-bottom: 2px solid #39424E; }
   a.menu:hover {
-    color: #39424E;
-    text-decoration: none; }
+    color: #ec2028;
+    text-decoration: none;
+    border-bottom: 2px solid #ec2028; }
   a.menu:active {
-    color: #39424E; }
+    color: #ec2028; }
 
 button {
   padding: 20px;
