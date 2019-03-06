@@ -43,12 +43,11 @@ p {
 a {
   color: #ec2028;
   text-decoration: none;
-  border-bottom: 2px solid #ec2028;
   transition: 0.5s ease; }
   a:hover {
     color: #990d13;
     font-style: none;
-    border-bottom: 2px solid #990d13; }
+    text-decoration: underline; }
   a:active {
     color: #ec2028; }
 
@@ -58,10 +57,18 @@ a.splash {
   transition: 0.5s ease; }
   a.splash:hover {
     color: #ec2028;
-    font-style: none;
+    text-decoration: none;
     border-bottom: 3px solid #ec2028; }
   a.splash:active {
     color: #ec2028; }
+
+a.menu {
+  border-bottom: 2px solid #39424E; }
+  a.menu:hover {
+    color: #39424E;
+    text-decoration: none; }
+  a.menu:active {
+    color: #39424E; }
 
 button {
   padding: 20px;

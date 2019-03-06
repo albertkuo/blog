@@ -46,12 +46,11 @@ p
 a
     color: $links
     text-decoration: none
-    border-bottom: 2px solid $links
     +ease(0.5s)
     &:hover
         color: $links-hover
         font-style: none
-        border-bottom: 2px solid $links-hover
+        text-decoration: underline
     &:active
         color: $links
 
@@ -61,10 +60,18 @@ a.splash
     +ease(0.5s)
     &:hover
         color: $links
-        font-style: none
+        text-decoration: none
         border-bottom: 3px solid $links
     &:active
         color: $links
+
+a.menu
+    border-bottom: 2px solid $dark-grey
+    &:hover
+        color: $dark-grey
+        text-decoration: none
+    &:active
+        color: $dark-grey
 
 button
     padding: 20px

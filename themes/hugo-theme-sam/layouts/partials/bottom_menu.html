@@ -4,7 +4,7 @@
 {{ end }}
 
     {{ if .show_back_menu_item }}
-        <a href="{{ .Page.Section | relURL }}">back</a>
+        <a class="menu" href="{{ .Page.Section | relURL }}">back</a>
         {{ if .Page.Site.Params.mainMenu }}
             &#183;
         {{ end }}
@@ -12,7 +12,7 @@
 
     {{ if .Page.Site.Params.mainMenu }}
         {{ range first 1 .Page.Site.Params.mainMenu }}
-            <a href="{{ .link }}">
+            <a class="menu" href="{{ .link }}">
                 {{ .text }}
             </a>
         {{ end }}
@@ -20,13 +20,13 @@
     {{ if ( gt ( len .Page.Site.Params.mainMenu ) 1 ) }}
         {{ range after 1 .Page.Site.Params.mainMenu }}
             &#183; 
-            <a href="{{ .link }}">
+            <a class="menu" href="{{ .link }}">
                 {{ .text }}
             </a>
         {{ end }}
     {{ end }}
     &#183; 
-    <a href="{{.Page.Site.BaseURL}}">
+    <a class="menu" href="{{.Page.Site.BaseURL}}">
         {{ .Page.Site.Params.homepage }}
     </a>
 {{ end }}
