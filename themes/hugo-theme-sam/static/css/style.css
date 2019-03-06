@@ -53,7 +53,7 @@ a {
 
 a.splash {
   color: #111;
-  border-bottom: 3px solid #39424E;
+  border-bottom: 3px solid #111;
   transition: 0.5s ease; }
   a.splash:hover {
     color: #ec2028;
@@ -63,7 +63,7 @@ a.splash {
     color: #ec2028; }
 
 a.menu {
-  color: #39424E;
+  color: #111;
   border-bottom: 2px solid #39424E; }
   a.menu:hover {
     color: #ec2028;
