@@ -6,28 +6,28 @@
     <description>Recent content on Blog | Albert</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 06 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 06 Mar 2019 13:42:49 -0500</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>welcome!</title>
+      <title>about</title>
+      <link>/about/</link>
+      <pubDate>Wed, 06 Mar 2019 13:42:49 -0500</pubDate>
+      
+      <guid>/about/</guid>
+      <description>My name is Albert Kuo and I am a PhD student in biostatistics at Johns Hopkins University. To read more about me and my research, visit my main website.
+This site uses the Hugo theme Sam, built and maintained by Vicky Lai.</description>
+    </item>
+    
+    <item>
+      <title>new? start here</title>
       <link>/new/</link>
       <pubDate>Wed, 06 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/new/</guid>
-      <description>Here is a starting page for my blog.</description>
-    </item>
-    
-    <item>
-      <title>about me</title>
-      <link>/about/</link>
-      <pubDate>Tue, 13 Feb 2018 13:42:49 -0500</pubDate>
-      
-      <guid>/about/</guid>
-      <description>Hi, I&amp;rsquo;m Albert. This is my brand new blog. As you can see, it&amp;rsquo;s a work in progress. I also have an academic website.
-This site uses the Hugo theme &amp;ldquo;Sam&amp;rdquo; built and maintained by Vicky Lai.</description>
+      <description>Here is a starting page for my blog. As you can see, it&amp;rsquo;s a work in progress. I hope to write something more useful here soon.</description>
     </item>
     
     <item>

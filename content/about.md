@@ -1,9 +1,9 @@
 ---
-date: "2018-02-13T13:42:49-05:00"
-title: about me
+date: "2019-03-06T13:42:49-05:00"
+title: about
 ---
 
-Hi, I'm Albert. This is my brand new blog. As you can see, it's a work in progress. I also have an [academic website](https://albertkuo.me).
+My name is Albert Kuo and I am a PhD student in biostatistics at Johns Hopkins University. To read more about me and my research, visit my [main website](https://albertkuo.me).
 
-This site uses the Hugo theme "[Sam](https://github.com/vickylai/hugo-theme-sam)" built and maintained by [Vicky Lai](https://vickylai.com).
+This site uses the Hugo theme [Sam](https://github.com/vickylai/hugo-theme-sam), built and maintained by [Vicky Lai](https://vickylai.com).
 
