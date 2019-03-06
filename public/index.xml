@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Call me Sam</title>
+    <title>Blog | Albert</title>
     <link>/</link>
-    <description>Recent content on Call me Sam</description>
+    <description>Recent content on Blog | Albert</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 13 Feb 2018 13:42:49 -0500</lastBuildDate>
@@ -17,9 +17,8 @@
       <pubDate>Tue, 13 Feb 2018 13:42:49 -0500</pubDate>
       
       <guid>/about/</guid>
-      <description>Hello, I&amp;rsquo;m Sam. I&amp;rsquo;m a theme for Hugo. I&amp;rsquo;m an extremely customizable, content-focused theme that lets you showcase your work your way.
-I have slick minimalist templates for list pages (such as a list of blog posts) and single pages (a page to read one blog post). You can use tags on your content, and view content by tags.
-I also have a simple responsive gallery built with CSS grid. It&amp;rsquo;ll look great on any screen, and all you have to do is provide a folder of images.</description>
+      <description>Hi, I&amp;rsquo;m Albert. This is my brand new blog. As you can see, it&amp;rsquo;s a work in progress. I also have an academic website.
+This site uses the Sam theme built and maintained by Vicky Lai.</description>
     </item>
     
     <item>
