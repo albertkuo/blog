@@ -10,7 +10,7 @@
             {{ if .Site.Params.mainMenu }}
                 {{ range .Site.Params.mainMenu }}
                     <div class="big-link">
-                        <a href="{{.link}}">
+                        <a class="splash" href="{{.link}}">
                             {{.text}}
                         </a>
                     </div>
@@ -19,7 +19,7 @@
             {{ else }}
                 {{ range .Site.Sections }}
                     <div class="big-link"> 
-                        <a href="{{.Permalink}}">
+                        <a class="splash" href="{{.Permalink}}">
                             {{.Title}}
                         </a>
                     </div>

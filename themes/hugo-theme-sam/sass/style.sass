@@ -8,7 +8,7 @@
     box-sizing: border-box
 
 html
-    background-color: $dark-grey
+    background-color: $white
     font-family: $font
     font-size: 16px
 
@@ -51,6 +51,18 @@ a
     &:hover
         color: $links-hover
         font-style: none
+        border-bottom: 2px solid $links-hover
+    &:active
+        color: $links
+
+a.splash
+    color: $black
+    border-bottom: 3px solid $dark-grey
+    +ease(0.5s)
+    &:hover
+        color: $links
+        font-style: none
+        border-bottom: 3px solid $links
     &:active
         color: $links
 
