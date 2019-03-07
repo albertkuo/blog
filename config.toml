@@ -24,7 +24,7 @@ pygmentsCodefences      = true
 # Metadata
     description         = "A new Hugo blog by Albert Kuo."            # Max 160 characters show in search results
     twitterCard         = "summary_large_image"         # Card value “summary”, “summary_large_image”, “app”, or “player”
-    primaryImage        = "tn.png"                     # Image that shows on Twitter cards and OpenGraph links
+    primaryImage        = "screenshot.png"                     # Image that shows on Twitter cards and OpenGraph links
 
 [[params.mainMenu]]
     link = "/new"
