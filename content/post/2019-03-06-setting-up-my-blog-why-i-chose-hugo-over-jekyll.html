@@ -1,0 +1,51 @@
+---
+title: 'Setting Up My Blog: Why I Chose Hugo Over Jekyll'
+author: ''
+date: '2019-03-06'
+slug: setting-up-my-blog-why-i-chose-hugo-over-jekyll
+categories: [coding]
+tags: [hugo, jekyll, blog]
+showDate: true
+draft: true
+---
+
+
+
+<p>I’ve been reading a lot of people’s blogs in the statistics/data science world and it made me start thinking about things that I wanted to write about and share. So here we are! Hello world!</p>
+<p>But before I could write anything, I had to decide on how I was going to build and host the blog. For my personal website, I use Jekyll, so it seemed natural to build my blog as part of my website. Unfortunately, I soon ran into many problems.</p>
+<div id="problem-1-mathjax" class="section level1">
+<h1>Problem 1: MathJax</h1>
+<p>One of the things I wanted to write about involved math equations, so it was important that I could render them. To do this in Jekyll, you need to <a href="http://sgeos.GitHub.io/GitHub/jekyll/2016/08/21/adding_MathJax_to_a_jekyll_GitHub_pages_blog.html">add MathJax</a>. This isn’t so difficult in theory, provided that you also use the <a href="https://www.MathJax.org/cdn-shutting-down/">correct host</a>. My math equations did display as expected… for the most part.</p>
+<p>The main problem I faced was that I couldn’t get <code>\begin{align}</code> to work correctly. After some Googling, I found out that there are basically <a href="https://math.meta.stackexchange.com/questions/3514/using-the-align-environment">two solutions</a>. The first solution is that I can enclose <code>\begin{align}</code> in a math environment with <code>$$</code>. This is the preferable and more stable solution since I already write my equations in this format, but mysteriously, my equations don’t appear on the html page whenever I combine <code>$$</code> and <code>\begin{align}</code> together<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>The second solution is that I replace all my double backslashes <code>\\</code> with <code>\\\\</code>. This is not ideal, but maybe doable if I only have to convert every once in a while for the occasional post with math equations. Yet crazily enough, this solution only worked if I copied the backslashes directly from the stackexchange solution and did not work if I typed out the backslashes myself (?!). After some futile exercises in manually copying tiny string fragments to figure out what was going on, I decided to drop the issue for the moment.</p>
+<p>I was just going to assume, for now, that I could render math equations correctly – which at this point, I <em>technically</em> can through the cumbersome practice of copying backslashes from stackexchange. Assuming that, how was I going to integrate my blog into my website? As it turned out, this was also a big problem.</p>
+</div>
+<div id="problem-2-blog-layout-and-pagination" class="section level1">
+<h1>Problem 2: Blog Layout and Pagination</h1>
+<p>The problem with most Jekyll and Hugo themes is that they are either designed primarily for blogs or they are not. It’s very rare for a theme to give equal attention to both the “regular” website components and the blog. For example, the theme I am using for my main website (<a href="https://GitHub.com/nandomoreirame/simplest">simplest</a>) is a blog-oriented theme. It displays the blog posts on the front page as snippets with pagination. But let’s say I want to have my blog posts on a subpage instead of the main index page. It turns out that <a href="https://stackoverflow.com/questions/20829006/jekyll-paginator-not-working">pagination only works in your <code>index.html</code> file</a>. In other words, I can’t just copy the original blog section on <code>index.html</code> and move it over to <code>blog.html</code> because pagination will no longer work. There are some potential solutions, like <a href="https://GitHub.com/sverrirs/jekyll-paginate-v2">jekyll-paginate-v2</a>. But since my theme was designed to use the original jekyll-paginate, to get jekyll-paginate-v2 to work, I would need to update several things. Which brings me to the third problem.</p>
+</div>
+<div id="problem-3-jekyll-dependencies" class="section level1">
+<h1>Problem 3: Jekyll Dependencies</h1>
+<p>In my experience, the worst thing about using Jekyll are the dependencies. Every so often, GitHub prompts me to update dependencies for my website due to security alerts, which I more or less understand as I need to update my Ruby gems. I’m still not sure what a Ruby gem is (but I assume it’s analogous to an R package?) so every time I’m forced to do this, I’m stumbling around like a lost child in a forest, randomly inserting and deleting things in my Gemfile according to some stranger’s directions on Google, not knowing what I’m doing, hoping that it’ll just magically work. Naturally, it doesn’t work for my jekyll-paginate-v2 experiment.</p>
+</div>
+<div id="solution-hugo-blogdown" class="section level1">
+<h1>Solution: Hugo + Blogdown!</h1>
+<p>At this point, I was pretty convinced that getting my blog to work properly on my website in a reasonable amount of time was not going to happen with Jekyll. So I decided to give it a go with Hugo<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> and blogdown, made by the amazing <a href="https://yihui.name/">Yihui Xie</a>. With blogdown, I didn’t really need to learn how to use Hugo and start from scratch. I could just work in the familiar environment of RStudio. Hugo + blogdown solved all three of my problems:</p>
+<ol style="list-style-type: decimal">
+<li><strong>MathJax</strong>: The official documentation for blogdown was thankfully quite clear about how to set up MathJax. Long story short, it’s supported on the default hugo-lithium theme made by Yihui Xie, but it’s easy enough to <a href="https://bookdown.org/yihui/blogdown/templates.html#how-to">include MathJax</a> on any theme you choose.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></li>
+<li><strong>Blog Layout</strong>: Since I wasn’t trying to integrate my blog directly into my website anymore, I could choose a theme that supported a good layout for my blog.</li>
+<li><strong>Jekyll Dependencies</strong>: Hugo is a single binary without dependencies<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. Furthermore, Hugo is supposed to be vastly faster at site generation than Jekyll. I don’t really notice the speed of Jekyll for my website, which only has a few pages, but I might if I start writing lots of blog posts.</li>
+</ol>
+<p>Admittedly, it still took me a second to get set up with blogdown (~2 hours?). One reason is that I resisted using Netlify because I was already using GitHub pages. However, the problem is that GitHub pages doesn’t support Hugo, so I had to look for how to make it work. Then in the midst of Googling for solutions, I stumbled on someone’s resounding endorsement of how Netlify was “so easy to use it should be illegal”<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> and I thought OK, maybe I should stop being so stubborn. I’m happy to announce, the rumors are true! Netlify is very easy to use (it took me maybe 5 minutes to set it up).</p>
+<p>Finally, it was a matter of linking Netlify to my subdomain, choosing a theme, spending way too long tinkering with font colors, and voila! My blog has been created!</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>My suspicion is that when the html pages are generated by Jekyll, it gets read as some kind of error in formatting and is skipped over. This obviously does not happen in other people’s blogs, so it may have something to do with my theme.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>Pun not intended<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>Or maybe it only felt easy because I already went through that confusion with Jekyll?<a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>I took this verbatim from Yihui <a href="https://yihui.name/en/2017/12/blogdown-book/">here</a>. Honestly, I’m not sure what a “binary” is, but it sounds like a solution to the problems I’ve been having with Jekyll.<a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>OK, so I misquoted <a href="http://www.rebeccabarter.com/blog/2017-06-29-website/">Rebecca</a>. She actually said, “It’s amazing, almost too easy. There must be a catch; nothing in life is ever this easy…” but that’s almost as much as a hyperbole.<a href="#fnref5" class="footnote-back">↩</a></p></li>
+</ol>
+</div>

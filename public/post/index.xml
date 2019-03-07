@@ -12,13 +12,13 @@
     
     
     <item>
-      <title>Just a test post</title>
-      <link>/post/2019-03-06-just-a-test-post/</link>
-      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      <title>Setting Up My Blog: Why I Chose Hugo Over Jekyll</title>
+      <link>/post/setting-up-my-blog-why-i-chose-hugo-over-jekyll/</link>
+      <pubDate>Wed, 06 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-03-06-just-a-test-post/</guid>
-      <description>\(x=y\)
-\[ \begin{align} x &amp;amp;=y \\ &amp;amp;= z \end{align} \]</description>
+      <guid>/post/setting-up-my-blog-why-i-chose-hugo-over-jekyll/</guid>
+      <description>I’ve been reading a lot of people’s blogs in the statistics/data science world and it made me start thinking about things that I wanted to write about and share. So here we are! Hello world!
+But before I could write anything, I had to decide on how I was going to build and host the blog. For my personal website, I use Jekyll, so it seemed natural to build my blog as part of my website.</description>
     </item>
     
     <item>
