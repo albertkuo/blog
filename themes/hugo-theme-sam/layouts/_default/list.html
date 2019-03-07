@@ -8,7 +8,7 @@
     {{ range .Pages }}
         <li>
             {{ if .Params.showDate }}
-            {{ .Date.Format (.Site.Params.dateForm | default "Mon Jan 02, 2006")}} --
+            {{ .Date.Format (default "Jan 02")}} -
             {{ end }}
             <a href="{{.Permalink}}">
                 {{.Title}}
