@@ -6,7 +6,7 @@ slug: setting-up-my-blog-why-i-chose-hugo-over-jekyll
 categories: [coding]
 tags: [hugo, jekyll, blog]
 showDate: true
-draft: true
+draft: false
 ---
 
 I've been reading a lot of people's blogs in the statistics/data science world and it made me start thinking about things that I wanted to write about and share. So here we are! Hello world!
