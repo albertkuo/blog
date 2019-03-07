@@ -5,5 +5,5 @@ title: about
 
 My name is Albert Kuo and I am a PhD student in biostatistics at Johns Hopkins University. To read more about me and my research, visit my [main website](https://albertkuo.me).
 
-This site uses the Hugo theme [Sam](https://github.com/vickylai/hugo-theme-sam), built and maintained by [Vicky Lai](https://vickylai.com).
+This site primarily uses the Hugo theme [Sam](https://github.com/vickylai/hugo-theme-sam), which was built and maintained by [Vicky Lai](https://vickylai.com).
 

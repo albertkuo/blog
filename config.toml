@@ -22,7 +22,7 @@ pygmentsCodefences      = true
     footerText          = ""
 
 # Metadata
-    description         = "A new Hugo site."            # Max 160 characters show in search results
+    description         = "A new Hugo blog by Albert Kuo."            # Max 160 characters show in search results
     twitterCard         = "summary_large_image"         # Card value “summary”, “summary_large_image”, “app”, or “player”
     primaryImage        = "tn.png"                     # Image that shows on Twitter cards and OpenGraph links
 

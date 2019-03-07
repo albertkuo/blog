@@ -3,4 +3,6 @@ date: "2018-02-13T12:21:57-05:00"
 title: posts
 ---
 
-Welcome to the blog section! This page uses the default `list.html` template. Write anything you like here. You can set this text with your `_index.md` in the `/content/posts/` folder.
+My posts* are listed in reverse chronological order below.
+
+\* Yes, I know there is only one post now, but I'm anticipating that more will be coming soon.
