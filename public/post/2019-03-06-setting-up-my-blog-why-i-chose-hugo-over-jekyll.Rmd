@@ -11,7 +11,7 @@ draft: false
 
 I've been reading a lot of people's blogs in the statistics/data science world lately and it made me start thinking about things that I wanted to write about and share. So here we are -- my first post! Hello world!
 
-Before I could write anything, I had to decide on how I was going to build and host the blog. For my personal website, I already use Jekyll, so it seemed natural to build my blog as part of my website. Unfortunately, I soon ran into many problems.
+Before I could write anything, I had to decide on how I was going to build and host the blog. For my personal website, I already use [Jekyll](https://jekyllrb.com/), so it seemed natural to build my blog as part of my website. Unfortunately, I soon ran into many problems.
 
 # Problem 1: MathJax
 
@@ -25,7 +25,7 @@ I was just going to assume, for now, that I could render math equations correctl
 
 # Problem 2: Blog Layout and Pagination
 
-The problem with most Jekyll and Hugo themes is that they are either designed primarily for blogs or they are not. It's very rare for a theme to give equal attention to both the "regular" website components and the blog. For example, the theme I am using for my main website ([simplest](https://GitHub.com/nandomoreirame/simplest)) is a blog-oriented theme. It displays the blog posts on the front page as snippets with pagination. But let's say I want to have my blog posts on a subpage instead of the main index page. It turns out that [pagination only works in your `index.html` file](https://stackoverflow.com/questions/20829006/jekyll-paginator-not-working). In other words, I can't just copy the original blog section on `index.html` and move it over to `blog.html` because pagination will no longer work. There are some potential solutions, like [jekyll-paginate-v2](https://GitHub.com/sverrirs/jekyll-paginate-v2). But since my theme was designed to use the original jekyll-paginate, to get jekyll-paginate-v2 to work, I would need to update several things. Which brings me to the third problem.
+The problem with most Jekyll (and Hugo) themes is that they are either designed primarily for blogs or they are not. It's very rare for a theme to give equal attention to both the "regular" website components and the blog. For example, the theme I am using for my main website ([simplest](https://GitHub.com/nandomoreirame/simplest)) is a blog-oriented theme. It displays the blog posts on the front page as snippets with pagination. But let's say I want to have my blog posts on a subpage instead of the main index page. It turns out that [pagination only works in your `index.html` file](https://stackoverflow.com/questions/20829006/jekyll-paginator-not-working). In other words, I can't just copy the original blog section on `index.html` and move it over to `blog.html` because pagination will no longer work. There are some potential solutions, like [jekyll-paginate-v2](https://GitHub.com/sverrirs/jekyll-paginate-v2). But since my theme was designed to use the original jekyll-paginate, to get jekyll-paginate-v2 to work, I would need to update several things. Which brings me to the third problem.
 
 # Problem 3: Jekyll Dependencies
 
@@ -33,7 +33,7 @@ In my experience, the worst thing about using Jekyll are the dependencies. Every
 
 # Solution: Hugo + Blogdown!
 
-At this point, I was pretty convinced that getting my blog to work properly on my website in a reasonable amount of time was not going to happen with Jekyll. So I decided to give it a go with Hugo and blogdown, an R package made by the amazing [Yihui Xie](https://yihui.name/). With blogdown, I didn't need to learn how to use Hugo and start from scratch. I could just work in the familiar environment of RStudio. Hugo + blogdown solved all three of my problems: 
+At this point, I was pretty convinced that getting my blog to work properly on my website in a reasonable amount of time was not going to happen with Jekyll. So I decided to give it a go with [Hugo](https://gohugo.io/) and [blogdown](https://github.com/rstudio/blogdown), an R package made by the amazing [Yihui Xie](https://yihui.name/). With blogdown, I didn't need to learn how to use Hugo and start from scratch. I could just work in the familiar environment of RStudio. Hugo + blogdown solved all three of my problems: 
 
 1. **MathJax**: The official documentation for blogdown was thankfully quite clear about how to set up MathJax. Long story short, it's already a part of the default hugo-lithium theme made by Yihui, but it's easy enough to [include MathJax](https://bookdown.org/yihui/blogdown/templates.html#how-to) on any theme you choose.^[Or maybe it only felt easy because I already went through that confusion with Jekyll.]
 2. **Blog Layout**: Since I wasn't trying to integrate my blog directly into my website anymore, I could choose any theme that supported a nice layout solely for my blog.
