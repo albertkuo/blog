@@ -18,7 +18,7 @@
       
       <guid>/about/</guid>
       <description>My name is Albert Kuo and I am a PhD student in biostatistics at Johns Hopkins University. To read more about me and my research, visit my main website.
-This site primarily uses the Hugo theme Sam, which was built and maintained by Vicky Lai.</description>
+This blog is created with Hugo and blogdown. The theme is Sam, made by Vicky Lai, with some additional modifications.</description>
     </item>
     
     <item>
@@ -37,7 +37,7 @@ Before I could write anything, I had to decide on how I was going to build and h
       <pubDate>Wed, 06 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/new/</guid>
-      <description>Here is a temporary starting page for my blog. It&amp;rsquo;s a work in progress and there is not much to see, but feel free to head over to posts and read what I&amp;rsquo;ve written so far. I hope to say something more useful here soon.</description>
+      <description>This is a temporary starting page for my blog. It&amp;rsquo;s a work in progress and there is not much to see, but feel free to head over to posts and read what I&amp;rsquo;ve written so far. I hope to say something more useful here soon.</description>
     </item>
     
     <item>
