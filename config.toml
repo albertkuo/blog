@@ -20,6 +20,7 @@ pygmentsCodefences      = true
     smallImagesSubfolder = "small/"                      # The subfolder for the small versions of the images under the gallery (with trailing slash)
                                                          # For each image the small version has to have the same filename as the big version.
     footerText          = ""
+    googleAnalytics     = "UA-98438367-2"
 
 # Metadata
     description         = "A new Hugo blog by Albert Kuo."            # Max 160 characters show in search results
