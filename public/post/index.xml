@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>My Favorite Books to Date</title>
+      <link>/post/my-favorite-books-to-date/</link>
+      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/my-favorite-books-to-date/</guid>
+      <description>  1. Sapiens by Paul
+ Some interesting description in ablockquote  asdf
+  </description>
+    </item>
+    
+    <item>
       <title>Setting Up My Blog: Why I Chose Hugo Over Jekyll</title>
       <link>/post/setting-up-my-blog-why-i-chose-hugo-over-jekyll/</link>
       <pubDate>Wed, 06 Mar 2019 00:00:00 +0000</pubDate>
