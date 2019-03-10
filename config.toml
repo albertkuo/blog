@@ -6,7 +6,7 @@ title                   = "Blog | Albert"
 theme = "hugo-theme-sam"
 pygmentsStyle           = "monokai"                     # https://help.farbox.com/pygments.html
 pygmentsCodefences      = true
-# googleAnalytics         = ""             # Tracking code, eg. "UA-111111111-1"
+googleAnalytics         = "UA-98438367-2"             # Tracking code, eg. "UA-111111111-1"
 
 [params]
     dateform            = "Jan 02, 2006"
@@ -20,7 +20,6 @@ pygmentsCodefences      = true
     smallImagesSubfolder = "small/"                      # The subfolder for the small versions of the images under the gallery (with trailing slash)
                                                          # For each image the small version has to have the same filename as the big version.
     footerText          = ""
-    googleAnalytics     = "UA-98438367-2"
 
 # Metadata
     description         = "A new Hugo blog by Albert Kuo."            # Max 160 characters show in search results
