@@ -17,8 +17,8 @@
       <pubDate>Mon, 18 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/submitting-parallel-jobs-on-a-cluster/</guid>
-      <description>Recently, I’ve been running simulations for a project on our school’s computing cluster (JHPCE), which schedules jobs using the Open Grid Engine. Each simulation takes about half a day to complete, so I could run them sequentially and wait a week to get 14 simulation points. Or I could run them in parallel and get 14 simulation points in less than a day.
-The problem was, I didn’t know how to run things in parallel on the cluster!</description>
+      <description>Recently, I’ve been running simulations on our school’s computing cluster (JHPCE), which schedules jobs using the Open Grid Engine. Each simulation takes about half a day to complete, so I could run them sequentially and wait a week to get 14 simulation points. Or I could run them in parallel and get 14 simulation points in less than a day!
+In theory, running my simulations in parallel should be a very straightforward task.</description>
     </item>
     
     <item>

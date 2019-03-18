@@ -6,41 +6,38 @@ slug: submitting-parallel-jobs-on-a-cluster
 categories:
   - coding
 tags:
-  - python
   - cluster
   - qsub
+  - python
   - R
 showDate: yes
-draft: yes
+draft: no
 ---
 
 
 
-<p>Recently, I’ve been running simulations for a project on our school’s computing cluster (<a href="https://jhpce.jhu.edu/">JHPCE</a>), which schedules jobs using the <a href="http://gridscheduler.sourceforge.net/documentation.html">Open Grid Engine</a>. Each simulation takes about half a day to complete, so I could run them sequentially and wait a week to get 14 simulation points. Or I could run them in parallel and get 14 simulation points in less than a day.</p>
-<p>The problem was, I didn’t know how to run things in parallel on the cluster! In theory, it should be a very straightforward task – an “<a href="https://en.wikipedia.org/wiki/Embarrassingly_parallel">embarrassingly parallel</a>” problem. Every simulation I need to run uses the same function, with changes to the input parameters, and can all be run independently. However, since this was something I’d never done before, it took a while to figure out.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<p>Luckily, I found Tianchen’s <a href="https://github.com/tqian/parallel_qsub">github repository</a>, which briefly describes how to do this. I don’t know if it’s really the best method, but it works perfectly well for my needs. In the interest of disseminating some useful knowledge and as documentation for my future use, I will walk through the steps of how to submit parallel jobs on the computing cluster.</p>
+<p>Recently, I’ve been running simulations on our school’s computing cluster (<a href="https://jhpce.jhu.edu/">JHPCE</a>), which schedules jobs using the <a href="http://gridscheduler.sourceforge.net/documentation.html">Open Grid Engine</a>. Each simulation takes about half a day to complete, so I could run them sequentially and wait a week to get 14 simulation points. Or I could run them in parallel and get 14 simulation points in less than a day!</p>
+<p>In theory, running my simulations in parallel should be a very straightforward task. It’s an “<a href="https://en.wikipedia.org/wiki/Embarrassingly_parallel">embarrassingly parallel</a>” problem – every simulation I need to run uses the same function, with changes only to the input parameters, and they can all be run independently. However, since this was something I’d never done before, it took a while to figure out.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Luckily, I found Tianchen’s <a href="https://github.com/tqian/parallel_qsub">github repository</a>, which briefly describes how to do this. I don’t know if it’s really the optimal method, but it’s simple and works perfectly well for my needs. In the interest of disseminating some useful knowledge and documenting for my future use, I will walk through the steps of how to submit parallel jobs on the cluster.</p>
 <div id="first-things-first" class="section level2">
 <h2>1. First Things First</h2>
 <p>I am going to assume that you are already familiar with how to submit a job on the cluster. If not, go read the tutorial. The important thing is that you need to have a batch job script <code>.sh</code> that calls your Python <code>.py</code> or R <code>.R</code> script (or whatever language you are using). Then you submit the batch job script with the <code>qsub</code> command.</p>
 </div>
-<div id="submit-a-job-with-parallel-tasks" class="section level2">
-<h2>2. Submit A Job with Parallel Tasks</h2>
-<p>To run things in parallel, we are going to submit a job consisting of many tasks. Each task will correspond to a different simulation. To do this, type the following in the terminal:</p>
-<blockquote>
-<p>testing a quote</p>
-</blockquote>
+<div id="submit-a-job-with-multiple-tasks" class="section level2">
+<h2>2. Submit A Job with Multiple Tasks</h2>
+<p>To run things in parallel, we are going to submit a job consisting of multiple tasks. Each task will correspond to a different simulation. To do this, type the following in the terminal:</p>
 <pre class="bash"><code>qsub -t 1:10 your_script.sh</code></pre>
-<p>Here, we are submitting one job with 10 tasks. Each task will have an ID from 1 to 10, stored in the <code>SGE_TASK_ID</code> environment variable.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p>Here, we are submitting one job with 10 tasks. Each task is assigned an ID from 1 to 10, stored in the <code>SGE_TASK_ID</code> environment variable.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 </div>
 <div id="use-the-task-id-to-set-parameters" class="section level2">
 <h2>3. Use the Task ID to Set Parameters</h2>
-<p>In order to change the parameters for each simulation, you need to be able to “read in” <code>SGE_TASK_ID</code>. In Python, you can do this by:</p>
+<p>In order to change the parameters for each simulation, you need to be able to “read in” the <code>SGE_TASK_ID</code> variable. In Python, you can do this with the following code chunk:</p>
 <pre class="python"><code>import os
 task_id = int(os.getenv(&quot;SGE_TASK_ID&quot;))</code></pre>
-<p>Then once you have the task ID, you can set the parameters of your simulation as needed. For example,</p>
+<p>Then once you have the task ID, you can easily set the parameters of your simulation as needed. For example:</p>
 <pre class="python"><code># Parameter options
-parameters_arr = np.array([1, 2, 3])  
-# Choose parameter
+parameters_arr = np.array([50, 100, 200])  
+# Select parameter
 parameter = parameters_arr[task_id - 1]
 
 # Run simulation
@@ -49,23 +46,24 @@ runSimulation(parameter = parameter)     </code></pre>
 <pre class="r"><code># Get task ID
 task_id &lt;- as.integer(Sys.getenv(&quot;SGE_TASK_ID&quot;)) 
 # Parameter options
-parameters &lt;- c(1, 2, 3)                         
-# Choose parameter
-parameter = parameters[task_id]                  
+parameters &lt;- c(50, 100, 200)                         
+# Select parameter
+parameter &lt;- parameters[task_id]                  
 
 # Run simulation
 runSimulation(parameter = parameter)             </code></pre>
+<p>This allows you to run simulations with different parameters all at the same time. You can similarly use the task ID to save your simulation results with an informative file name that tells you which simulation/task was ran.</p>
 <p>Final thoughts:</p>
 <ol style="list-style-type: decimal">
 <li><p>This only works for “embarrassingly parallel” problems, where each task can be run independently without needing any information from the other tasks.</p></li>
-<li><p>Your computing cluster may have restrictions on the number of scripts you can submit at once. Be careful not to overload the cluster with too many tasks, especially if they are memory-intensive and/or time-intensive. The maximum number of queue slots for the JHPCE cluster is ~200.</p></li>
+<li><p>Your computing cluster likely has restrictions on the number of scripts you can submit at once. Be careful not to overload the cluster with too many tasks, especially if they are memory-intensive and/or time-intensive. The maximum number of queue slots for the JHPCE cluster is ~200.</p></li>
 </ol>
 </div>
 <div class="footnotes">
 <hr />
 <ol>
 <li id="fn1"><p>I also spent a lot of time figuring out how to run a python script on the cluster, period. In case you are facing the same problem, the issue was that I needed to first load a different python version in my sh file, i.e. <code>module load python/3.6.3</code>, in order to import scipy successfully, since the default version did not have scipy.<a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>More documentation available <a href="http://gridscheduler.sourceforge.net/htmlman/htmlman1/qsub.html">here</a><a href="#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p>Fair warning: I took the R code from Tianchen and haven’t actually tested it out myself.<a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>More documentation available <a href="http://gridscheduler.sourceforge.net/htmlman/htmlman1/qsub.html">here</a>.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>Fair warning: I based the R code on Tianchen’s and haven’t actually tested it out myself.<a href="#fnref3" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
