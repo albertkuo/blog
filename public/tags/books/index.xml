@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Books on Blog | Albert</title>
+    <link>/tags/books/</link>
+    <description>Recent content in Books on Blog | Albert</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 09 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/books/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My Favorite Books to Date</title>
+      <link>/post/my-favorite-books-to-date/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/my-favorite-books-to-date/</guid>
+      <description>I sometimes get requests for book recommendations, so I decided to write a post on my favorite books.1 For each book, I give a very short description (&amp;lt; 3 sentences) of the book and why I enjoyed it. Hopefully, it’ll give you some idea of whether you’ll want to read it too.
+You might also be interested in following the books I read with my friend Kevin on our reading blog, where we review every book we read (both the good and the bad).</description>
+    </item>
+    
+  </channel>
+</rss>

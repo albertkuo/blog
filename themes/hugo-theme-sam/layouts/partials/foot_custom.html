@@ -6,3 +6,8 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-
 
 <!-- Google Analytics -->
 {{ template "_internal/google_analytics.html" . }}
+
+<!-- Highlight Code -->
+<link rel="stylesheet" href="{{"css/agate.css" | absURL}}" rel="stylesheet" id="theme-stylesheet">
+<script src="{{ "js/highlight.pack.js" | absURL }}"></script>
+<script>hljs.initHighlightingOnLoad();</script>

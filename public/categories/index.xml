@@ -6,14 +6,24 @@
     <description>Recent content in Categories on Blog | Albert</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Wed, 13 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>#Advice</title>
+      <link>/categories/#advice/</link>
+      <pubDate>Wed, 13 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/#advice/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Coding</title>
       <link>/categories/coding/</link>
-      <pubDate>Wed, 06 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 18 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/coding/</guid>
       <description></description>
@@ -22,7 +32,7 @@
     <item>
       <title>Interests</title>
       <link>/categories/interests/</link>
-      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/interests/</guid>
       <description></description>

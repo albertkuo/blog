@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Qsub on Blog | Albert</title>
+    <link>/tags/qsub/</link>
+    <description>Recent content in Qsub on Blog | Albert</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/qsub/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Submitting Parallel Jobs on a Cluster</title>
+      <link>/post/submitting-parallel-jobs-on-a-cluster/</link>
+      <pubDate>Mon, 18 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/submitting-parallel-jobs-on-a-cluster/</guid>
+      <description>Recently, I’ve been running simulations for a project on our school’s computing cluster (JHPCE), which schedules jobs using the Open Grid Engine. Each simulation takes about half a day to complete, so I could run them sequentially and wait a week to get 14 simulation points. Or I could run them in parallel and get 14 simulation points in less than a day.
+The problem was, I didn’t know how to run things in parallel on the cluster!</description>
+    </item>
+    
+  </channel>
+</rss>

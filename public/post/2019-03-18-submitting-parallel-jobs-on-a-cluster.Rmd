@@ -1,0 +1,78 @@
+---
+title: Submitting Parallel Jobs on a Cluster
+author: ''
+date: '2019-03-18'
+slug: submitting-parallel-jobs-on-a-cluster
+categories:
+  - coding
+tags:
+  - python
+  - cluster
+  - qsub
+  - R
+showDate: yes
+draft: yes
+---
+
+Recently, I've been running simulations for a project on our school's computing cluster ([JHPCE](https://jhpce.jhu.edu/)), which schedules jobs using the [Open Grid Engine](http://gridscheduler.sourceforge.net/documentation.html). Each simulation takes about half a day to complete, so I could run them sequentially and wait a week to get 14 simulation points. Or I could run them in parallel and get 14 simulation points in less than a day.
+
+The problem was, I didn't know how to run things in parallel on the cluster! In theory, it should be a very straightforward task -- an "[embarrassingly parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel)" problem. Every simulation I need to run uses the same function, with changes to the input parameters, and can all be run independently. However, since this was something I'd never done before, it took a while to figure out.^[I also spent a lot of time figuring out how to run a python script on the cluster, period. In case you are facing the same problem, the issue was that I needed to first load a different python version in my sh file, i.e. `module load python/3.6.3`, in order to import scipy successfully, since the default version did not have scipy.]
+
+Luckily, I found Tianchen's [github repository](https://github.com/tqian/parallel_qsub), which briefly describes how to do this. I don't know if it's really the best method, but it works perfectly well for my needs. In the interest of disseminating some useful knowledge and as documentation for my future use, I will walk through the steps of how to submit parallel jobs on the computing cluster.
+
+## 1. First Things First
+
+I am going to assume that you are already familiar with how to submit a job on the cluster. If not, go read the tutorial. The important thing is that you need to have a batch job script `.sh` that calls your Python `.py` or R `.R` script (or whatever language you are using). Then you submit the batch job script with the `qsub` command.
+
+## 2. Submit A Job with Parallel Tasks
+
+To run things in parallel, we are going to submit a job consisting of many tasks. Each task will correspond to a different simulation. To do this, type the following in the terminal:
+
+> testing a quote
+
+```{bash, eval = F}
+qsub -t 1:10 your_script.sh
+```
+
+Here, we are submitting one job with 10 tasks. Each task will have an ID from 1 to 10, stored in the `SGE_TASK_ID` environment variable.^[More documentation available [here](http://gridscheduler.sourceforge.net/htmlman/htmlman1/qsub.html)]
+
+## 3. Use the Task ID to Set Parameters
+
+In order to change the parameters for each simulation, you need to be able to "read in" `SGE_TASK_ID`. In Python, you can do this by:
+
+```{python, eval = F}
+import os
+task_id = int(os.getenv("SGE_TASK_ID"))
+```
+
+Then once you have the task ID, you can set the parameters of your simulation as needed. For example,
+
+```{python, eval = F}
+# Parameter options
+parameters_arr = np.array([1, 2, 3])  
+# Choose parameter
+parameter = parameters_arr[task_id - 1]
+
+# Run simulation
+runSimulation(parameter = parameter)     
+```
+
+Similarly, if you are using R, you can read in the task ID and change the parameters of the simulation.^[Fair warning: I took the R code from Tianchen and haven't actually tested it out myself.]
+
+```{r, eval = F}
+# Get task ID
+task_id <- as.integer(Sys.getenv("SGE_TASK_ID")) 
+# Parameter options
+parameters <- c(1, 2, 3)                         
+# Choose parameter
+parameter = parameters[task_id]                  
+
+# Run simulation
+runSimulation(parameter = parameter)             
+```
+
+Final thoughts:
+
+1. This only works for "embarrassingly parallel" problems, where each task can be run independently without needing any information from the other tasks.
+
+2. Your computing cluster may have restrictions on the number of scripts you can submit at once. Be careful not to overload the cluster with too many tasks, especially if they are memory-intensive and/or time-intensive. The maximum number of queue slots for the JHPCE cluster is ~200.
