@@ -10,8 +10,8 @@ tags:
   - qsub
   - python
   - R
-showDate: yes
-draft: no
+showDate: true
+draft: false
 ---
 
 Recently, I've been running simulations on our school's computing cluster ([JHPCE](https://jhpce.jhu.edu/)), which schedules jobs using the [Open Grid Engine](http://gridscheduler.sourceforge.net/documentation.html). Each simulation takes about half a day to complete, so I could run them sequentially and wait a week to get 14 simulation points. Or I could run them in parallel and get 14 simulation points in less than a day!
