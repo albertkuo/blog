@@ -21,8 +21,8 @@ draft: false
 <p>By default, <code>shape = 19</code> (a filled circle). You can change the number to plot different shapes, i.e. <code>geom_point(shape = x)</code>. If you want to change point shapes based on a grouping variable, then first set the shape with the grouping variable in <code>geom_point</code> and then use <code>scale_shape_manual</code> to choose the desired shapes (optional). Below is an example.</p>
 <pre class="r"><code>library(ggplot2)
 
-dt = data.frame(x = 1:5, 
-                y = rnorm(5), 
+dt = data.frame(x = 1:5,
+                y = c(1, 3, 2, 4, 5), 
                 group = as.factor(c(1, 2, 1, 2, 2)))
 
 ggplot(dt, aes(x, y)) +
