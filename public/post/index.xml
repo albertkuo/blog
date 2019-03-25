@@ -17,7 +17,7 @@
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/point-shape-options-in-ggplot/</guid>
-      <description>I’m familiar enough with ggplot that I can make a quick plot pretty easily in most cases.1 But when it comes to fine-tuning the various plot aesthetics, like adjusting the legend position or rotating axis tick labels, I always have to look them up. Today, I will be writing about one of these pesky things: looking up the point shape options for geom_point. The available documentation for this isn’t great, so I thought it was worth writing my own reference.</description>
+      <description>I’m familiar enough with ggplot that I can make a quick plot pretty easily in most cases.1 But when it comes to fine-tuning the various plot aesthetics, like adjusting the legend position or rotating axis tick labels, I always have to look them up. Today, I will be writing about one of these pesky things: looking up the point shape options for geom_point. The available documentation for this isn’t great, so I thought it would be worthwhile to write my own reference.</description>
     </item>
     
     <item>
