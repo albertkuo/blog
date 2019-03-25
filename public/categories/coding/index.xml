@@ -6,10 +6,19 @@
     <description>Recent content in Coding on Blog | Albert</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/coding/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Point Shape Options in ggplot</title>
+      <link>/post/point-shape-options-in-ggplot/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/point-shape-options-in-ggplot/</guid>
+      <description>I’m familiar enough with ggplot that I can make a quick plot pretty easily in most cases.1 But when it comes to the various plot aesthetics, like adjusting the legend position or rotating axis tick labels, I always have to look them up. Today, I will be writing about one of these pesky things: looking up the point shape options for geom_point. I feel like the available documentation for this isn’t great, so I’m writing my own reference.</description>
+    </item>
     
     <item>
       <title>Submitting Parallel Jobs on a Cluster</title>

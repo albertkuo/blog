@@ -4,10 +4,10 @@ author: ''
 date: '2019-03-13'
 slug: should-i-get-a-phd-in-biostatistics
 categories:
-  - '#advice'
+  - 'advice'
 tags:
-  - '#phd'
-  - '#advice'
+  - 'phd'
+  - 'advice'
 showDate: true
 draft: true
 ---

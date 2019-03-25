@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Advice on Blog | Albert</title>
+    <link>/categories/advice/</link>
+    <description>Recent content in Advice on Blog | Albert</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 13 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/advice/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Should I get a PhD (in biostatistics)?</title>
+      <link>/post/should-i-get-a-phd-in-biostatistics/</link>
+      <pubDate>Wed, 13 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/should-i-get-a-phd-in-biostatistics/</guid>
+      <description>During the process of applying to graduate school, I was honestly still unsure about whether getting a PhD was a good idea. So from time to time, I would Google, “should I get a PhD” and see what I find. Chances are, if you’re reading this post, you’re in a similar boat. Now that I’ve started my PhD, I have a better idea of whether getting a PhD is a good choice for me.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,55 @@
+---
+title: Point Shape Options in ggplot
+author: ''
+date: '2019-03-24'
+slug: point-shape-options-in-ggplot
+categories:
+  - coding
+tags:
+  - R
+  - ggplot
+  - geom_point
+showDate: true
+draft: false
+---
+
+
+
+<p>I’m familiar enough with ggplot that I can make a quick plot pretty easily in most cases.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> But when it comes to the various plot aesthetics, like adjusting the legend position or rotating axis tick labels, I always have to look them up. Today, I will be writing about one of these pesky things: looking up the point shape options for <code>geom_point</code>. I feel like the available documentation for this isn’t great, so I’m writing my own reference.</p>
+<div id="how-to-change-the-shape" class="section level1">
+<h1>How to Change the Shape</h1>
+<p>By default, <code>shape = 19</code> (a filled circle). You can change the number to plot different shapes, i.e. <code>geom_point(shape = x)</code>. If you want to change point shapes based on a grouping variable, then first set the shape with the grouping variable in <code>geom_point</code> and then use <code>scale_shape_manual</code> to choose the desired shapes (optional). Below is an example.</p>
+<pre class="r"><code>x = 1:5
+y = rnorm(5)
+group = as.factor(c(1, 1, 2, 2, 2))
+dt = tibble(x, y, group)
+
+ggplot(dt, aes(x, y)) +
+  geom_point(aes(shape = group, color = group), size = 3) + 
+  scale_shape_manual(values = c(15, 16)) + 
+  theme_minimal()</code></pre>
+<p><img src="/post/2019-03-24-point-shapes-in-ggplot_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>The first 26 options available for point shapes, i.e. shapes 0 to 25, are the ones you are most likely to use.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> I have created two keys below for the different shape options. The first is ordered by the shape number and the second is ordered by the geometric shape.</p>
+</div>
+<div id="shape-options-ordered-by-number" class="section level1">
+<h1>Shape Options (Ordered By Number)</h1>
+<p><img src="/post/2019-03-24-point-shapes-in-ggplot_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Notes:</p>
+<ul>
+<li>Shapes 0 to 14 are outline only: use <code>color</code> to change colors</li>
+<li>Shapes 15 to 20 are fill only: use <code>color</code> to change colors</li>
+<li>Shapes 21 to 25 are outline + fill: use <code>color</code> to change the outline color and <code>fill</code> to change the fill color</li>
+</ul>
+</div>
+<div id="shape-options-ordered-by-shape" class="section level1">
+<h1>Shape Options (Ordered by Shape)</h1>
+<p><img src="/post/2019-03-24-point-shapes-in-ggplot_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>I often find that I’m looking for a particular shape when plotting, so I’ve also arranged the options by their geometric shape above.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Yes, I spoke too soon. The plots on this post took way longer to make than anticipated.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>There are additional options available, i.e. shapes 32 to 127, which correspond to the ASCII characters. I think it’s quite unlikely I’ll ever use them, but if you’re interested, you can view them <a href="http://sape.inf.usi.ch/quick-reference/ggplot2/shape">here</a>.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
