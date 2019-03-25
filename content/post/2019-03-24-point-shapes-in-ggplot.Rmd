@@ -22,10 +22,9 @@ By default, `shape = 19` (a filled circle). You can change the number to plot di
 ```{r message = F, warning = F}
 library(ggplot2)
 
-x = 1:5
-y = rnorm(5)
-group = as.factor(c(1, 1, 2, 2, 2))
-dt = data.frame(x, y, group)
+dt = data.frame(x = 1:5, 
+                y = rnorm(5), 
+                group = as.factor(c(1, 2, 1, 2, 2)))
 
 ggplot(dt, aes(x, y)) +
   geom_point(aes(shape = group, color = group), size = 3) + 
