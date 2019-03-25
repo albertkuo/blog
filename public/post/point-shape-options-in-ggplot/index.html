@@ -87,21 +87,23 @@
 <div id="how-to-change-the-shape" class="section level1">
 <h1>How to Change the Shape</h1>
 <p>By default, <code>shape = 19</code> (a filled circle). You can change the number to plot different shapes, i.e. <code>geom_point(shape = x)</code>. If you want to change point shapes based on a grouping variable, then first set the shape with the grouping variable in <code>geom_point</code> and then use <code>scale_shape_manual</code> to choose the desired shapes (optional). Below is an example.</p>
-<pre class="r"><code>x = 1:5
+<pre class="r"><code>library(ggplot2)
+
+x = 1:5
 y = rnorm(5)
 group = as.factor(c(1, 1, 2, 2, 2))
-dt = tibble(x, y, group)
+dt = data.frame(x, y, group)
 
 ggplot(dt, aes(x, y)) +
   geom_point(aes(shape = group, color = group), size = 3) + 
   scale_shape_manual(values = c(15, 16)) + 
   theme_minimal()</code></pre>
-<p><img src="/post/2019-03-24-point-shapes-in-ggplot_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="/post/2019-03-24-point-shapes-in-ggplot_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>The first 26 options available for point shapes, i.e. shapes 0 to 25, are the ones you are most likely to use.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> I have created two keys below for the different shape options. The first is ordered by the shape number and the second is ordered by the geometric shape.</p>
 </div>
 <div id="shape-options-ordered-by-number" class="section level1">
 <h1>Shape Options (Ordered By Number)</h1>
-<p><img src="/post/2019-03-24-point-shapes-in-ggplot_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="/post/2019-03-24-point-shapes-in-ggplot_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Notes:</p>
 <ul>
 <li>Shapes 0 to 14 are outline only: use <code>color</code> to change colors</li>
@@ -111,7 +113,7 @@ ggplot(dt, aes(x, y)) +
 </div>
 <div id="shape-options-ordered-by-shape" class="section level1">
 <h1>Shape Options (Ordered by Shape)</h1>
-<p><img src="/post/2019-03-24-point-shapes-in-ggplot_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/post/2019-03-24-point-shapes-in-ggplot_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>I often find that I’m looking for a particular shape when plotting, so I’ve also arranged the options by their geometric shape above.</p>
 </div>
 <div class="footnotes">

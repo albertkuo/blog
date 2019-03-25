@@ -15,20 +15,17 @@ draft: false
 
 I'm familiar enough with ggplot that I can make a quick plot pretty easily in most cases.^[Yes, I spoke too soon. The plots on this post took way longer to make than anticipated.] But when it comes to the various plot aesthetics, like adjusting the legend position or rotating axis tick labels, I always have to look them up. Today, I will be writing about one of these pesky things: looking up the point shape options for `geom_point`. I feel like the available documentation for this isn't great, so I'm writing my own reference.
 
-```{r echo = F}
-library(pacman)
-p_load(dplyr, ggplot2)
-```
-
 # How to Change the Shape
 
 By default, `shape = 19` (a filled circle). You can change the number to plot different shapes, i.e. `geom_point(shape = x)`. If you want to change point shapes based on a grouping variable, then first set the shape with the grouping variable in `geom_point` and then use `scale_shape_manual` to choose the desired shapes (optional). Below is an example.
 
-```{r}
+```{r message = F, warning = F}
+library(ggplot2)
+
 x = 1:5
 y = rnorm(5)
 group = as.factor(c(1, 1, 2, 2, 2))
-dt = tibble(x, y, group)
+dt = data.frame(x, y, group)
 
 ggplot(dt, aes(x, y)) +
   geom_point(aes(shape = group, color = group), size = 3) + 
@@ -44,7 +41,7 @@ The first 26 options available for point shapes, i.e. shapes 0 to 25, are the on
 y = rep(5:1, times = c(5, 5, 5, 6, 5))
 x = c(1:5, 1:5, 1:5, 1:6, 1:5)
 shape = 0:25
-dt = tibble(x, y, shape)
+dt = data.frame(x, y, shape)
 ggplot(dt, aes(x, y, label = shape)) +
   geom_point(aes(shape = as.factor(shape)), size = 5,
              color = "#ec2027", fill = "#fbd2d3") + 
@@ -74,7 +71,7 @@ shape = c(1, 10, 13, 16, 19, 20, 21,
           0, 7, 12, 14, 15, 22,
           3, 4, 8, 11)
 shape_factor = as.factor(0:25)
-dt = tibble(x, y, shape, shape_factor)
+dt = data.frame(x, y, shape, shape_factor)
 ggplot(dt, aes(x, y, label = shape)) +
   geom_point(aes(shape = shape_factor), size = 5,
              color = "#ec2027", fill = "#fbd2d3") + 
