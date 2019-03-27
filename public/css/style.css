@@ -186,14 +186,14 @@ hr {
     border-radius: 3px;
     padding: 1rem;
     overflow-x: auto;
-    background-color: #333333;
+    background-color: #F8F8F8;
     width: 100%;
     margin-bottom: 1em; }
   #content pre > code {
     border: none; }
   #content code {
-    font-size: 0.9rem;
-    font-family: "Source Code Pro", monospace;
+    font-size: 0.8rem;
+    font-family: "Menlo", "Courier New", Courier, monospace;
     padding: 0.1rem;
     border-radius: 3px;
     border: 1px solid #ec2028; }
