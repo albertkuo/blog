@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/my-favorite-books-to-date/</loc>
+    <lastmod>2019-03-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/point-shape-options-in-ggplot/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
   </url>
@@ -15,11 +20,6 @@
   <url>
     <loc>/post/should-i-get-a-phd-in-biostatistics/</loc>
     <lastmod>2019-03-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/my-favorite-books-to-date/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -48,13 +48,13 @@
   </url>
   
   <url>
-    <loc>/tags/advice/</loc>
+    <loc>/categories/advice/</loc>
     <lastmod>2019-03-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/advice/</loc>
+    <loc>/tags/advice/</loc>
     <lastmod>2019-03-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -67,13 +67,13 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/books/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -115,7 +115,7 @@
   
   <url>
     <loc>/categories/interests/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -154,14 +154,14 @@
   </url>
   
   <url>
-    <loc>/tags/r/</loc>
-    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
+    <loc>/categories/r/</loc>
+    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <loc>/tags/r/</loc>
+    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -173,7 +173,7 @@
   
   <url>
     <loc>/tags/recommendations/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

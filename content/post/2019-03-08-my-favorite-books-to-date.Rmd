@@ -1,7 +1,7 @@
 ---
 title: My Favorite Books to Date
 author: ''
-date: '2019-03-09'
+date: '2019-03-29'
 slug: my-favorite-books-to-date
 categories:
   - interests
@@ -9,19 +9,19 @@ tags:
   - books
   - recommendations
 showDate: true
-draft: true
+draft: false
 ---
 
-I sometimes get requests for book recommendations, so I decided to write a post on my favorite books.^[Excluding childhood favorites.] For each book, I give a very short description (< 3 sentences) of the book and why I enjoyed it. Hopefully, it'll give you some idea of whether you'll want to read it too. 
+I sometimes get requests for book recommendations, so I decided to write a post on my favorite books.^[Excluding childhood favorites.] For each book, I give a very short description (< 3 sentences) of the book and why I enjoyed it. Hopefully, that'll give you some idea of whether you want to read it too. 
 
-You might also be interested in following the books I read with my friend Kevin on our [reading blog](https://albertandkevin.wordpress.com), where we review every book we read (both the good and the bad).
+A quick plug: you might also be interested in following the books I read with my friend Kevin on our [reading blog](https://albertandkevin.wordpress.com).
 
 <div class="go-center">
 <img src="/img/sapiens.jpg" alt="sapiens.jpg" height=300px>
 </div>
 1. **[Sapiens](https://amzn.to/2amA7J5)** by Yuval Noah Harari
 
-Harari tells a captivating story about how humans became the dominant species on the planet, with sweeping and intuitive explanations on a wide range of topics. The book inspires you to think about society and human history from a broad perspective, which I think would've been hard to do on my own.
+Harari tells a captivating story about how humans became the dominant species on the planet, with sweeping and intuitive explanations on a wide range of topics. Reading this book inspires you to think about society and human history from a broad perspective, in a way that is otherwise hard to do on your own.
 
 <div class="go-center">
 <img src="/img/the-new-jim-crow.jpg" alt="the-new-jim-crow.jpg" height=300px>
@@ -29,7 +29,7 @@ Harari tells a captivating story about how humans became the dominant species on
 
 2. **[The New Jim Crow](https://amzn.to/1ZI0bNK)** by Michelle Alexander
 
-This was an incredibly eye-opening book for me. Alexander describes how the current justice system in America has (intentionally!) been set up to legitimize racial discrimination in present society; that many remain unaware of its extent shows how horrifyingly successful the "new Jim Crow" has been. It's a must-read for everyone in America (and worth perusing for everyone else too).
+This was an incredibly eye-opening book for me. Alexander describes how the current justice system in America has (intentionally!) been set up to legitimize racial discrimination in present society; the fact that many remain unaware of its extent shows how horrifyingly successful the "new Jim Crow" has been. It's a must-read for everyone living in America (and worth perusing for everyone else too).
 
 <div class="go-center">
 <img src="/img/a-little-life.jpg" alt="a-little-life.jpg" height=300px>
@@ -37,7 +37,7 @@ This was an incredibly eye-opening book for me. Alexander describes how the curr
 
 3. **[A Little Life](https://amzn.to/2UpqnjS)** by Hanya Yanagihara
 
-I've never felt like I lived an entire life from reading a book until I read *A Little Life*. It was some life too -- the characters are so heartachingly beautiful and the story so emotional that when it all comes to an end, all you can say is *wow*.
+I've never felt like I lived an entire life from reading a book until I read *A Little Life*. The characters are so heartachingly beautiful and the story is so immersive and emotional that when it all comes to an end, all you can say is wow, that was some story.
 
 <div class="go-center">
 <img src="/img/when-breath-becomes-air.jpg" alt="when-breath-becomes-air.jpg" height=300px>
@@ -45,7 +45,7 @@ I've never felt like I lived an entire life from reading a book until I read *A 
 
 4. **[When Breath Becomes Air](https://amzn.to/2b3rrEh)** by Paul Kalanithi
 
-Kalanithi is a doctor who has to suddenly come to terms with his mortality when diagnosed with cancer. It's a wonderful memoir and could not have been written in a more intelligent, thoughtful, and thought-provoking manner. I've set a reminder for myself to reread this book at a future date, so yes, I think it's definitely worth reading at least once.
+Kalanithi is a doctor who has to suddenly come to terms with his mortality when diagnosed with cancer. It's a wonderful memoir written in a highly intelligent, thoughtful, and thought-provoking manner. I've set a reminder for myself to reread this book at a future date, so yes, I think it's definitely worth reading at least once.
 
 <div class="go-center">
 <img src="/img/the-righteous-mind.jpg" alt="the-righteous-mind.jpg" height=300px>
@@ -53,18 +53,18 @@ Kalanithi is a doctor who has to suddenly come to terms with his mortality when 
 
 5. **[The Righteous Mind](https://amzn.to/29Xp6t6)** by Jonathan Haidt
 
-Jonathan writes a thought-provoking book for anyone interested in politics. He describes a moral basis that gives rise to differences in conservative and liberal opinions, which by its mere formulation, goes a long way towards combating the instinctive demonization common in political discourse.
+Jonathan writes a thought-provoking book about how we form our political opinions. He shows how differences in conservative and liberal thought can be explained by a moral basis, which by its mere formulation, goes a long way towards combating the instinctive demonization common in political discourse.
 
 
 ## Honorable Mentions
 
-The following books had perhaps a little bit less of an impact on me than the ones I listed above, but they're all still tremendously enjoyable to read in their own way. I have provided a one-sentence synopsis for each book.
+The following books had perhaps a little bit less of an impact on me than the ones I listed above, but they're all still tremendously enjoyable to read. I've provided a one-sentence synopsis for each book.
 
 * **[Behind the Beautiful Forevers](https://amzn.to/2cDg8FA)** by Katherine Boo - A story following residents in a slum in Mumbai and their very real struggles with poverty and corruption.
 * **[Being Mortal](https://amzn.to/2BNDvG9)** by Atul Gawande - A surgeon intersperses stories with criticisms and reflections on how medicine addresses end of life care.
 * **[Colorless Tsukuru Tazaki and His Years of Pilgrimage](https://amzn.to/2EJaAG4)** by Haruki Murakami - The protagonist sets out on a quest to find out what happened years ago that resulted in his four best friends cutting off all contact with him.
 * **[Half of a Yellow Sun](https://amzn.to/2TAFycW)** by Chimamanda Ngozi Adichie - A story set during the Nigerian Civil War, told through the different perspectives of several memorable characters.
-* **[The First Fifteen Lives of Harry August](https://amzn.to/2TsvOCc)** by Claire North - The protagonist is a time-traveler (sort of) that tries to stop the end of the world in a story that's thrilling from start to finish.
+* **[The First Fifteen Lives of Harry August](https://amzn.to/2TsvOCc)** by Claire North - The protagonist is a time-traveler (sort of) that tries to stop the end of the world caused by another time-traveler. 
 * **[The Pleasure of My Company](https://amzn.to/2CfoBLb)** by Steve Martin^[Did you know that Steve Martin (yes, the actor Steve Martin) wrote books? I had no idea.] - A funny and fascinating character-driven story featuring a protagonist with OCD.
-* **[The Rosie Project](https://amzn.to/2EP7HUf)** by Graeme Simsion - Another funny and fascinating story featuring a "socially-challenged" protagonist.
-* **[The White Tiger](https://amzn.to/2cULZ3X)** by Aravind Adiga - The story follows a boy in India who leaves his village to become a taxi driver in an atypical rags-to-riches tale.
+* **[The Rosie Project](https://amzn.to/2EP7HUf)** by Graeme Simsion - Another funny story featuring a "socially-challenged" protagonist.
+* **[The White Tiger](https://amzn.to/2cULZ3X)** by Aravind Adiga - A boy in India leaves his village to become a taxi driver in an atypical rags-to-riches tale.
