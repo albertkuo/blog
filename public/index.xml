@@ -6,10 +6,19 @@
     <description>Recent content on Blog | Albert</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 25 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Should You Get a PhD (in biostatistics)?</title>
+      <link>/post/should-you-get-a-phd-in-biostatistics/</link>
+      <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/should-you-get-a-phd-in-biostatistics/</guid>
+      <description>Throughout the process of applying to graduate school, I felt unsure about whether getting a PhD was a good idea. I remember Googling “should I get a PhD” just to see what I could find out of curiosity. Chances are, if you’re reading this post, you’re in a similar boat. As a now second-year PhD student in biostatistics, I think I have a better idea of whether being in a PhD program has been a good choice for me and I’ll share what I think would’ve been useful for me to know back when I was applying.</description>
+    </item>
     
     <item>
       <title>My Favorite Books to Date</title>
@@ -38,15 +47,6 @@ A quick plug: you might also be interested in following the books I read with my
       <guid>/post/submitting-parallel-jobs-on-a-cluster/</guid>
       <description>Recently, I’ve been running simulations on our school’s computing cluster (JHPCE), which schedules jobs using the Open Grid Engine. Each simulation takes about half a day to complete, so I could run them sequentially and wait a week to get 14 simulation points. Or I could run them in parallel and get 14 simulation points in less than a day!
 In theory, running my simulations in parallel should be a very straightforward task.</description>
-    </item>
-    
-    <item>
-      <title>Should I get a PhD (in biostatistics)?</title>
-      <link>/post/should-i-get-a-phd-in-biostatistics/</link>
-      <pubDate>Wed, 13 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/should-i-get-a-phd-in-biostatistics/</guid>
-      <description>During the process of applying to graduate school, I was honestly still unsure about whether getting a PhD was a good idea. So from time to time, I would Google, “should I get a PhD” and see what I find. Chances are, if you’re reading this post, you’re in a similar boat. Now that I’ve started my PhD, I have a better idea of whether getting a PhD is a good choice for me.</description>
     </item>
     
     <item>
