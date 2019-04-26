@@ -38,17 +38,17 @@ Hopefully, they're employable. Other than that, you'll want to see that their al
 
 ## 3. Everyone is Different
 
-There are a lot of people on the Internet who will caution you against getting a PhD. And I do think it's a good idea to keep the numerous challenges in mind and carefully weigh your decision. But with all advice (including mine), you should take it with a grain of salt, because (1) the experience of a PhD student varies a lot by field and (2) everyone is different. At least in my case, I would say that reading all those warnings made me feel overly hesitant. I didn't feel like I was "super passionate" about statistics, so when someone on the Internet said I should only do a PhD if I couldn't see myself doing anything else, I thought well... maybe I shouldn't get a PhD.
+There are a lot of people on the Internet who will caution you against getting a PhD. And I do think it's a good idea to keep the numerous challenges in mind and carefully weigh your decision. But with all advice (including mine), you should take it with a grain of salt, because (1) the experience of a PhD student varies a lot depending on the field and (2) everyone is different. At least in my case, I would say that reading all those warnings made me feel overly hesitant. I didn't feel like I was "super passionate" about statistics, so when someone on the Internet said I should only do a PhD if I couldn't see myself doing anything else, I thought well... maybe I shouldn't get a PhD.
 
 If I could go back in time and talk to myself, I would say that it's important to like your subject, but you don't need to be crazy obsessed^[Honestly, I wouldn't characterize anyone in my program as being "obsessed" with statistics.] with it to have a good time. Here are some things I've enjoyed about being a PhD student so far: 
 
-1. Learning a lot academically. Even though I was a math/stats double major in college, there was still a lot of new material for me in the required PhD curriculum at Johns Hopkins and I felt like I understood a lot of statistical concepts on a more solid foundation.
+1. Learning a lot academically. Even though I was a math/stats double major in college, there was still a lot of new material for me in the required PhD curriculum at Johns Hopkins. I also felt like I understood familiar statistical concepts on a more solid foundation.
 
-2. All the interesting questions that I get to investigate in research. This is one of the best parts about being in biostatistics; since many medical and scientific questions require statistics as part of the solution, there are a lot of options open to you.
+2. All the interesting questions that I get to investigate in research. This is one of the best parts about being in biostatistics; since many medical and scientific questions require statistics as part of the solution, you have more options than is typical for other fields.
 
 3. The freedom and flexibility you have as a PhD student, i.e. being able to work whenever and wherever I want. For the past year, I've rarely had morning commitments so I don't set an alarm to wake up. How many people have that luxury?
 
-What I'm saying is, the more you understand your personality and your desired lifestyle, the better able you'll be at measuring other people's advice relative to yourself and gauging whether a PhD program is right for you. While I personally find much of being a PhD student enjoyable, that may not be the case for everyone.
+What I'm saying is, the more you understand your personality and your desired lifestyle, the better able you'll be at measuring other people's advice relative to yourself and gauging whether a PhD program is right for you. While I personally find much about being a PhD student to be enjoyable, that may not be the case for everyone.
 
 ## Final Thoughts
 
