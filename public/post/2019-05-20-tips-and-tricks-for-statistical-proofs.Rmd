@@ -1,0 +1,188 @@
+---
+title: 10 Tips and Tricks for Statistical Proofs
+author: ''
+date: '2019-05-20'
+slug: tips-and-tricks-for-statistical-proofs
+categories:
+  - math
+tags:
+  - guide
+  - statistics
+  - probability
+  - proofs
+showDate: true
+draft: true
+---
+
+I've been taking measure-theoretic probability theory^[Our class used Durrett's [Probability Theory and Examples](https://services.math.duke.edu/~rtd/PTE/pte.html) textbook, if you were wondering.] this year and I noticed that a lot of proofs will assume that the reader already knows some commonly used "tricks." If you aren't familiar with them, it can be hard to prove it yourself or follow Durrett's proof at all. I felt like this was happening to me a lot, so in an effort to better familiarize myself with them, I've written down some useful tips and tricks.^[This guide was also inspired by Daniel Seita's [Mathematical Tricks Commonly Used in Machine Learning and Statistics](https://danieltakeshi.github.io/2017/05/06/mathematical-tricks-commonly-used-in-machine-learning-and-statistics).] They are arranged alphabetically below, with brief explanations and/or examples.
+
+1. **Bounding the Union with a Sum**
+
+ - You can always bound the probability of a union by the sum of the probabilities:
+   $$
+   P\left(\cup_n A_n\right) \leq \sum_n P\left(A_n\right)
+   $$
+   This is a very simple trick that uses the [inclusion-exclusion principle](https://en.wikipedia.org/wiki/Inclusion%E2%80%93exclusion_principle). When in doubt, try this! It's not a very strong upper bound, but it may be sufficient for your needs.
+
+2. **Cauchy-Schwarz Inequality**
+
+ - The Cauchy-Schwarz Inequality is pretty much unavoidable in math. Here are some canonical forms:
+   $$
+   \begin{align}
+   |\langle u, v \rangle| &\leq \|u\|\|v\| \\
+   \left|\sum_i u_i v_i\right|^2 &\leq \sum_j|u_j|^2\sum_k|v_k|^2
+   \end{align}
+   $$
+   A form you might encounter in statistics is the following:
+   $$
+   |E(XY)|^2 \leq E(X^2)E(Y^2)
+   $$
+   
+ - Example: If $X \sim Poisson(\lambda)$ and $Y \sim Poisson(2\lambda)$, find a bound on $P(X \leq Y)$ of the form $A\exp(-c\lambda)$. To show this, first observe that $P(X \geq Y) = P(e^{t(X-Y)}\geq 1) \leq E(e^{t(X-Y)})$ by Chebyshev's inequality. Then $E(e^{t(X-Y)})=E(e^{tX}e^{-tY}) \leq \sqrt{E(e^{2tX})E(e^{-2tY})}$ by Cauchy-Schwarz. The last equation gives us $e^{(\lambda(e^{2t}-1)+2\lambda(e^{-(2t)}-1))/2}$ with moment-generating functions. Take the  derivative with respect to $t$ and plug back in to get the bound.
+
+3. **Continuous Mapping Theorem**
+
+ - If $X_n \Rightarrow X_\infty$ (converges in distribution) and $g$ is a measurable function that is continuous except on a set of measure 0, then $g(X_n) \Rightarrow g(X_\infty)$. If $g$ is furthermore bounded, then $E g(X_n) \rightarrow E g(X_\infty)$. The result is often something you hope is true and you just need to check that the function you're applying is in fact continuous.
+
+4. **Convergence Theorems**
+
+ - A "last step" in many proofs is to take the limit inside the integral: 
+
+   $$
+   \lim_{n \rightarrow \infty} \int X_n d\mu = \int \lim_{n \rightarrow \infty} X_n d\mu \\
+   $$
+
+   (An equivalent formulation is $\lim_{n \rightarrow \infty} E(X_n) = E(\lim_{n \rightarrow \infty} X_n)$ or $E(X_n) \rightarrow E(X)$, where $X$ is the limit of $X_n$.)
+
+ - This is true under any of these three scenarios:
+
+   1. If $X_n \geq 0$ and $X_n \leq X_{n+1}$ for all $n$ (monotone convergence)
+   2. If $\lvert X_n\rvert \leq M$ for some constant $M$ (bounded convergence)
+   3. If $\lvert X_n\rvert \leq Y$ for an integrable random variable $Y$, i.e. $E\lvert Y \rvert < \infty$ (dominated convergence)
+
+ - Example (dominated convergence): Consider the probability space $(\Omega, \mathcal{F}, \mu)$. Let $X \geq 0$ be an integrable random variable and define $v(A) = \int_A X d \mu$ for $A \in \mathcal{F}$. To show that $v$ is a measure, a necessary condition is that $v(\cup_{i=1}^\infty A_i) = \sum_{i=1}^\infty v(A_i)$ for disjoint $A_i$. This is true since
+
+   $$
+   \begin{align*}
+   \sum_{i=1}^\infty v(A_i) &= \lim_{n\rightarrow \infty} \sum_{i=1}^n v(A_i) \\
+       &=\lim_{n \rightarrow \infty} \sum_{i=1}^n \int_{A_i} Xd\mu \\
+       &=\lim_{n \rightarrow \infty}\sum_{i=1}^n \int X1_{A_i}d\mu\\
+       &= \lim_{n \rightarrow \infty} \int \sum_{i=1}^nX1_{A_i} d\mu \text{ since } A_i \text{ disjoint}\\
+       &= \int \lim_{n\rightarrow \infty}\sum_{i=1}^nX1_{A_i}d\mu \text{ since }\sum_{i=1}^nX1_{A_i} \leq X \text{ (dominated convergence)}\\
+       &= \int \sum_{i=1}^\infty X1_{A_i} d\mu\\
+       &= \int_{\cup_{i=1}^\infty A_i} Xd\mu \\
+       &= v(\cup_{i=1}^\infty A_i)
+   \end{align*}
+   $$
+
+5. **Expectation of Positive Random Variables**
+
+ - If $X$ is a nonnegative random variable, then $E(X) = \sum_{n=0}^\infty P(X \geq n)$ or $E(X)=\int P(X > x)dx$. A proof is available on [Wikipedia](https://en.wikipedia.org/wiki/Expected_value#Formula_for_non-negative_random_variables). This is a really useful property and is often used for [stopping times](https://en.wikipedia.org/wiki/Stopping_time).
+
+ - Example: If $\tau$ is a stopping time wrt $\mathcal{F}_n$, s.t. $P(\tau \leq n+3|\mathcal{F}_n) > 0.1$ for every $n$, then $E(\tau) < \infty$. 
+
+   This can be proved by first showing that $P(\tau > 3k) \leq (1-0.1)^k$, which can be done using induction. Then since $E(\tau) = \sum_{n=0}^\infty P(\tau \geq n)$, it follows that $E(\tau) < 3*\sum_{k=0}^\infty P(\tau>3k) < \infty$. 
+
+6. **Jensen's Inequality**
+
+ - Jensen's inequality is something you should be able to recognize and apply right away. Intuitively, it says that if a function $\phi$ is [convex](https://en.wikipedia.org/wiki/Convex_function), then the average of the function values is greater than the function applied to the average^[For more intuitive explanations, check out this [post on quora](https://www.quora.com/What-is-an-intuitive-explanation-of-Jensens-Inequality).].
+   $$
+   E[\phi(X)] \geq \phi(E[X])
+   $$
+   One of the most common applications is with Euler's number: 
+   $$
+   E\left[e^X\right] \geq e^{E(X)}
+   $$
+   
+ - Example: If $X_n$ is a martingale, then $(X_n+c)^2$ is a submartingale. Let $g(x) = (x+c)^2$, which is convex. Then by Jensen's inequality, $E(g(X_{n+1})|\mathcal{F}_n) \geq g(E(X_{n+1}|\mathcal{F}_n))$. Since $X_n$ is a martingale, $g(E(X_{n+1}|\mathcal{F}_n))=g(X_n)=(X_n+c)^2$. 
+
+7. **Markov's (Chebyshev's) Inequality**
+
+ - Markov's inequality is often used whenever you need to bound the probability. It states that 
+   $$
+   a^2P(|X| \geq a) \leq E(X^2;|X| \geq a) \leq E(X^2)
+   $$
+   More generally, for $\phi: \mathbb{R} \rightarrow \mathbb{R}$, $\phi \geq 0$, $A \in \mathcal{B}$, and $i_A = \inf \{ \phi(y): y \in A\}$, 
+   $$
+   i_A P(X \in A) \leq E(\phi(X);x\in A) \leq E(\phi(X))
+   $$
+   
+ - Example: See the example for Cauchy-Schwarz (#2). 
+
+8. **Slutsky's Theorem**
+
+ - This theorem states that if $X_n \Rightarrow X$ (in distribution) and $Y_n \rightarrow c$ in probability, then $X_n + Y_n \Rightarrow X+c$, $X_nY_n \Rightarrow cX$, and $X_n/Y_n \Rightarrow Y/c$. It is not always easy to immediately see that you will need to use this theorem. However, you might be able to prove something close to the answer and realize that if you then apply Slutsky's, the proof will be completed.
+
+ - Example: Let $X_1,X_2,…$ are iid with $E X_i = 0$ and $E X_i^2 = \sigma^2 < \infty$, $N_n$ b a sequence of nonnegative integer-valued random variables, and $a_n$ a sequence of integers with $a_n \rightarrow \infty$ and $N_n/a_n \rightarrow 1$ in probability. If $S_n = \sum_{i=1}^n X_i$, show that $Y_n = S_{N_n}/\sigma \sqrt{a_n} \Rightarrow N(0, 1)$.
+
+   One way to prove this is to first show that $Z_n = S_{a_n}/\sigma \sqrt{a_n} \Rightarrow N(0,1)$, which is easy to do. Then if you can show that $Y_n - Z_n \rightarrow 0$ in probability, which is harder to do, you can conclude with Slutsky's Theorem to say that $Y_n = (Y_n - Z_n) + Z_n \Rightarrow N(0,1)$.
+
+9. **Taylor Expansion & Euler's Number**
+
+  - The Taylor series is often used as an approximation and bound. In particular, the Taylor series for Euler's number $e$ is very important:
+    $$
+    e^x = 1+x+\frac{x^2}{2!}+\frac{x^3}{3!} + \cdots 
+    $$
+
+  - Another useful property of $e$ is that if $a_n \rightarrow a$, then
+    $$
+    e^a = \lim_{n \rightarrow \infty}\left(1+\frac{a_n}{n}\right)^n
+    $$
+
+  - Example: See the example for characteristic functions (Bonus #2).
+
+10. **Truncating an Infinite Sum**
+
+  - To get bounds on an infinite sum, you will generally want to truncate it
+    $$
+    \sum_{n=1}^\infty = \sum_{n=1}^N+\sum_{n > N}
+    $$
+    The idea is that you can bound the two sums on the right individually. First, you can bound $\sum_{n=1}^N$ because the individual summands are bounded by some $\epsilon$, so the whole sum is bounded by $\epsilon N$. Second, you can bound the rest of the sum $\sum_{n>N}$ as $N \rightarrow \infty$.
+
+  - Example: Let $\mu_n, \mu$ be probability measures on $\mathbb{N}$. Show that if $\mu_n(x) \rightarrow \mu(x)$ for each $x \in \mathbb{N}$, then the total variation distance $d(\mu_n,\mu) = \frac{1}{2}\sum_{x=1}^\infty |\mu_n(x)-\mu(x)| \rightarrow 0$. 
+
+    If we just tried to bound the infinite sum directly using the assumption, we would get a bound of $\epsilon*\infty$. Therefore, we need to split the infinite sum.
+    $$
+    \begin{align}
+    \frac{1}{2}\sum_{x=1}^\infty |\mu_n(x)-\mu(x)| &\leq \frac{1}{2}\sum_{x=1}^N|\mu_n(x)-\mu(x)| + \frac{1}{2}\sum_{x=N}^\infty |\mu_n(x)-\mu(x)|\\
+    &= A_n+B_n\\
+    \end{align}
+    $$
+    Now we can bound the finite sum "$A_n$" and the rest of the sum "$B_n$" separately.
+
+    1. Since $\mu_n(x)\rightarrow \mu(x)$, bound $|\mu_n(x) - \mu(x)| < \epsilon_1$ for $n \geq N_1$. Thus, $A_n < \epsilon_1N$. 
+    2. Since $\mu_n,\mu$ are probability measures, then both $P(|X_n|>N)$ and $P(|X|>N) \rightarrow 0$ as $N\rightarrow \infty$, where $X_n$ has distribution $\mu_n$ and $X$ has distribution $\mu$. In other words, $\sum_{z=N}^\infty \mu_n(z) < \epsilon_2$  and $\sum_{z=N}^\infty \mu(z) < \epsilon_2$ for $N$.^[To be formal, you can use separate $N$'s to bound $\mu_n$ and $\mu$ and then use the max as your $N$.] Then $\sum_{z=N_2}^\infty |\mu_n(x) - \mu(x)| < 2\epsilon_2$. Thus, $B_n < \epsilon_2$.
+
+    To conclude, we have shown that $A_n+B_n < \epsilon_1N+\epsilon_2 \rightarrow 0$. Since $N$ is finite and we can make $\epsilon_1, \epsilon_2$ arbitrarily small, then $A_n+B_n \rightarrow 0$.
+    
+      
+## Bonus Items
+
+Here are two additional useful techniques. I've listed them separately because it seems a bit of a stretch to call them "tricks."^[And also because "12 Tips and Tricks" is somewhat less catchy than "10 Tips and Tricks."]
+
+1. **Borel-Cantelli Lemmas**
+
+   * The first Borel-Cantelli Lemma states that if $\sum_{n=1}^\infty P(A_n) < \infty$, then $P(A_n \text{ i. o.})= 0$. This is often used to prove almost sure convergence. For example, if you can show that $\sum_{n=1}^\infty P(|X_n-X|>\epsilon)<\infty$, then by the lemma, $P(|X_n-X|>\epsilon \text{ i.o.}) = 0$, which implies that $X_n \rightarrow X$ almost surely by definition.
+   * The second Borel-Cantelli Lemma states that if $A_n$ are mutually independent and $\sum_{n=1}^\infty P(A_n) = \infty$, then $P(A_n \text{ i.o.})= 1$. Similarly, this can be used to prove that $X_n$ doesn't converge to $X$ almost surely. It's a little less useful than B-C 1 because of the extra requirement of independence and the fact that you usually want to prove something converges rather than doesn't converge.
+   
+2. **Characteristic Functions**
+
+   - There is a one to one correspondence between a characteristic function $\phi(t)$ and a distribution, so it's sometimes useful to use characteristic functions to prove something about a distribution. By definition, the characteristic function is
+     $$
+     \phi(t) = Ee^{itx} = E \cos tX + iE\sin tX
+     $$
+     Note that it is a function of $t$ and that it lies within the unit circle $|\phi(t)| \leq E|e^{itX}| = 1$. 
+
+   - Example: We can prove the central limit theorem with characteristic functions. Assume that $X_1,X_2,…$ are iid with $E X_i = 0$ and $var(X_i) = \sigma^2 < \infty$. The central limit theorem states that if $S_n = \sum X_i$,
+     $$
+     \frac{S_n}{\sigma n^{1/2}} \Rightarrow \chi \sim N(0, 1)
+     $$
+     To show this, note that by Taylor expansion^[Technically, you have to assume $E|X|^3 < \infty$ for a direct application of the Taylor expansion, but with some tedious math, it can be shown that $E|X|^2 < \infty$ is sufficient.], the characteristic function of $X_i$ is
+     $$
+     \begin{align}
+     \phi(t) = E \exp(itX_i) &= 1 + it EX - \frac{t^2E(X^2)}{2} + o(t^2) \\
+     \implies E \exp\left(\frac{itS_n}{\sigma n^{1/2}}\right) &= \left[E \exp \frac{itX_i}{\sigma n^{1/2}}\right]^n \\
+     &= \left[1-\frac{t^2}{2n}+\sigma(n^{-1})\right]^n \\
+     \end{align}
+     $$
+     By property of Euler's number (see #9), the last term $\rightarrow \exp\left(\frac{-t^2}{2}\right)$, which is the characteristic function of a standard normal distribution. 

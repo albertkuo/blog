@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Statistics on Blog | Albert</title>
+    <link>/tags/statistics/</link>
+    <description>Recent content in Statistics on Blog | Albert</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 20 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>10 Tips and Tricks for Statistical Proofs</title>
+      <link>/post/tips-and-tricks-for-statistical-proofs/</link>
+      <pubDate>Mon, 20 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/tips-and-tricks-for-statistical-proofs/</guid>
+      <description>I’ve been taking measure-theoretic probability theory1 this year and I noticed that a lot of proofs will assume that the reader already knows some commonly used “tricks.” If you aren’t familiar with them, it can be hard to prove it yourself or follow Durrett’s proof at all. I felt like this was happening to me a lot, so in an effort to better familiarize myself with them, I’ve written down some useful tips and tricks.</description>
+    </item>
+    
+  </channel>
+</rss>
