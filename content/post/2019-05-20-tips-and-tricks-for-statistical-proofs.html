@@ -165,12 +165,15 @@ Now we can bound the finite sum “<span class="math inline">\(A_n\)</span>” a
 <h2>Bonus</h2>
 <p>Here are two additional useful techniques. I’ve listed them separately because it seems a bit of a stretch to call them “tricks.”<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
 <ol style="list-style-type: decimal">
-<li><p><strong>Borel-Cantelli Lemmas</strong></p>
+<li><strong>Borel-Cantelli Lemmas</strong></li>
+</ol>
 <ul>
 <li>The first Borel-Cantelli Lemma states that if <span class="math inline">\(\sum_{n=1}^\infty P(A_n) &lt; \infty\)</span>, then <span class="math inline">\(P(A_n \text{ i. o.})= 0\)</span>. This is often used to prove almost sure convergence. For example, if you can show that <span class="math inline">\(\sum_{n=1}^\infty P(|X_n-X|&gt;\epsilon)&lt;\infty\)</span>, then by the lemma, <span class="math inline">\(P(|X_n-X|&gt;\epsilon \text{ i.o.}) = 0\)</span>, which implies that <span class="math inline">\(X_n \rightarrow X\)</span> almost surely by definition.</li>
 <li>The second Borel-Cantelli Lemma states that if <span class="math inline">\(A_n\)</span> are mutually independent and <span class="math inline">\(\sum_{n=1}^\infty P(A_n) = \infty\)</span>, then <span class="math inline">\(P(A_n \text{ i.o.})= 1\)</span>. Similarly, this can be used to prove that <span class="math inline">\(X_n\)</span> doesn’t converge to <span class="math inline">\(X\)</span> almost surely. It’s a little less useful than B-C 1 because of the extra requirement of independence and the fact that you usually want to prove something converges rather than doesn’t converge.</li>
-</ul></li>
-<li><p><strong>Characteristic Functions</strong></p>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Characteristic Functions</strong></li>
+</ol>
 <ul>
 <li><p>There is a one to one correspondence between a characteristic function <span class="math inline">\(\phi(t)\)</span> and a distribution, so it’s sometimes useful to use characteristic functions to prove something about a distribution. By definition, the characteristic function is
 <span class="math display">\[
@@ -190,8 +193,7 @@ To show this, note that by Taylor expansion<a href="#fn6" class="footnote-ref" i
 \end{align}
 \]</span>
 By property of Euler’s number (see #9), the last term <span class="math inline">\(\rightarrow \exp\left(\frac{-t^2}{2}\right)\)</span>, which is the characteristic function of a standard normal distribution.</p></li>
-</ul></li>
-</ol>
+</ul>
 </div>
 <div class="footnotes">
 <hr />

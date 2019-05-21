@@ -162,27 +162,27 @@ Here are two additional useful techniques. I've listed them separately because i
 
 1. **Borel-Cantelli Lemmas**
 
-   * The first Borel-Cantelli Lemma states that if $\sum_{n=1}^\infty P(A_n) < \infty$, then $P(A_n \text{ i. o.})= 0$. This is often used to prove almost sure convergence. For example, if you can show that $\sum_{n=1}^\infty P(|X_n-X|>\epsilon)<\infty$, then by the lemma, $P(|X_n-X|>\epsilon \text{ i.o.}) = 0$, which implies that $X_n \rightarrow X$ almost surely by definition.
-   * The second Borel-Cantelli Lemma states that if $A_n$ are mutually independent and $\sum_{n=1}^\infty P(A_n) = \infty$, then $P(A_n \text{ i.o.})= 1$. Similarly, this can be used to prove that $X_n$ doesn't converge to $X$ almost surely. It's a little less useful than B-C 1 because of the extra requirement of independence and the fact that you usually want to prove something converges rather than doesn't converge.
+ * The first Borel-Cantelli Lemma states that if $\sum_{n=1}^\infty P(A_n) < \infty$, then $P(A_n \text{ i. o.})= 0$. This is often used to prove almost sure convergence. For example, if you can show that $\sum_{n=1}^\infty P(|X_n-X|>\epsilon)<\infty$, then by the lemma, $P(|X_n-X|>\epsilon \text{ i.o.}) = 0$, which implies that $X_n \rightarrow X$ almost surely by definition.
+ * The second Borel-Cantelli Lemma states that if $A_n$ are mutually independent and $\sum_{n=1}^\infty P(A_n) = \infty$, then $P(A_n \text{ i.o.})= 1$. Similarly, this can be used to prove that $X_n$ doesn't converge to $X$ almost surely. It's a little less useful than B-C 1 because of the extra requirement of independence and the fact that you usually want to prove something converges rather than doesn't converge.
    
 2. **Characteristic Functions**
 
-   - There is a one to one correspondence between a characteristic function $\phi(t)$ and a distribution, so it's sometimes useful to use characteristic functions to prove something about a distribution. By definition, the characteristic function is
-     $$
-     \phi(t) = Ee^{itx} = E \cos tX + iE\sin tX
-     $$
-     Note that it is a function of $t$ and that it lies within the unit circle $|\phi(t)| \leq E|e^{itX}| = 1$. 
+ - There is a one to one correspondence between a characteristic function $\phi(t)$ and a distribution, so it's sometimes useful to use characteristic functions to prove something about a distribution. By definition, the characteristic function is
+   $$
+   \phi(t) = Ee^{itx} = E \cos tX + iE\sin tX
+   $$
+   Note that it is a function of $t$ and that it lies within the unit circle $|\phi(t)| \leq E|e^{itX}| = 1$. 
 
-   - Example: We can prove the central limit theorem with characteristic functions. Assume that $X_1,X_2,…$ are iid with $E X_i = 0$ and $var(X_i) = \sigma^2 < \infty$. The central limit theorem states that if $S_n = \sum X_i$,
-     $$
-     \frac{S_n}{\sigma n^{1/2}} \Rightarrow \chi \sim N(0, 1)
-     $$
-     To show this, note that by Taylor expansion^[Technically, you have to assume $E|X|^3 < \infty$ for a direct application of the Taylor expansion, but with some tedious math, it can be shown that $E|X|^2 < \infty$ is sufficient.], the characteristic function of $X_i$ is
-     $$
-     \begin{align}
-     \phi(t) = E \exp(itX_i) &= 1 + it EX - \frac{t^2E(X^2)}{2} + o(t^2) \\
-     \implies E \exp\left(\frac{itS_n}{\sigma n^{1/2}}\right) &= \left[E \exp \frac{itX_i}{\sigma n^{1/2}}\right]^n \\
-     &= \left[1-\frac{t^2}{2n}+\sigma(n^{-1})\right]^n \\
-     \end{align}
-     $$
-     By property of Euler's number (see #9), the last term $\rightarrow \exp\left(\frac{-t^2}{2}\right)$, which is the characteristic function of a standard normal distribution. 
+ - Example: We can prove the central limit theorem with characteristic functions. Assume that $X_1,X_2,…$ are iid with $E X_i = 0$ and $var(X_i) = \sigma^2 < \infty$. The central limit theorem states that if $S_n = \sum X_i$,
+   $$
+   \frac{S_n}{\sigma n^{1/2}} \Rightarrow \chi \sim N(0, 1)
+   $$
+   To show this, note that by Taylor expansion^[Technically, you have to assume $E|X|^3 < \infty$ for a direct application of the Taylor expansion, but with some tedious math, it can be shown that $E|X|^2 < \infty$ is sufficient.], the characteristic function of $X_i$ is
+   $$
+   \begin{align}
+   \phi(t) = E \exp(itX_i) &= 1 + it EX - \frac{t^2E(X^2)}{2} + o(t^2) \\
+   \implies E \exp\left(\frac{itS_n}{\sigma n^{1/2}}\right) &= \left[E \exp \frac{itX_i}{\sigma n^{1/2}}\right]^n \\
+   &= \left[1-\frac{t^2}{2n}+\sigma(n^{-1})\right]^n \\
+   \end{align}
+   $$
+   By property of Euler's number (see #9), the last term $\rightarrow \exp\left(\frac{-t^2}{2}\right)$, which is the characteristic function of a standard normal distribution. 
