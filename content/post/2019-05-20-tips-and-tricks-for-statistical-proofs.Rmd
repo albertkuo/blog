@@ -11,10 +11,10 @@ tags:
   - probability
   - proofs
 showDate: true
-draft: true
+draft: false
 ---
 
-I've been taking measure-theoretic probability theory^[Our class used Durrett's [Probability Theory and Examples](https://services.math.duke.edu/~rtd/PTE/pte.html) textbook, if you were wondering.] this year and I noticed that a lot of proofs will assume that the reader already knows some commonly used "tricks." If you aren't familiar with them, it can be hard to prove it yourself or follow Durrett's proof at all. I felt like this was happening to me a lot, so in an effort to better familiarize myself with them, I've written down some useful tips and tricks.^[This guide was also inspired by Daniel Seita's [Mathematical Tricks Commonly Used in Machine Learning and Statistics](https://danieltakeshi.github.io/2017/05/06/mathematical-tricks-commonly-used-in-machine-learning-and-statistics).] They are arranged alphabetically below, with brief explanations and/or examples.
+I've been taking measure-theoretic probability theory this year and I noticed that a lot of proofs will assume that the reader already knows some commonly used "tricks." If you aren't familiar with them, it can be hard to follow the proofs in the textbook,^[Specifically, Durrett's [Probability Theory and Examples](https://services.math.duke.edu/~rtd/PTE/pte.html) textbook.] let alone prove it yourself. I felt like this was happening to me a lot, so in an effort to better familiarize myself, I've written down some useful tips and tricks, along with explanations and/or examples.^[This guide was also inspired by Daniel Seita's [Mathematical Tricks Commonly Used in Machine Learning and Statistics](https://danieltakeshi.github.io/2017/05/06/mathematical-tricks-commonly-used-in-machine-learning-and-statistics).]
 
 1. **Bounding the Union with a Sum**
 
@@ -38,7 +38,7 @@ I've been taking measure-theoretic probability theory^[Our class used Durrett's 
    |E(XY)|^2 \leq E(X^2)E(Y^2)
    $$
    
- - Example: If $X \sim Poisson(\lambda)$ and $Y \sim Poisson(2\lambda)$, find a bound on $P(X \leq Y)$ of the form $A\exp(-c\lambda)$. To show this, first observe that $P(X \geq Y) = P(e^{t(X-Y)}\geq 1) \leq E(e^{t(X-Y)})$ by Chebyshev's inequality. Then $E(e^{t(X-Y)})=E(e^{tX}e^{-tY}) \leq \sqrt{E(e^{2tX})E(e^{-2tY})}$ by Cauchy-Schwarz. The last equation gives us $e^{(\lambda(e^{2t}-1)+2\lambda(e^{-(2t)}-1))/2}$ with moment-generating functions. Take the  derivative with respect to $t$ and plug back in to get the bound.
+ - Example: If $X \sim Poisson(\lambda)$ and $Y \sim Poisson(2\lambda)$, find a bound on $P(X \leq Y)$ of the form $A\exp(-c\lambda)$. First observe that $P(X \geq Y) = P(e^{t(X-Y)}\geq 1) \leq E(e^{t(X-Y)})$ by Chebyshev's inequality. Then $E(e^{t(X-Y)})=E(e^{tX}e^{-tY}) \leq \sqrt{E(e^{2tX})E(e^{-2tY})}$ by Cauchy-Schwarz. The last equation gives us $e^{(\lambda(e^{2t}-1)+2\lambda(e^{-(2t)}-1))/2}$ with moment-generating functions. Take the  derivative with respect to $t$ and plug back in to get the bound.
 
 3. **Continuous Mapping Theorem**
 
@@ -77,7 +77,7 @@ I've been taking measure-theoretic probability theory^[Our class used Durrett's 
 
 5. **Expectation of Positive Random Variables**
 
- - If $X$ is a nonnegative random variable, then $E(X) = \sum_{n=0}^\infty P(X \geq n)$ or $E(X)=\int P(X > x)dx$. A proof is available on [Wikipedia](https://en.wikipedia.org/wiki/Expected_value#Formula_for_non-negative_random_variables). This is a really useful property and is often used for [stopping times](https://en.wikipedia.org/wiki/Stopping_time).
+ - If $X$ is a nonnegative random variable, then $E(X) = \sum_{n=0}^\infty P(X \geq n)$ or $E(X)=\int P(X > x)dx$. A proof is available on [Wikipedia](https://en.wikipedia.org/wiki/Expected_value#Formula_for_non-negative_random_variables). This is a really useful property and is often used for [stopping times](https://en.wikipedia.org/wiki/Stopping_time). More generally, $E(X^p)=\int py^{p-1}P(X>x)dx$ for $X \geq 0$ and $p>0$. 
 
  - Example: If $\tau$ is a stopping time wrt $\mathcal{F}_n$, s.t. $P(\tau \leq n+3|\mathcal{F}_n) > 0.1$ for every $n$, then $E(\tau) < \infty$. 
 
@@ -85,7 +85,7 @@ I've been taking measure-theoretic probability theory^[Our class used Durrett's 
 
 6. **Jensen's Inequality**
 
- - Jensen's inequality is something you should be able to recognize and apply right away. Intuitively, it says that if a function $\phi$ is [convex](https://en.wikipedia.org/wiki/Convex_function), then the average of the function values is greater than the function applied to the average^[For more intuitive explanations, check out this [post on quora](https://www.quora.com/What-is-an-intuitive-explanation-of-Jensens-Inequality).].
+ - Jensen's inequality is something you should be able to recognize and apply right away. Intuitively, it says that if a function $\phi$ is [convex](https://en.wikipedia.org/wiki/Convex_function), then the average of the function values is greater than the function applied to the average.^[For more intuitive explanations, check out this [post on quora](https://www.quora.com/What-is-an-intuitive-explanation-of-Jensens-Inequality).]
    $$
    E[\phi(X)] \geq \phi(E[X])
    $$
@@ -94,7 +94,7 @@ I've been taking measure-theoretic probability theory^[Our class used Durrett's 
    E\left[e^X\right] \geq e^{E(X)}
    $$
    
- - Example: If $X_n$ is a martingale, then $(X_n+c)^2$ is a submartingale. Let $g(x) = (x+c)^2$, which is convex. Then by Jensen's inequality, $E(g(X_{n+1})|\mathcal{F}_n) \geq g(E(X_{n+1}|\mathcal{F}_n))$. Since $X_n$ is a martingale, $g(E(X_{n+1}|\mathcal{F}_n))=g(X_n)=(X_n+c)^2$. 
+ - Example: If $X_n$ is a [martingale](https://en.wikipedia.org/wiki/Martingale_(probability_theory)), then $(X_n+c)^2$ is a submartingale. Let $g(x) = (x+c)^2$, which is convex. Then by Jensen's inequality, $E(g(X_{n+1})|\mathcal{F}_n) \geq g(E(X_{n+1}|\mathcal{F}_n))$. Since $X_n$ is a martingale, $g(E(X_{n+1}|\mathcal{F}_n))=g(X_n)=(X_n+c)^2$. 
 
 7. **Markov's (Chebyshev's) Inequality**
 
@@ -156,7 +156,7 @@ I've been taking measure-theoretic probability theory^[Our class used Durrett's 
     To conclude, we have shown that $A_n+B_n < \epsilon_1N+\epsilon_2 \rightarrow 0$. Since $N$ is finite and we can make $\epsilon_1, \epsilon_2$ arbitrarily small, then $A_n+B_n \rightarrow 0$.
     
       
-## Bonus Items
+## Bonus
 
 Here are two additional useful techniques. I've listed them separately because it seems a bit of a stretch to call them "tricks."^[And also because "12 Tips and Tricks" is somewhat less catchy than "10 Tips and Tricks."]
 

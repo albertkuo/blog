@@ -89,7 +89,7 @@
     
 
 
-<p>I’ve been taking measure-theoretic probability theory<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> this year and I noticed that a lot of proofs will assume that the reader already knows some commonly used “tricks.” If you aren’t familiar with them, it can be hard to prove it yourself or follow Durrett’s proof at all. I felt like this was happening to me a lot, so in an effort to better familiarize myself with them, I’ve written down some useful tips and tricks.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> They are arranged alphabetically below, with brief explanations and/or examples.</p>
+<p>I’ve been taking measure-theoretic probability theory this year and I noticed that a lot of proofs will assume that the reader already knows some commonly used “tricks.” If you aren’t familiar with them, it can be hard to follow the proofs in the textbook,<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> let alone prove it yourself. I felt like this was happening to me a lot, so in an effort to better familiarize myself, I’ve written down some useful tips and tricks, along with explanations and/or examples.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <ol style="list-style-type: decimal">
 <li><strong>Bounding the Union with a Sum</strong></li>
 </ol>
@@ -115,7 +115,7 @@ A form you might encounter in statistics is the following:
 <span class="math display">\[
 |E(XY)|^2 \leq E(X^2)E(Y^2)
 \]</span></p></li>
-<li><p>Example: If <span class="math inline">\(X \sim Poisson(\lambda)\)</span> and <span class="math inline">\(Y \sim Poisson(2\lambda)\)</span>, find a bound on <span class="math inline">\(P(X \leq Y)\)</span> of the form <span class="math inline">\(A\exp(-c\lambda)\)</span>. To show this, first observe that <span class="math inline">\(P(X \geq Y) = P(e^{t(X-Y)}\geq 1) \leq E(e^{t(X-Y)})\)</span> by Chebyshev’s inequality. Then <span class="math inline">\(E(e^{t(X-Y)})=E(e^{tX}e^{-tY}) \leq \sqrt{E(e^{2tX})E(e^{-2tY})}\)</span> by Cauchy-Schwarz. The last equation gives us <span class="math inline">\(e^{(\lambda(e^{2t}-1)+2\lambda(e^{-(2t)}-1))/2}\)</span> with moment-generating functions. Take the derivative with respect to <span class="math inline">\(t\)</span> and plug back in to get the bound.</p></li>
+<li><p>Example: If <span class="math inline">\(X \sim Poisson(\lambda)\)</span> and <span class="math inline">\(Y \sim Poisson(2\lambda)\)</span>, find a bound on <span class="math inline">\(P(X \leq Y)\)</span> of the form <span class="math inline">\(A\exp(-c\lambda)\)</span>. First observe that <span class="math inline">\(P(X \geq Y) = P(e^{t(X-Y)}\geq 1) \leq E(e^{t(X-Y)})\)</span> by Chebyshev’s inequality. Then <span class="math inline">\(E(e^{t(X-Y)})=E(e^{tX}e^{-tY}) \leq \sqrt{E(e^{2tX})E(e^{-2tY})}\)</span> by Cauchy-Schwarz. The last equation gives us <span class="math inline">\(e^{(\lambda(e^{2t}-1)+2\lambda(e^{-(2t)}-1))/2}\)</span> with moment-generating functions. Take the derivative with respect to <span class="math inline">\(t\)</span> and plug back in to get the bound.</p></li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
 <li><strong>Continuous Mapping Theorem</strong></li>
@@ -156,7 +156,7 @@ A form you might encounter in statistics is the following:
 <li><strong>Expectation of Positive Random Variables</strong></li>
 </ol>
 <ul>
-<li><p>If <span class="math inline">\(X\)</span> is a nonnegative random variable, then <span class="math inline">\(E(X) = \sum_{n=0}^\infty P(X \geq n)\)</span> or <span class="math inline">\(E(X)=\int P(X &gt; x)dx\)</span>. A proof is available on <a href="https://en.wikipedia.org/wiki/Expected_value#Formula_for_non-negative_random_variables">Wikipedia</a>. This is a really useful property and is often used for <a href="https://en.wikipedia.org/wiki/Stopping_time">stopping times</a>.</p></li>
+<li><p>If <span class="math inline">\(X\)</span> is a nonnegative random variable, then <span class="math inline">\(E(X) = \sum_{n=0}^\infty P(X \geq n)\)</span> or <span class="math inline">\(E(X)=\int P(X &gt; x)dx\)</span>. A proof is available on <a href="https://en.wikipedia.org/wiki/Expected_value#Formula_for_non-negative_random_variables">Wikipedia</a>. This is a really useful property and is often used for <a href="https://en.wikipedia.org/wiki/Stopping_time">stopping times</a>. More generally, <span class="math inline">\(E(X^p)=\int py^{p-1}P(X&gt;x)dx\)</span> for <span class="math inline">\(X \geq 0\)</span> and <span class="math inline">\(p&gt;0\)</span>.</p></li>
 <li><p>Example: If <span class="math inline">\(\tau\)</span> is a stopping time wrt <span class="math inline">\(\mathcal{F}_n\)</span>, s.t. <span class="math inline">\(P(\tau \leq n+3|\mathcal{F}_n) &gt; 0.1\)</span> for every <span class="math inline">\(n\)</span>, then <span class="math inline">\(E(\tau) &lt; \infty\)</span>.</p>
 <p>This can be proved by first showing that <span class="math inline">\(P(\tau &gt; 3k) \leq (1-0.1)^k\)</span>, which can be done using induction. Then since <span class="math inline">\(E(\tau) = \sum_{n=0}^\infty P(\tau \geq n)\)</span>, it follows that <span class="math inline">\(E(\tau) &lt; 3*\sum_{k=0}^\infty P(\tau&gt;3k) &lt; \infty\)</span>.</p></li>
 </ul>
@@ -164,7 +164,7 @@ A form you might encounter in statistics is the following:
 <li><strong>Jensen’s Inequality</strong></li>
 </ol>
 <ul>
-<li><p>Jensen’s inequality is something you should be able to recognize and apply right away. Intuitively, it says that if a function <span class="math inline">\(\phi\)</span> is <a href="https://en.wikipedia.org/wiki/Convex_function">convex</a>, then the average of the function values is greater than the function applied to the average<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.
+<li><p>Jensen’s inequality is something you should be able to recognize and apply right away. Intuitively, it says that if a function <span class="math inline">\(\phi\)</span> is <a href="https://en.wikipedia.org/wiki/Convex_function">convex</a>, then the average of the function values is greater than the function applied to the average.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
 <span class="math display">\[
 E[\phi(X)] \geq \phi(E[X])
 \]</span>
@@ -172,7 +172,7 @@ One of the most common applications is with Euler’s number:
 <span class="math display">\[
 E\left[e^X\right] \geq e^{E(X)}
 \]</span></p></li>
-<li><p>Example: If <span class="math inline">\(X_n\)</span> is a martingale, then <span class="math inline">\((X_n+c)^2\)</span> is a submartingale. Let <span class="math inline">\(g(x) = (x+c)^2\)</span>, which is convex. Then by Jensen’s inequality, <span class="math inline">\(E(g(X_{n+1})|\mathcal{F}_n) \geq g(E(X_{n+1}|\mathcal{F}_n))\)</span>. Since <span class="math inline">\(X_n\)</span> is a martingale, <span class="math inline">\(g(E(X_{n+1}|\mathcal{F}_n))=g(X_n)=(X_n+c)^2\)</span>.</p></li>
+<li><p>Example: If <span class="math inline">\(X_n\)</span> is a <a href="https://en.wikipedia.org/wiki/Martingale_(probability_theory)">martingale</a>, then <span class="math inline">\((X_n+c)^2\)</span> is a submartingale. Let <span class="math inline">\(g(x) = (x+c)^2\)</span>, which is convex. Then by Jensen’s inequality, <span class="math inline">\(E(g(X_{n+1})|\mathcal{F}_n) \geq g(E(X_{n+1}|\mathcal{F}_n))\)</span>. Since <span class="math inline">\(X_n\)</span> is a martingale, <span class="math inline">\(g(E(X_{n+1}|\mathcal{F}_n))=g(X_n)=(X_n+c)^2\)</span>.</p></li>
 </ul>
 <ol start="7" style="list-style-type: decimal">
 <li><strong>Markov’s (Chebyshev’s) Inequality</strong></li>
@@ -234,8 +234,8 @@ Now we can bound the finite sum “<span class="math inline">\(A_n\)</span>” a
 </ol>
 <p>To conclude, we have shown that <span class="math inline">\(A_n+B_n &lt; \epsilon_1N+\epsilon_2 \rightarrow 0\)</span>. Since <span class="math inline">\(N\)</span> is finite and we can make <span class="math inline">\(\epsilon_1, \epsilon_2\)</span> arbitrarily small, then <span class="math inline">\(A_n+B_n \rightarrow 0\)</span>.</p></li>
 </ul>
-<div id="bonus-items" class="section level2">
-<h2>Bonus Items</h2>
+<div id="bonus" class="section level2">
+<h2>Bonus</h2>
 <p>Here are two additional useful techniques. I’ve listed them separately because it seems a bit of a stretch to call them “tricks.”<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Borel-Cantelli Lemmas</strong></p>
@@ -269,7 +269,7 @@ By property of Euler’s number (see #9), the last term <span class="math inline
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Our class used Durrett’s <a href="https://services.math.duke.edu/~rtd/PTE/pte.html">Probability Theory and Examples</a> textbook, if you were wondering.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>Specifically, Durrett’s <a href="https://services.math.duke.edu/~rtd/PTE/pte.html">Probability Theory and Examples</a> textbook.<a href="#fnref1" class="footnote-back">↩</a></p></li>
 <li id="fn2"><p>This guide was also inspired by Daniel Seita’s <a href="https://danieltakeshi.github.io/2017/05/06/mathematical-tricks-commonly-used-in-machine-learning-and-statistics">Mathematical Tricks Commonly Used in Machine Learning and Statistics</a>.<a href="#fnref2" class="footnote-back">↩</a></p></li>
 <li id="fn3"><p>For more intuitive explanations, check out this <a href="https://www.quora.com/What-is-an-intuitive-explanation-of-Jensens-Inequality">post on quora</a>.<a href="#fnref3" class="footnote-back">↩</a></p></li>
 <li id="fn4"><p>To be formal, you can use separate <span class="math inline">\(N\)</span>’s to bound <span class="math inline">\(\mu_n\)</span> and <span class="math inline">\(\mu\)</span> and then use the max as your <span class="math inline">\(N\)</span>.<a href="#fnref4" class="footnote-back">↩</a></p></li>
