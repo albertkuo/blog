@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>A Few of My Favorite R Packages</title>
+      <link>/post/a-few-of-my-favorite-r-packages/</link>
+      <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/a-few-of-my-favorite-r-packages/</guid>
+      <description>I just finished my second year in the PhD program, which has meant 2 years of writing a lot of R code. Though I’ve been using R longer than that, I’m always trying to improve my programming skills. Today, I wanted to share some useful R packages/functions that have made my life easier and changed the way I code.
+pacman for loading packages:  This package contains an awesome function called p_load.</description>
+    </item>
+    
+    <item>
       <title>10 Tips and Tricks for Statistical Proofs</title>
       <link>/post/tips-and-tricks-for-statistical-proofs/</link>
       <pubDate>Tue, 21 May 2019 00:00:00 +0000</pubDate>

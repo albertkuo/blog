@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<meta name="description" content="A new Hugo blog by Albert Kuo.">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:domain" content="/">
+
+<meta name="twitter:image" content="/screenshot.png">
+<meta name="twitter:title" property="og:title" itemprop="title name" content="Blog | Albert">
+<meta name="twitter:description" property="og:description" itemprop="description" content="A new Hugo blog by Albert Kuo.">
+<meta name="og:type" content="website">
+<meta name="og:url" content="/">
+<meta name="og:image" itemprop="image primaryImageOfPage" content="/screenshot.png">
+
+<link rel="shortcut icon" href="/sam.ico" id="favicon">
+<link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-98438367-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-98438367-2');
+</script>
+
+    
+
+    
+    
+    
+    <title>
+        
+        A Few of My Favorite R Packages
+        
+    </title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title">A Few of My Favorite R Packages</div>
+
+        
+<div class="section" id="content">
+    Jun 28, 2019 
+    
+    <div class="tag-container">
+        
+        <span class="tag">
+            <a href="/tags/r">
+                R
+            </a>
+        </span>
+        
+        <span class="tag">
+            <a href="/tags/packages">
+                packages
+            </a>
+        </span>
+        
+    </div>
+    
+    <hr/>
+    
+
+
+<p>I just finished my second year in the PhD program, which has meant 2 years of writing a lot of R code. Though I’ve been using R longer than that, I’m always trying to improve my programming skills. Today, I wanted to share some useful R packages/functions that have made my life easier and changed the way I code.</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://github.com/trinker/pacman"><code>pacman</code></a> for loading packages:</li>
+</ol>
+<p>This package contains an awesome function called <code>p_load</code>. I prefer the concise way <code>p_load</code> lets you load packages, as opposed to writing <code>library(package)</code> over and over again. Moreover, <code>p_load</code> automatically checks if you have installed the package before and installs it for you if you haven’t. While the only function from this package that I frequently use is <code>p_load</code>, the package has a couple more intuitively named functions for managing packages (e.g. <code>p_load_gh</code>, <code>p_unload</code>, <code>p_update</code>) that I can also see being useful, if only I could remember they exist.</p>
+<pre class="r"><code>library(pacman)
+p_load(tidyverse, janitor, skimr, broom, here)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><a href="http://sfirke.github.io/janitor/"><code>janitor</code></a> for cleaning data:</li>
+</ol>
+<p>This is a great package for cleaning and exploring data. Every time I read in a dataset, I almost always use <code>clean_names</code>, which turns the dataset’s column names into the “snake_case” format, though there are options for other naming preferences. This ensures that all the columns are named in the same format.</p>
+<p>The packages offers a couple additional, useful functions. For removing duplicate entries, you can use <code>get_dupes</code>, and for removing empty rows or columns, you can use <code>remove_empty</code>. For a pipe-able version of <code>table</code>, you can use <code>tabyl</code>.</p>
+<pre class="r"><code>dt_raw = read_csv(&quot;test.csv&quot;)
+dt = dt_raw %&gt;% clean_names()</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><a href="https://github.com/ropensci/skimr"><code>skimr</code></a> for summary statistics:</li>
+</ol>
+<p>This package has a function called <code>skim</code> that’s basically a better version of <code>summary</code>. It gives you a tally of missing observations and plots a mini histogram of each numeric variable, which I think is super neat.</p>
+<pre class="r"><code>data(iris)
+skim(iris)</code></pre>
+<pre><code>## Skim summary statistics
+##  n obs: 150 
+##  n variables: 5 
+## 
+## ── Variable type:factor ─────────────────────────────────────────────────
+##  variable missing complete   n n_unique                       top_counts
+##   Species       0      150 150        3 set: 50, ver: 50, vir: 50, NA: 0
+##  ordered
+##    FALSE
+## 
+## ── Variable type:numeric ────────────────────────────────────────────────
+##      variable missing complete   n mean   sd  p0 p25  p50 p75 p100
+##  Petal.Length       0      150 150 3.76 1.77 1   1.6 4.35 5.1  6.9
+##   Petal.Width       0      150 150 1.2  0.76 0.1 0.3 1.3  1.8  2.5
+##  Sepal.Length       0      150 150 5.84 0.83 4.3 5.1 5.8  6.4  7.9
+##   Sepal.Width       0      150 150 3.06 0.44 2   2.8 3    3.3  4.4
+##      hist
+##  ▇▁▁▂▅▅▃▁
+##  ▇▁▁▅▃▃▂▂
+##  ▂▇▅▇▆▅▂▂
+##  ▁▂▅▇▃▂▁▁</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><a href="https://github.com/tidymodels/broom"><code>broom</code></a> for working with model output:</li>
+</ol>
+<p>Model output from functions like <code>lm</code> are not that convenient to work with by default, which is what <code>broom</code> fixes. The function <code>tidy</code> turns the model output into a tibble and the function <code>augment</code> adds relevant things like fitted values and residuals as columns to your data.</p>
+<pre class="r"><code>model_lm = lm(Sepal.Width ~ Petal.Length, iris)
+tidy(model_lm)</code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   term         estimate std.error statistic  p.value
+##   &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)     3.45     0.0761     45.4  9.02e-89
+## 2 Petal.Length   -0.106    0.0183     -5.77 4.51e- 8</code></pre>
+<pre class="r"><code>head(augment(model_lm, iris))</code></pre>
+<pre><code>## # A tibble: 6 x 12
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species .fitted .se.fit
+##          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1          5.1         3.5          1.4         0.2 setosa     3.31  0.0540
+## 2          4.9         3            1.4         0.2 setosa     3.31  0.0540
+## 3          4.7         3.2          1.3         0.2 setosa     3.32  0.0554
+## 4          4.6         3.1          1.5         0.2 setosa     3.30  0.0525
+## 5          5           3.6          1.4         0.2 setosa     3.31  0.0540
+## 6          5.4         3.9          1.7         0.4 setosa     3.28  0.0497
+## # … with 5 more variables: .resid &lt;dbl&gt;, .hat &lt;dbl&gt;, .sigma &lt;dbl&gt;,
+## #   .cooksd &lt;dbl&gt;, .std.resid &lt;dbl&gt;</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li><a href="https://github.com/r-lib/here"><code>here</code></a> for paths:</li>
+</ol>
+<p>By default, R uses the user home directory as the working directory. This is generally not ideal, because it’s likely that all the files you want to read and write are in some local folder, not your home directory. To get around this, one way is to use <code>setwd</code> at the top of your R script, i.e. <code>setwd(&quot;Users/yourname/research/2019/project_a/&quot;)</code>. But this can be problematic when you share your code, since it means your collaborator will have to change that line of code to match their directory structure. And it will break if you change any of your parent directory names, e.g. “2019” or “project_a.” The function <code>here</code> solves this by automatically identifying which directory makes most sense as the root directory, for example, by finding an <code>.Rproj</code> or <code>.git</code> file. Since most of my code is either in a git repository or part of an R project (if not both), this solution works well for me.</p>
+<p>I’ve found that <code>here</code> is not necessary for R markdown files though, since by default, an R markdown file uses the directory of the file itself as the base directory. Since I prefer to write my analyses and reports in R markdown in general, I don’t use <code>here</code> quite as much as you might expect.</p>
+
+</div>
+
+
+        
+<div class="section bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a class="menu" href="/post">back</a>
+        
+            &#183;
+        
+    
+
+    
+        
+            <a class="menu" href="/new">
+                new? start here
+            </a>
+        
+    
+    
+        
+            &#183; 
+            <a class="menu" href="/post">
+                posts
+            </a>
+        
+            &#183; 
+            <a class="menu" href="/about">
+                about
+            </a>
+        
+    
+    &#183; 
+    <a class="menu" href="/">
+        main
+    </a>
+
+</p>
+
+</div>
+
+
+        <div class="section footer">
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-98438367-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+<link rel="stylesheet" href="/css/github.css" rel="stylesheet" id="theme-stylesheet">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</div>
+    </div>
+</body>
+
+</html>
