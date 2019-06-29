@@ -9,7 +9,7 @@ tags:
   - R
   - packages
 showDate: true
-draft: true
+draft: false
 ---
 
 I just finished my second year in the PhD program, which means 2 years of writing a lot of R code. Today, I wanted to share some useful (and perhaps lesser known) R packages that I use.
