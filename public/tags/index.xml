@@ -48,6 +48,15 @@
     </item>
     
     <item>
+      <title>Conference</title>
+      <link>/tags/conference/</link>
+      <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/conference/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Geom_point</title>
       <link>/tags/geom_point/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
@@ -89,6 +98,15 @@
       <pubDate>Wed, 06 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/jekyll/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jsm</title>
+      <link>/tags/jsm/</link>
+      <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/jsm/</guid>
       <description></description>
     </item>
     
