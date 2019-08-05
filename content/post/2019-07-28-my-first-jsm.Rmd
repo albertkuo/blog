@@ -9,10 +9,10 @@ tags:
   - JSM
   - conference
 showDate: true
-draft: true
+draft: false
 ---
 
-Last week, I attended JSM (Joint Statistical Meetings) in Denver. It was my first conference ever, so I made sure to record down my thoughts. Since I wasn't presenting at this conference, I had the luxury of being able to attend sessions without feeling anxious. And that was really great because I think getting to see what conferences are like before I present at one makes it less intimidating. However, going to talks can also be an exhausting experience. I don't think I ever felt like I had the energy and focus to attend more than two sessions in one day (~3 hours total), especially considering that the entire conference lasted five days. 
+Last week, I attended JSM (Joint Statistical Meetings) in Denver. It was my first conference ever, so I made sure to record down my thoughts. Since I wasn't presenting at this conference, I had the luxury of being able to attend sessions without feeling anxious. And that was really great because I think getting to see what conferences are like before I present at one makes it less intimidating. However, going to talks can also be an exhausting experience. I don't think I ever felt like I had the energy and focus to attend more than two sessions in one day (~3 hours total).
 
 ## Day 1 (7/28)
 
