@@ -6,10 +6,19 @@
     <description>Recent content in R Markdown on Blog | Albert</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jul 2015 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 22 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r-markdown/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Getting Started with R Markdown</title>
+      <link>/post/getting-started-with-r-markdown/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/getting-started-with-r-markdown/</guid>
+      <description>I often use R Markdown for my research projects or any kind of data analysis (if you’re familiar with Python, they are similar to Jupyter notebooks). There are many advantages to using R Markdown instead of writing R scripts. One of the major ones is the ease with which it allows me to turn my work into something presentable for my advisor or other collaborators. By using R Markdown, I don’t have to track down a bunch of plots and files or really do any additional work to organize them.</description>
+    </item>
     
     <item>
       <title>Hello R Markdown</title>
