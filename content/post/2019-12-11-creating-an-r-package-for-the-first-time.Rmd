@@ -1,0 +1,26 @@
+---
+title: Creating an R Package (for the first time!)
+author: ''
+date: '2019-12-11'
+slug: creating-an-r-package-for-the-first-time
+categories: []
+tags:
+  - R
+  - packages
+showDate: true
+draft: true
+---
+
+Recently, I was creating an R package for the first time^[Technically, it's not really my first time. I think I had to make one for a class a few years ago, but naturally, I don't remember much from it.]. There are a lot of great resources online that I relied on, such as the [Hilary Parker's brief tutorial](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/) or [Jeff Leek's guide](https://github.com/jtleek/rpackages). But I thought it would still be worthwhile to walk through how exactly I made mine and what hiccups I ran into, since I am likely to be creating another R package in the near future.
+
+# Step 1: Set up your packages and directory
+
+# Step 2: Write DESCRIPTION
+
+# Step 3: Add functions
+
+# Step 4: Write documentation
+
+# Step 5: Install your package
+
+# Step 6: Write tests?
