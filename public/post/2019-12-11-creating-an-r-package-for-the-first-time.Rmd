@@ -11,13 +11,13 @@ showDate: true
 draft: true
 ---
 
-Recently, I was creating an R package for the first time.^[Technically, it wasn't really my first time. I think I had to make one for a class 2 years ago, which is basically an eternity.] There are already a lot of great resources online for this task, such as [Hilary Parker's brief tutorial](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/) or [Jeff Leek's guide](https://github.com/jtleek/rpackages) or [Hadley Wickham's book](http://r-pkgs.had.co.nz/intro.html) (in increasing order of detail).^[Note: large portions of this post are borrowed from their tutorials.] But I thought it would still be worthwhile to walk through how exactly I made mine, since otherwise, I will probably run into the same hiccups again (and be frustrated that I didn't write a guide for myself!).
+Recently, I made an R package for the first time.^[Technically, it wasn't really my first time. I think I had to make one for a class 2 years ago, but I no longer remember much from that experience.] There are already a lot of great resources online for this task, such as [Hilary Parker's brief tutorial](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/) or [Jeff Leek's guide](https://github.com/jtleek/rpackages) or [Hadley Wickham's book](http://r-pkgs.had.co.nz/intro.html) (in increasing order of detail).^[Note: large portions of this post are borrowed from their tutorials.] But I thought it would still be worthwhile to walk through how exactly I made mine, since otherwise, I will probably run into the same hiccups again (and be frustrated that I didn't write a guide for myself!).
 
-Here is a step-by-step guide to building a minimal R package.
+Without further ado, here is my step-by-step guide to building a minimally functioning R package.
 
 ## Step 1: Set up your packages and directory
 
-To create your own R package, we will need to use two packages, `devtools` and `roxygen2`. `devtools` contains the functions for building a package, while `roxygen2` helps generate documentation for the package using specially formatted comments.
+To create your own R package, you will need to use two packages, `devtools` and `roxygen2`. `devtools` contains the functions for building a package, while `roxygen2` helps generate documentation for the package using specially formatted comments.
 
 ```{r eval = F}
 library(devtools)
@@ -116,7 +116,7 @@ my_function <- function(print_statement = TRUE){
 Some things I want to draw your attention to:
 
 * Include `@export` if you want the function to be exported, i.e. visible to people who use the R package.
-* Include `@import` for any packages that are needed for this function. You can also import a specific function with `@importFrom` to prevent name conflicts.a
+* Include `@import` for any packages that are needed for this function. You can also import a specific function with `@importFrom` to prevent name conflicts.
 
 Now we can generate the documentation files and NAMESPACE using `roxygen2`. This is as easy as typing the following command. 
 

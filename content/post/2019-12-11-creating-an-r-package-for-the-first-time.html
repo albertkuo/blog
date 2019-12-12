@@ -13,11 +13,11 @@ draft: true
 
 
 
-<p>Recently, I was creating an R package for the first time.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> There are already a lot of great resources online for this task, such as <a href="https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Hilary Parker’s brief tutorial</a> or <a href="https://github.com/jtleek/rpackages">Jeff Leek’s guide</a> or <a href="http://r-pkgs.had.co.nz/intro.html">Hadley Wickham’s book</a> (in increasing order of detail).<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> But I thought it would still be worthwhile to walk through how exactly I made mine, since otherwise, I will probably run into the same hiccups again (and be frustrated that I didn’t write a guide for myself!).</p>
-<p>Here is a step-by-step guide to building a minimal R package.</p>
+<p>Recently, I made an R package for the first time.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> There are already a lot of great resources online for this task, such as <a href="https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Hilary Parker’s brief tutorial</a> or <a href="https://github.com/jtleek/rpackages">Jeff Leek’s guide</a> or <a href="http://r-pkgs.had.co.nz/intro.html">Hadley Wickham’s book</a> (in increasing order of detail).<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> But I thought it would still be worthwhile to walk through how exactly I made mine, since otherwise, I will probably run into the same hiccups again (and be frustrated that I didn’t write a guide for myself!).</p>
+<p>Without further ado, here is my step-by-step guide to building a minimally functioning R package.</p>
 <div id="step-1-set-up-your-packages-and-directory" class="section level2">
 <h2>Step 1: Set up your packages and directory</h2>
-<p>To create your own R package, we will need to use two packages, <code>devtools</code> and <code>roxygen2</code>. <code>devtools</code> contains the functions for building a package, while <code>roxygen2</code> helps generate documentation for the package using specially formatted comments.</p>
+<p>To create your own R package, you will need to use two packages, <code>devtools</code> and <code>roxygen2</code>. <code>devtools</code> contains the functions for building a package, while <code>roxygen2</code> helps generate documentation for the package using specially formatted comments.</p>
 <pre class="r"><code>library(devtools)
 library(roxygen2)</code></pre>
 <p>Now navigate to the parent directory of where you want your R package directory to be located (e.g. <code>R_packages</code>). Use the function <code>create</code> to create the folder for the R package, which I will call <code>mypackage</code> in this tutorial.</p>
@@ -97,7 +97,7 @@ my_function &lt;- function(print_statement = TRUE){
 <p>Some things I want to draw your attention to:</p>
 <ul>
 <li>Include <code>@export</code> if you want the function to be exported, i.e. visible to people who use the R package.</li>
-<li>Include <code>@import</code> for any packages that are needed for this function. You can also import a specific function with <code>@importFrom</code> to prevent name conflicts.a</li>
+<li>Include <code>@import</code> for any packages that are needed for this function. You can also import a specific function with <code>@importFrom</code> to prevent name conflicts.</li>
 </ul>
 <p>Now we can generate the documentation files and NAMESPACE using <code>roxygen2</code>. This is as easy as typing the following command.</p>
 <pre class="r"><code>document()</code></pre>
@@ -141,7 +141,7 @@ library(mypackage)</code></pre>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Technically, it wasn’t really my first time. I think I had to make one for a class 2 years ago, which is basically an eternity.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>Technically, it wasn’t really my first time. I think I had to make one for a class 2 years ago, but I no longer remember much from that experience.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 <li id="fn2"><p>Note: large portions of this post are borrowed from their tutorials.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 <li id="fn3"><p>Or so I have heard. By default, I still source an R script of helper functions for my projects, but perhaps this will change as I become more comfortable with building R packages.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>

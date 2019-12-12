@@ -17,7 +17,7 @@
       <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/creating-an-r-package-for-the-first-time/</guid>
-      <description>Recently, I was creating an R package for the first time.1 There are already a lot of great resources online for this task, such as Hilary Parker’s brief tutorial or Jeff Leek’s guide or Hadley Wickham’s book (in increasing order of detail).2 But I thought it would still be worthwhile to walk through how exactly I made mine, since otherwise, I will probably run into the same hiccups again (and be frustrated that I didn’t write a guide for myself!</description>
+      <description>Recently, I made an R package for the first time.1 There are already a lot of great resources online for this task, such as Hilary Parker’s brief tutorial or Jeff Leek’s guide or Hadley Wickham’s book (in increasing order of detail).2 But I thought it would still be worthwhile to walk through how exactly I made mine, since otherwise, I will probably run into the same hiccups again (and be frustrated that I didn’t write a guide for myself!</description>
     </item>
     
     <item>
