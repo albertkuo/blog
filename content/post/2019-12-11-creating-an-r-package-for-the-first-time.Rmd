@@ -31,7 +31,7 @@ setwd("R_packages")
 create("mypackage")
 ```
 
-Your `mypackage` directory will now be under your parent directory. If you should now look like the following:
+Your `mypackage` directory will now be under your parent directory. It should look like the following:
 
 ![Contents of `mypackage`:](/post/2019-12-11-creating-an-r-package-for-the-first-time_files/file_structure.png)
 
