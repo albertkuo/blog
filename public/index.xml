@@ -103,8 +103,8 @@ In theory, running my simulations in parallel should be a very straightforward t
       <pubDate>Wed, 06 Mar 2019 13:42:49 -0500</pubDate>
       
       <guid>/about/</guid>
-      <description>My name is Albert Kuo and I am a PhD student in biostatistics at Johns Hopkins University. To read more about me and my research, visit my main website.
-This blog is created with Hugo and blogdown. The theme is Sam, made by Vicky Lai, with some additional modifications.</description>
+      <description>My name is Albert Kuo and I am a PhD student in biostatistics at Johns Hopkins University. To learn more about me, visit my website.
+This blog was created with Hugo and blogdown. The theme is based on Sam by Vicky Lai.</description>
     </item>
     
     <item>
@@ -123,8 +123,10 @@ Before I could write anything, I had to decide on how I was going to build and h
       <pubDate>Wed, 06 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/new/</guid>
-      <description>On this blog, I write about whatever I think would be of interest to my field (biostatistics) and position (graduate student).
-For instance, I&amp;rsquo;ve written guides/tutorials on things I&amp;rsquo;m learning as a PhD student, like using R Markdown, creating an R package, and running parallel jobs on a cluster. I can&amp;rsquo;t guarantee that everything I say is 100% optimal, since I&amp;rsquo;m always learning how to do things better, but I try my best given what I know at the time of writing.</description>
+      <description>I blog about whatever I think would be of interest to my field (biostatistics) and position (graduate student).
+This includes guides/tutorials on things I&amp;rsquo;m learning as a PhD student, like using R Markdown, creating an R package, and running parallel jobs on a cluster.
+I&amp;rsquo;ve also written about my favorite books and R packages.
+But since my blog is still young, I haven&amp;rsquo;t written very many posts in total. So if you are just browsing, feel free to head on over to posts and see if any of the titles interest you.</description>
     </item>
     
     <item>
