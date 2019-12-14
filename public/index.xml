@@ -123,7 +123,8 @@ Before I could write anything, I had to decide on how I was going to build and h
       <pubDate>Wed, 06 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/new/</guid>
-      <description>This is a temporary starting page for my blog. It&amp;rsquo;s a work in progress and there is not much to see, but feel free to head over to posts and read what I&amp;rsquo;ve written so far. I hope to say something more useful here soon.</description>
+      <description>I&amp;rsquo;ve written some guides on things I&amp;rsquo;m learning as a PhD student, like using R Markdown, creating an R package, and running parallel jobs on a cluster. I can&amp;rsquo;t guarantee that everything I say is 100% optimal, since I&amp;rsquo;m always learning how to do things better, but I try my best given what I know at the time of writing.
+I&amp;rsquo;ve also written about some of my favorite things &amp;ndash; books and R packages.</description>
     </item>
     
     <item>
