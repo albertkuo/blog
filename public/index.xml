@@ -17,7 +17,7 @@
       <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/creating-an-r-package-for-the-first-time/</guid>
-      <description>There are already a lot of great resources1 that teaches you how to make an R package. But I thought it would still be worthwhile to walk through how I created my first one – at the very least, it’ll be helpful for myself when I write my next R package.
+      <description>There are already a lot of great resources1 that teach you how to make an R package. But I thought it would still be worthwhile to walk through how I created my first one – at the very least, it’ll be helpful for myself when I write my next R package.
 Here is my step-by-step guide to building a (minimally functional) R package.
 Step 1: Set up your packages and directory To create your own R package, you will need to use two packages, devtools and roxygen2.</description>
     </item>
