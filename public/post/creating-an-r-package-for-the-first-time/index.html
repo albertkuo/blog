@@ -84,21 +84,21 @@
 <p>To create your own R package, you will need to use two packages, <code>devtools</code> and <code>roxygen2</code>. <code>devtools</code> contains the functions for building a package, while <code>roxygen2</code> helps generate documentation for the package using specially formatted comments.</p>
 <pre class="r"><code>library(devtools)
 library(roxygen2)</code></pre>
-<p>Now navigate to the parent directory of where you want your R package directory to be located (e.g. <code>R_packages</code>). Use the function <code>devtools::create</code><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> to create the folder for the R package, which I will call <code>mypackage</code> in this tutorial.</p>
+<p>Now navigate to the parent directory of where you want your R package directory to be located (e.g. <code>R_packages</code>, but it can be wherever you want it to be). Use the function <code>devtools::create</code><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> to create the folder for the R package, which I will call <code>mypackage</code> in this tutorial.</p>
 <pre class="r"><code>setwd(&quot;R_packages&quot;)
 create(&quot;mypackage&quot;)</code></pre>
-<p>Your <code>R_packages/mypackage</code> directory should now look like the following:</p>
+<p>Your <code>mypackage</code> directory will now be under your parent directory. If you should now look like the following:</p>
 <div class="figure">
 <img src="/post/2019-12-11-creating-an-r-package-for-the-first-time_files/file_structure.png" alt="" />
 <p class="caption">Contents of <code>mypackage</code>:</p>
 </div>
 <ul>
 <li><code>DESCRIPTION</code> - information about the package</li>
-<li><code>mypackage.Rproj</code> - the Rproj file</li>
+<li><code>mypackage.Rproj</code> - the R project file</li>
 <li><code>NAMESPACE</code> - information about what to import and export</li>
 <li><code>R</code> - a directory for your scripts, i.e. where your functions will go</li>
 </ul>
-<p>At this point, you can (should) create a git repository and connect it to GitHub. Navigate to <a href="https://github.com" class="uri">https://github.com</a> and create a new repository there with the same name (e.g. “mypackage”). Then run the following commands in your terminal.</p>
+<p>At this point, I recommend that you make your R package a git repository and connect it to GitHub. To do so, navigate to <a href="https://github.com" class="uri">https://github.com</a> and create a new repository there with the same name (e.g. “mypackage”). Then run the following commands in your terminal.</p>
 <pre class="bash"><code>cd mypackage # Navigate to mypackage directory
 git init
 git remote add origin https://github.com/albertkuo/mypackage.git
@@ -109,7 +109,7 @@ git push -u origin master</code></pre>
 </div>
 <div id="step-2-write-description" class="section level2">
 <h2>Step 2: Write DESCRIPTION</h2>
-<p>Now edit DESCRIPTION with your favorite text editor. This file basically contains some information about the package. Below is an example (you will have to remove the “# comments” in your actual DESCRIPTION file).</p>
+<p>Now open <code>mypackage.Rproj</code> in RStudio.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Let’s edit the DESCRIPTION file first. You can do this in RStudio or with your favorite text editor. The DESCRIPTION file basically contains some information about the package. Below is an example (you will have to remove the “# comments” in your actual DESCRIPTION file).</p>
 <pre class="bash"><code>Package: mypackage
 Title: What the Package Does # One line only, Title Case, and no period
 Version: 0.1.0 # see Jeff Leek&#39;s versioning convention
@@ -133,8 +133,8 @@ LazyData: true</code></pre>
 </div>
 <div id="step-3-add-functions-and-write-documentation" class="section level2">
 <h2>Step 3: Add functions and write documentation</h2>
-<p>It’s likely that you already have functions that you want to create a package for. Copy them into the <code>R</code> folder. Each function should be in its own separate file.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
-<p>Let’s say you have a script called <code>my_function.R</code>. We want to write specially formatted comments for it so that <code>roxygen2</code> can automatically build the documentation pages. Below is an example.</p>
+<p>It’s likely that you already have functions that you want to create a package for. Copy them into the <code>R</code> folder. Each function should be in its own separate file.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<p>Let’s say you have a script called <code>my_function.R</code>. We want to write specially formatted comments for it, i.e. the <code>#'</code> comments, so that <code>roxygen2</code> can automatically build the documentation pages. Below is an example.</p>
 <pre class="r"><code>#&#39; A very brief description of what your function does
 #&#39;
 #&#39; A detailed description of what the function does.
@@ -162,15 +162,17 @@ my_function &lt;- function(print_statement = TRUE){
 <li>Include <code>@export</code> if you want the function to be exported, i.e. visible to people who use the R package.</li>
 <li>Include <code>@import</code> for any packages that are needed for this function. You can also import a specific function with <code>@importFrom</code> to prevent name conflicts (e.g. <code>@importFrom MASS lda</code>).</li>
 </ul>
-<p>Now we can generate the documentation files and NAMESPACE using <code>roxygen2</code>.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> This is as easy as typing the following command.</p>
+<p>Now we can generate the documentation files and NAMESPACE using <code>roxygen2</code>.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> This is as easy as typing the following command.</p>
 <pre class="r"><code>document()</code></pre>
-<p>Your <code>R_packages/mypackage</code> directory should now look like the following:</p>
+<p>Your <code>mypackage</code> directory should now look like the following:</p>
 <div class="figure">
 <img src="/post/2019-12-11-creating-an-r-package-for-the-first-time_files/file_structure_2.png" alt="" />
-<p class="caption">Contents of <code>mypackage</code></p>
+<p class="caption">New contents of <code>mypackage</code>:</p>
 </div>
-<p>The documentation files are the help files that can be accessed by typing <code>?myfunction</code>. They are located in the <code>man/</code> directory.</p>
-<p>The NAMESPACE file tells you which functions you are exporting from your package and which packages/functions you are importing to be used in your package.</p>
+<ul>
+<li>In the <code>man</code> directory are the documentation files. These are the help files you see when you type <code>?my_function</code>.</li>
+<li>The NAMESPACE file tells you which functions you are exporting from your package and which packages/functions you are importing to be used in your package.</li>
+</ul>
 <p>Every time you make changes to the comments, you will want to regenerate the documentation and NAMESPACE with the <code>devtools::document()</code> command.</p>
 </div>
 <div id="optional-step-4-add-internal-data" class="section level2">
@@ -205,18 +207,19 @@ install.packages(&quot;../mypackage_0.1.0.tar.gz&quot;, repos = NULL)</code></pr
 </div>
 <div id="future-work" class="section level2">
 <h2>Future work</h2>
-<p>At this point, you have a basic R package that can be easily distributed. Even if you don’t share it with anyone, this is a great way to organize and use your own functions.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
-<p>To turn your R package into something more user-friendly, however, there are a couple more things you will want to do. One of them is to write tests for your R package to check for bugs and to “<a href="https://github.com/jtleek/rpackages">dummy proof</a>” your functions. Another is to write vignettes to help people learn how to use your R package. Since these things go beyond what is strictly necessary for a functional R package,<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> I will write about them in a later post.</p>
+<p>At this point, you have a basic R package that can be easily distributed. Even if you don’t share it with anyone, this is a great way to organize and use your own functions.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
+<p>To turn your R package into something more user-friendly, however, there are a couple more things you will want to do. One of them is to write tests for your R package to check for bugs and to “<a href="https://github.com/jtleek/rpackages">dummy proof</a>” your functions. Another is to write vignettes to help people learn how to use your R package. Since these things go beyond what is strictly necessary for a functional R package,<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> I will write about them in a later post.</p>
 </div>
 <div class="footnotes">
 <hr />
 <ol>
 <li id="fn1"><p>For example, <a href="https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Hilary Parker’s brief tutorial</a> or <a href="https://github.com/jtleek/rpackages">Jeff Leek’s guide</a> or <a href="https://kbroman.org/pkg_primer/">Karl Broman’s tutorial</a> or <a href="http://r-pkgs.had.co.nz/intro.html">Hadley Wickham’s book</a> (in increasing order of detail).<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 <li id="fn2"><p>In general, I don’t like specifying the package name when using functions because it is a lot of extra characters to type out. So I won’t do that in the code chunks of this blog post either, unless I think there is good reason to. However, I will try to do so when describing the functions in this blog post to prevent any ambiguity.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>This is not a requirement, but it is good practice.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>Technically, we will call it via the wrapper function <code>devtools::document()</code>.<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
-<li id="fn5"><p>Or so I have heard. By default, I still source an R script of helper functions for my projects, but perhaps this will change as I become more comfortable with building R packages.<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
-<li id="fn6"><p>And it’s likely to be more than what I would be able to do in one day.<a href="#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>This ensures that you are in the correct working directory in RStudio, i.e. that your working directory from now on is <code>mypackage</code> and not the parent directory.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>This is not a requirement, but it is good practice.<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>Technically, we will call it via the wrapper function <code>devtools::document()</code>.<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>Or so I have heard. By default, I still source an R script of helper functions for my projects, but perhaps this will change as I become more comfortable with building R packages.<a href="#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>And it’s likely more than what I’m able to do in a single day.<a href="#fnref7" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
