@@ -6,7 +6,7 @@
     <description>Recent content on Blog | Albert</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,10 +14,12 @@
     <item>
       <title>Creating an R Package (for the first time!)</title>
       <link>/post/creating-an-r-package-for-the-first-time/</link>
-      <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/creating-an-r-package-for-the-first-time/</guid>
-      <description>Recently, I made an R package for the first time.1 There are already a lot of great resources online for this task, such as Hilary Parker’s brief tutorial or Jeff Leek’s guide or Hadley Wickham’s book (in increasing order of detail).2 But I thought it would still be worthwhile to walk through how exactly I made mine, since otherwise, I will probably run into the same hiccups again (and be frustrated that I didn’t write a guide for myself!</description>
+      <description>There are already a lot of great resources1 that teaches you how to make an R package. But I thought it would still be worthwhile to walk through how I created my first one – at the very least, it’ll be helpful for myself when I write my next R package.
+Here is my step-by-step guide to building a (minimally functional) R package.
+Step 1: Set up your packages and directory To create your own R package, you will need to use two packages, devtools and roxygen2.</description>
     </item>
     
     <item>
