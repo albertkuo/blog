@@ -9,4 +9,4 @@ This includes guides/tutorials on things I'm learning as a PhD student, like [us
 
 I've also written about my favorite [books](https://blog.albertkuo.me/post/my-favorite-books-to-date/) and [R packages](https://blog.albertkuo.me/post/a-few-of-my-favorite-r-packages/).
 
-But since my blog is still young, I haven't written very many posts in total. So if you are just browsing, feel free to head on over to [posts](/post) and see if any of the titles interest you. I hope that most of my posts are useful and/or interesting.
+But since my blog is still pretty new, I haven't written very many posts in total. So if you are just browsing, feel free to head on over to [posts](/post) and see if any of the titles interest you. I hope that most of my posts are useful and/or interesting.
