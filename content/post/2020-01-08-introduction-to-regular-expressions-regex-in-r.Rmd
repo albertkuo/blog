@@ -1,0 +1,85 @@
+---
+title: Introduction to Regular Expressions (regex) in R
+author: ''
+date: '2020-01-08'
+slug: introduction-to-regular-expressions-regex-in-r
+categories:
+  - coding
+  - R
+tags:
+  - regex
+  - R
+showDate: no
+draft: true
+---
+
+[Regular expressions](https://en.wikipedia.org/wiki/Regular_expression) (regex) are search patterns. I've always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I'm going to try to solve that problem by writing a guide to regex in R.
+
+## R commands
+
+First, let's go over the R functions that you are likely to use regex for:
+
+* `grep`: Search for matches of the regex in a vector and returns the indices of elements that match if `value = F` or the elements themselves if `value = T`
+* `grepl`: Search for matches of the regex in a vector and returns a boolean vector
+* `sub`: Replaces the first match of the regex with a new string
+* `gsub`: Replaces all matches of the regex with a new string
+
+
+## Examples
+
+To demonstrate how the different regular expressions work, I will use the following example vector.
+
+```{r}
+example_vec = c("The big ocean", "The big Ocean", "The big ocean.", "The big. ocean!", "The big.. ocean!")
+print(example_vec)
+```
+
+### Anchors
+
+* `^`: Start of string
+* `$`: End of string
+
+```{r}
+# Find elements that end with "ocean"
+grep("ocean$", example_vec, value = T)
+```
+
+### More Characters
+
+* `.`: Match any character with a period
+* `[a-z]`, `[0-9]`, `[Tt]`, `[[:punct:]]`, `[[:alpha:]]`, `[[:lower:]]`, `[[:upper:]]`,`[[:digit:]]`: Search for any of the options in the brackets (i.e. "character classes")
+* `\\`: Escape a character.^[For more details about why a double backslash is necessary, https://stackoverflow.com/questions/27721008/how-do-i-deal-with-special-characters-like-in-my-regex.] For example, to search for a period, you need to use `\\.`.
+* `|`: "OR" operand
+* `^`: "NOT" operand
+
+```{r}
+# Find elements that end with "ocean" or "Ocean"
+grep("[Oo]cean$", example_vec, value = T)
+# Find elements that end with a punctuation
+grep("[[:punct:]]$", example_vec, value = T)
+# Find elements that end with a period
+grep("\\.$", example_vec, value = T)
+# Find elements that end with "ocean" or "Ocean"
+grep("(ocean$|Ocean$)", example_vec, value = T)
+# Find elements that end with "cean" but not "Ocean"
+grep("[^O]cean$", example_vec, value = T)
+```
+
+### Repetition
+
+* `*`: Repeat 0 or more times
+* `+`: Repeat 1 or more times
+* `{3}`: Repeat exactly 3 times
+* `{2, 4}`: Repeat 2 to 4 times
+
+```{r}
+# Find elements that start with "The big"
+grep("^The big\\.*", example_vec, value = T)
+# Find elements that start with "The big."
+grep("^The big\\.+", example_vec, value = T)
+# Remove substring beginning with the first period, if it exists
+gsub("\\.(.*)$", "", example_vec)
+# Remove substring beginning with the last period, if it exists
+gsub("\\.[^\\.]*$", "", example_vec)
+```
+

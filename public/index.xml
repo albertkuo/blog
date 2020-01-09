@@ -6,10 +6,20 @@
     <description>Recent content on Blog | Albert</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Introduction to Regular Expressions (regex) in R</title>
+      <link>/post/introduction-to-regular-expressions-regex-in-r/</link>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/introduction-to-regular-expressions-regex-in-r/</guid>
+      <description>Regular expressions (regex) are search patterns. I’ve always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I’m going to try to solve that problem by writing a guide to regex in R.
+R commands First, let’s go over the R functions that you are likely to use regex for:</description>
+    </item>
     
     <item>
       <title>Clearing Out Space in My Macbook</title>
@@ -135,7 +145,7 @@ Before I could write anything, I had to decide on how I was going to build and h
       <description>I blog about whatever I think would be of interest to my field (biostatistics) and position (graduate student).
 This includes guides/tutorials on things I&amp;rsquo;m learning as a PhD student, like using R Markdown, writing an R package, and running parallel jobs on a cluster.
 I&amp;rsquo;ve also written about my favorite books and R packages.
-But since my blog is still young, I haven&amp;rsquo;t written very many posts in total. So if you are just browsing, feel free to head on over to posts and see if any of the titles interest you.</description>
+But since my blog is still pretty new, I haven&amp;rsquo;t written very many posts in total. So if you are just browsing, feel free to head on over to posts and see if any of the titles interest you.</description>
     </item>
     
     <item>

@@ -1,0 +1,103 @@
+---
+title: Introduction to Regular Expressions (regex) in R
+author: ''
+date: '2020-01-08'
+slug: introduction-to-regular-expressions-regex-in-r
+categories:
+  - coding
+  - R
+tags:
+  - regex
+  - R
+showDate: no
+draft: true
+---
+
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<script src="/rmarkdown-libs/elevate-section-attrs/elevate-section-attrs.js"></script>
+
+
+<p><a href="https://en.wikipedia.org/wiki/Regular_expression">Regular expressions</a> (regex) are search patterns. I’ve always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I’m going to try to solve that problem by writing a guide to regex in R.</p>
+<div id="r-commands" class="section level2">
+<h2>R commands</h2>
+<p>First, let’s go over the R functions that you are likely to use regex for:</p>
+<ul>
+<li><code>grep</code>: Search for matches of the regex in a vector and returns the indices of elements that match if <code>value = F</code> or the elements themselves if <code>value = T</code></li>
+<li><code>grepl</code>: Search for matches of the regex in a vector and returns a boolean vector</li>
+<li><code>sub</code>: Replaces the first match of the regex with a new string</li>
+<li><code>gsub</code>: Replaces all matches of the regex with a new string</li>
+</ul>
+</div>
+<div id="examples" class="section level2">
+<h2>Examples</h2>
+<p>To demonstrate how the different regular expressions work, I will use the following example vector.</p>
+<pre class="r"><code>example_vec = c(&quot;The big ocean&quot;, &quot;The big Ocean&quot;, &quot;The big ocean.&quot;, &quot;The big. ocean!&quot;, &quot;The big.. ocean!&quot;)
+print(example_vec)</code></pre>
+<pre><code>## [1] &quot;The big ocean&quot;    &quot;The big Ocean&quot;    &quot;The big ocean.&quot;   &quot;The big. ocean!&quot; 
+## [5] &quot;The big.. ocean!&quot;</code></pre>
+<div id="anchors" class="section level3">
+<h3>Anchors</h3>
+<ul>
+<li><code>^</code>: Start of string</li>
+<li><code>$</code>: End of string</li>
+</ul>
+<pre class="r"><code># Find elements that end with &quot;ocean&quot;
+grep(&quot;ocean$&quot;, example_vec, value = T)</code></pre>
+<pre><code>## [1] &quot;The big ocean&quot;</code></pre>
+</div>
+<div id="more-characters" class="section level3">
+<h3>More Characters</h3>
+<ul>
+<li><code>.</code>: Match any character with a period</li>
+<li><code>[a-z]</code>, <code>[0-9]</code>, <code>[Tt]</code>, <code>[[:punct:]]</code>, <code>[[:alpha:]]</code>, <code>[[:lower:]]</code>, <code>[[:upper:]]</code>,<code>[[:digit:]]</code>: Search for any of the options in the brackets (i.e. “character classes”)</li>
+<li><code>\\</code>: Escape a character.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> For example, to search for a period, you need to use <code>\\.</code>.</li>
+<li><code>|</code>: “OR” operand</li>
+<li><code>^</code>: “NOT” operand</li>
+</ul>
+<pre class="r"><code># Find elements that end with &quot;ocean&quot; or &quot;Ocean&quot;
+grep(&quot;[Oo]cean$&quot;, example_vec, value = T)</code></pre>
+<pre><code>## [1] &quot;The big ocean&quot; &quot;The big Ocean&quot;</code></pre>
+<pre class="r"><code># Find elements that end with a punctuation
+grep(&quot;[[:punct:]]$&quot;, example_vec, value = T)</code></pre>
+<pre><code>## [1] &quot;The big ocean.&quot;   &quot;The big. ocean!&quot;  &quot;The big.. ocean!&quot;</code></pre>
+<pre class="r"><code># Find elements that end with a period
+grep(&quot;\\.$&quot;, example_vec, value = T)</code></pre>
+<pre><code>## [1] &quot;The big ocean.&quot;</code></pre>
+<pre class="r"><code># Find elements that end with &quot;ocean&quot; or &quot;Ocean&quot;
+grep(&quot;(ocean$|Ocean$)&quot;, example_vec, value = T)</code></pre>
+<pre><code>## [1] &quot;The big ocean&quot; &quot;The big Ocean&quot;</code></pre>
+<pre class="r"><code># Find elements that end with &quot;cean&quot; but not &quot;Ocean&quot;
+grep(&quot;[^O]cean$&quot;, example_vec, value = T)</code></pre>
+<pre><code>## [1] &quot;The big ocean&quot;</code></pre>
+</div>
+<div id="repetition" class="section level3">
+<h3>Repetition</h3>
+<ul>
+<li><code>*</code>: Repeat 0 or more times</li>
+<li><code>+</code>: Repeat 1 or more times</li>
+<li><code>{3}</code>: Repeat exactly 3 times</li>
+<li><code>{2, 4}</code>: Repeat 2 to 4 times</li>
+</ul>
+<pre class="r"><code># Find elements that start with &quot;The big&quot;
+grep(&quot;^The big\\.*&quot;, example_vec, value = T)</code></pre>
+<pre><code>## [1] &quot;The big ocean&quot;    &quot;The big Ocean&quot;    &quot;The big ocean.&quot;   &quot;The big. ocean!&quot; 
+## [5] &quot;The big.. ocean!&quot;</code></pre>
+<pre class="r"><code># Find elements that start with &quot;The big.&quot;
+grep(&quot;^The big\\.+&quot;, example_vec, value = T)</code></pre>
+<pre><code>## [1] &quot;The big. ocean!&quot;  &quot;The big.. ocean!&quot;</code></pre>
+<pre class="r"><code># Remove substring beginning with the first period, if it exists
+gsub(&quot;\\.(.*)$&quot;, &quot;&quot;, example_vec)</code></pre>
+<pre><code>## [1] &quot;The big ocean&quot; &quot;The big Ocean&quot; &quot;The big ocean&quot; &quot;The big&quot;      
+## [5] &quot;The big&quot;</code></pre>
+<pre class="r"><code># Remove substring beginning with the last period, if it exists
+gsub(&quot;\\.[^\\.]*$&quot;, &quot;&quot;, example_vec)</code></pre>
+<pre><code>## [1] &quot;The big ocean&quot; &quot;The big Ocean&quot; &quot;The big ocean&quot; &quot;The big&quot;      
+## [5] &quot;The big.&quot;</code></pre>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>For more details about why a double backslash is necessary, <a href="https://stackoverflow.com/questions/27721008/how-do-i-deal-with-special-characters-like-in-my-regex" class="uri">https://stackoverflow.com/questions/27721008/how-do-i-deal-with-special-characters-like-in-my-regex</a>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

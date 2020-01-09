@@ -185,7 +185,7 @@
     <item>
       <title>R</title>
       <link>/tags/r/</link>
-      <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/r/</guid>
       <description></description>
@@ -206,6 +206,15 @@
       <pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/recommendations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Regex</title>
+      <link>/tags/regex/</link>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/regex/</guid>
       <description></description>
     </item>
     
