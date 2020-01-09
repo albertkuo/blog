@@ -13,16 +13,18 @@ showDate: no
 draft: true
 ---
 
-[Regular expressions](https://en.wikipedia.org/wiki/Regular_expression) (regex) are search patterns. I've always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I'm going to try to solve that problem by writing a guide to regex in R.
+[Regular expressions](https://en.wikipedia.org/wiki/Regular_expression) (regex) are search patterns. I've always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I'm going to try to solve that problem by writing my own guide. As I continue to familiarize myself with regex, I will update this post.
 
 ## R commands
 
-First, let's go over the R functions that you are likely to use regex for:
+First, let's go over the R functions that you are likely going to use regex with:
 
 * `grep`: Search for matches of the regex in a vector and returns the indices of elements that match if `value = F` or the elements themselves if `value = T`
-* `grepl`: Search for matches of the regex in a vector and returns a boolean vector
-* `sub`: Replaces the first match of the regex with a new string
-* `gsub`: Replaces all matches of the regex with a new string
+* `grepl`: Search for matches of the regex in a vector and return a boolean vector
+* `sub`: Replace the first match of the regex with a new string
+* `gsub`: Replace all matches of the regex with a new string
+* `regexpr`: Return starting positions (-1 if none) and length of match
+* `regmatches`: Extract matched substrings obtained by `regexpr`. If `invert = T`, extract the substrings that don't match to the regex.
 
 
 ## Examples
@@ -48,7 +50,7 @@ grep("ocean$", example_vec, value = T)
 
 * `.`: Match any character with a period
 * `[a-z]`, `[0-9]`, `[Tt]`, `[[:punct:]]`, `[[:alpha:]]`, `[[:lower:]]`, `[[:upper:]]`,`[[:digit:]]`: Search for any of the options in the brackets (i.e. "character classes")
-* `\\`: Escape a character.^[For more details about why a double backslash is necessary, https://stackoverflow.com/questions/27721008/how-do-i-deal-with-special-characters-like-in-my-regex.] For example, to search for a period, you need to use `\\.`.
+* `\\`: Escape a character.^[For more details about why a double backslash is necessary,  see https://stackoverflow.com/questions/27721008/how-do-i-deal-with-special-characters-like-in-my-regex.] For example, to search for a period, you need to use `\\.`.
 * `|`: "OR" operand
 * `^`: "NOT" operand
 
@@ -77,9 +79,19 @@ grep("[^O]cean$", example_vec, value = T)
 grep("^The big\\.*", example_vec, value = T)
 # Find elements that start with "The big."
 grep("^The big\\.+", example_vec, value = T)
-# Remove substring beginning with the first period, if it exists
-gsub("\\.(.*)$", "", example_vec)
-# Remove substring beginning with the last period, if it exists
-gsub("\\.[^\\.]*$", "", example_vec)
+# Replace substring beginning with the first period, if it exists
+gsub("\\.(.*)$", "REPLACEMENT", example_vec)
+# Rplace substring beginning with the last period, if it exists
+gsub("\\.[^\\.]*$", "REPLACEMENT", example_vec)
+# Find matched substrings beginning with the first period
+regmatches(example_vec, regexpr("\\.(.*)$", example_vec))
+# Find the substrings that don't match to "big.."
+regmatches(example_vec, regexpr("big(\\.{2})", example_vec), invert = T)
 ```
 
+## Resources
+
+Here are some resources and references I used while writing this blog post.
+
+* [JHU Data Science lecture on regex](https://jhu-advdatasci.github.io/2018/lectures/10-regex.html)
+* Test your regex [here](https://regex101.com/#python)

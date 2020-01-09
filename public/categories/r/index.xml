@@ -17,8 +17,7 @@
       <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/post/introduction-to-regular-expressions-regex-in-r/</guid>
-      <description>Regular expressions (regex) are search patterns. I’ve always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I’m going to try to solve that problem by writing a guide to regex in R.
-R commands First, let’s go over the R functions that you are likely to use regex for:</description>
+      <description>Regular expressions (regex) are search patterns. I’ve always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I’m going to try to solve that problem by writing my own guide. As I continue to familiarize myself with regex, I will update this post.</description>
     </item>
     
     <item>
