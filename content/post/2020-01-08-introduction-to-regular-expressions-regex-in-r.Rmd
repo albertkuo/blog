@@ -9,11 +9,11 @@ categories:
 tags:
   - regex
   - R
-showDate: no
+showDate: yes
 draft: true
 ---
 
-[Regular expressions](https://en.wikipedia.org/wiki/Regular_expression) (regex) are search patterns. I've always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I'm going to try to solve this problem by writing my own guide. As I continue to familiarize myself with regex, I will update this post.
+If you haven't used [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) (regex) before, they are basically a way to write search patterns for strings. I've always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I'm going to try to solve this problem by writing my own guide to regex.^[As I continue to familiarize myself with regex, I will update this post.]
 
 ## R commands
 

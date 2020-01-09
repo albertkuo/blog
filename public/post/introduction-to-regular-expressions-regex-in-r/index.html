@@ -79,7 +79,7 @@
 <script src="/rmarkdown-libs/elevate-section-attrs/elevate-section-attrs.js"></script>
 
 
-<p><a href="https://en.wikipedia.org/wiki/Regular_expression">Regular expressions</a> (regex) are search patterns. I’ve always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I’m going to try to solve this problem by writing my own guide. As I continue to familiarize myself with regex, I will update this post.</p>
+<p>If you haven’t used <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expressions</a> (regex) before, they are basically a way to write search patterns for strings. I’ve always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I’m going to try to solve this problem by writing my own guide to regex.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <div id="r-commands" class="section level2">
 <h2>R commands</h2>
 <p>First, let’s go over the R functions that you are likely going to use regex with:</p>
@@ -118,7 +118,7 @@ grep(&quot;ocean$&quot;, example_vec, value = T) %&gt;% cat(., sep = &quot;\n&qu
 <ul>
 <li><code>.</code>: Match any character</li>
 <li><code>[a-z]</code>, <code>[0-9]</code>, <code>[Tt]</code>, <code>[[:punct:]]</code>, <code>[[:alpha:]]</code>, <code>[[:lower:]]</code>, <code>[[:upper:]]</code>,<code>[[:digit:]]</code>: Search for any of the options in the brackets (i.e. “character classes”)</li>
-<li><code>\\</code>: Escape a character.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> For example, to search for a period, you need to use <code>\\.</code>.</li>
+<li><code>\\</code>: Escape a character.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> For example, to search for a period, you need to use <code>\\.</code>.</li>
 <li><code>|</code>: “OR” operand</li>
 <li><code>^</code>: “NOT” operand</li>
 </ul>
@@ -208,7 +208,8 @@ regmatches(example_vec, regexpr(&quot;big(\\.{2})&quot;, example_vec), invert = 
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>For more details about why a double backslash is necessary, see <a href="https://stackoverflow.com/questions/27721008/how-do-i-deal-with-special-characters-like-in-my-regex" class="uri">https://stackoverflow.com/questions/27721008/how-do-i-deal-with-special-characters-like-in-my-regex</a>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>As I continue to familiarize myself with regex, I will update this post.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>For more details about why a double backslash is necessary, see <a href="https://stackoverflow.com/questions/27721008/how-do-i-deal-with-special-characters-like-in-my-regex" class="uri">https://stackoverflow.com/questions/27721008/how-do-i-deal-with-special-characters-like-in-my-regex</a>.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
