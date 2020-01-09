@@ -13,7 +13,7 @@ showDate: no
 draft: true
 ---
 
-[Regular expressions](https://en.wikipedia.org/wiki/Regular_expression) (regex) are search patterns. I've always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I'm going to try to solve that problem by writing my own guide. As I continue to familiarize myself with regex, I will update this post.
+[Regular expressions](https://en.wikipedia.org/wiki/Regular_expression) (regex) are search patterns. I've always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I'm going to try to solve this problem by writing my own guide. As I continue to familiarize myself with regex, I will update this post.
 
 ## R commands
 
@@ -23,7 +23,8 @@ First, let's go over the R functions that you are likely going to use regex with
 * `grepl`: Search for matches of the regex in a vector and return a boolean vector
 * `sub`: Replace the first match of the regex with a new string
 * `gsub`: Replace all matches of the regex with a new string
-* `regexpr`: Return starting positions (-1 if none) and length of match
+* `regexpr`: Return starting position (-1 if none) and length of first match
+* `grepexpr`: Return starting positions (-1 if none) and lengths of all matches
 * `regmatches`: Extract matched substrings obtained by `regexpr`. If `invert = T`, extract the substrings that don't match to the regex.
 
 
@@ -31,9 +32,13 @@ First, let's go over the R functions that you are likely going to use regex with
 
 To demonstrate how the different regular expressions work, I will use the following example vector.
 
+```{r echo = F, message = F}
+library(dplyr)
+```
+
 ```{r}
 example_vec = c("The big ocean", "The big Ocean", "The big ocean.", "The big. ocean!", "The big.. ocean!")
-print(example_vec)
+example_vec %>% cat(., sep = "\n")
 ```
 
 ### Anchors
@@ -41,50 +46,50 @@ print(example_vec)
 * `^`: Start of string
 * `$`: End of string
 
-```{r}
+```{r eval = T}
 # Find elements that end with "ocean"
-grep("ocean$", example_vec, value = T)
+grep("ocean$", example_vec, value = T) %>% cat(., sep = "\n")
 ```
 
 ### More Characters
 
-* `.`: Match any character with a period
+* `.`: Match any character
 * `[a-z]`, `[0-9]`, `[Tt]`, `[[:punct:]]`, `[[:alpha:]]`, `[[:lower:]]`, `[[:upper:]]`,`[[:digit:]]`: Search for any of the options in the brackets (i.e. "character classes")
 * `\\`: Escape a character.^[For more details about why a double backslash is necessary,  see https://stackoverflow.com/questions/27721008/how-do-i-deal-with-special-characters-like-in-my-regex.] For example, to search for a period, you need to use `\\.`.
 * `|`: "OR" operand
 * `^`: "NOT" operand
 
-```{r}
+```{r eval = T}
+# Find elements that end with "ocean" plus any character
+grep("ocean.$", example_vec, value = T) %>% cat(., sep = "\n")
 # Find elements that end with "ocean" or "Ocean"
-grep("[Oo]cean$", example_vec, value = T)
+grep("[Oo]cean$", example_vec, value = T) %>% cat(., sep = "\n")
 # Find elements that end with a punctuation
-grep("[[:punct:]]$", example_vec, value = T)
+grep("[[:punct:]]$", example_vec, value = T) %>% cat(., sep = "\n")
 # Find elements that end with a period
-grep("\\.$", example_vec, value = T)
+grep("\\.$", example_vec, value = T) %>% cat(., sep = "\n")
 # Find elements that end with "ocean" or "Ocean"
-grep("(ocean$|Ocean$)", example_vec, value = T)
+grep("(ocean$|Ocean$)", example_vec, value = T) %>% cat(., sep = "\n")
 # Find elements that end with "cean" but not "Ocean"
-grep("[^O]cean$", example_vec, value = T)
+grep("[^O]cean$", example_vec, value = T) %>% cat(., sep = "\n")
 ```
 
 ### Repetition
 
 * `*`: Repeat 0 or more times
 * `+`: Repeat 1 or more times
-* `{3}`: Repeat exactly 3 times
+* `{2}`: Repeat exactly 2 times
 * `{2, 4}`: Repeat 2 to 4 times
 
-```{r}
-# Find elements that start with "The big"
-grep("^The big\\.*", example_vec, value = T)
+```{r eval = T}
 # Find elements that start with "The big."
-grep("^The big\\.+", example_vec, value = T)
+grep("^The big\\.+", example_vec, value = T) %>% cat(., sep = "\n")
 # Replace substring beginning with the first period, if it exists
-gsub("\\.(.*)$", "REPLACEMENT", example_vec)
-# Rplace substring beginning with the last period, if it exists
-gsub("\\.[^\\.]*$", "REPLACEMENT", example_vec)
+gsub("\\.(.*)$", "REPLACEMENT", example_vec) %>% cat(., sep = "\n")
+# Replace substring beginning with the last period, if it exists
+gsub("\\.[^\\.]*$", "REPLACEMENT", example_vec) %>% cat(., sep = "\n")
 # Find matched substrings beginning with the first period
-regmatches(example_vec, regexpr("\\.(.*)$", example_vec))
+regmatches(example_vec, regexpr("\\.(.*)$", example_vec)) %>% cat(., sep = "\n")
 # Find the substrings that don't match to "big.."
 regmatches(example_vec, regexpr("big(\\.{2})", example_vec), invert = T)
 ```
@@ -93,5 +98,6 @@ regmatches(example_vec, regexpr("big(\\.{2})", example_vec), invert = T)
 
 Here are some resources and references I used while writing this blog post.
 
+* You can test or look up your regex at https://regex101.com/#python
+* [RStudio cheat sheet](https://rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf)
 * [JHU Data Science lecture on regex](https://jhu-advdatasci.github.io/2018/lectures/10-regex.html)
-* Test your regex [here](https://regex101.com/#python)

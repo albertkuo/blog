@@ -79,7 +79,7 @@
 <script src="/rmarkdown-libs/elevate-section-attrs/elevate-section-attrs.js"></script>
 
 
-<p><a href="https://en.wikipedia.org/wiki/Regular_expression">Regular expressions</a> (regex) are search patterns. I’ve always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I’m going to try to solve that problem by writing my own guide. As I continue to familiarize myself with regex, I will update this post.</p>
+<p><a href="https://en.wikipedia.org/wiki/Regular_expression">Regular expressions</a> (regex) are search patterns. I’ve always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I’m going to try to solve this problem by writing my own guide. As I continue to familiarize myself with regex, I will update this post.</p>
 <div id="r-commands" class="section level2">
 <h2>R commands</h2>
 <p>First, let’s go over the R functions that you are likely going to use regex with:</p>
@@ -88,7 +88,8 @@
 <li><code>grepl</code>: Search for matches of the regex in a vector and return a boolean vector</li>
 <li><code>sub</code>: Replace the first match of the regex with a new string</li>
 <li><code>gsub</code>: Replace all matches of the regex with a new string</li>
-<li><code>regexpr</code>: Return starting positions (-1 if none) and length of match</li>
+<li><code>regexpr</code>: Return starting position (-1 if none) and length of first match</li>
+<li><code>grepexpr</code>: Return starting positions (-1 if none) and lengths of all matches</li>
 <li><code>regmatches</code>: Extract matched substrings obtained by <code>regexpr</code>. If <code>invert = T</code>, extract the substrings that don’t match to the regex.</li>
 </ul>
 </div>
@@ -96,9 +97,12 @@
 <h2>Examples</h2>
 <p>To demonstrate how the different regular expressions work, I will use the following example vector.</p>
 <pre class="r"><code>example_vec = c(&quot;The big ocean&quot;, &quot;The big Ocean&quot;, &quot;The big ocean.&quot;, &quot;The big. ocean!&quot;, &quot;The big.. ocean!&quot;)
-print(example_vec)</code></pre>
-<pre><code>## [1] &quot;The big ocean&quot;    &quot;The big Ocean&quot;    &quot;The big ocean.&quot;   &quot;The big. ocean!&quot; 
-## [5] &quot;The big.. ocean!&quot;</code></pre>
+example_vec %&gt;% cat(., sep = &quot;\n&quot;)</code></pre>
+<pre><code>## The big ocean
+## The big Ocean
+## The big ocean.
+## The big. ocean!
+## The big.. ocean!</code></pre>
 <div id="anchors" class="section level3">
 <h3>Anchors</h3>
 <ul>
@@ -106,62 +110,74 @@ print(example_vec)</code></pre>
 <li><code>$</code>: End of string</li>
 </ul>
 <pre class="r"><code># Find elements that end with &quot;ocean&quot;
-grep(&quot;ocean$&quot;, example_vec, value = T)</code></pre>
-<pre><code>## [1] &quot;The big ocean&quot;</code></pre>
+grep(&quot;ocean$&quot;, example_vec, value = T) %&gt;% cat(., sep = &quot;\n&quot;)</code></pre>
+<pre><code>## The big ocean</code></pre>
 </div>
 <div id="more-characters" class="section level3">
 <h3>More Characters</h3>
 <ul>
-<li><code>.</code>: Match any character with a period</li>
+<li><code>.</code>: Match any character</li>
 <li><code>[a-z]</code>, <code>[0-9]</code>, <code>[Tt]</code>, <code>[[:punct:]]</code>, <code>[[:alpha:]]</code>, <code>[[:lower:]]</code>, <code>[[:upper:]]</code>,<code>[[:digit:]]</code>: Search for any of the options in the brackets (i.e. “character classes”)</li>
 <li><code>\\</code>: Escape a character.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> For example, to search for a period, you need to use <code>\\.</code>.</li>
 <li><code>|</code>: “OR” operand</li>
 <li><code>^</code>: “NOT” operand</li>
 </ul>
+<pre class="r"><code># Find elements that end with &quot;ocean&quot; plus any character
+grep(&quot;ocean.$&quot;, example_vec, value = T) %&gt;% cat(., sep = &quot;\n&quot;)</code></pre>
+<pre><code>## The big ocean.
+## The big. ocean!
+## The big.. ocean!</code></pre>
 <pre class="r"><code># Find elements that end with &quot;ocean&quot; or &quot;Ocean&quot;
-grep(&quot;[Oo]cean$&quot;, example_vec, value = T)</code></pre>
-<pre><code>## [1] &quot;The big ocean&quot; &quot;The big Ocean&quot;</code></pre>
+grep(&quot;[Oo]cean$&quot;, example_vec, value = T) %&gt;% cat(., sep = &quot;\n&quot;)</code></pre>
+<pre><code>## The big ocean
+## The big Ocean</code></pre>
 <pre class="r"><code># Find elements that end with a punctuation
-grep(&quot;[[:punct:]]$&quot;, example_vec, value = T)</code></pre>
-<pre><code>## [1] &quot;The big ocean.&quot;   &quot;The big. ocean!&quot;  &quot;The big.. ocean!&quot;</code></pre>
+grep(&quot;[[:punct:]]$&quot;, example_vec, value = T) %&gt;% cat(., sep = &quot;\n&quot;)</code></pre>
+<pre><code>## The big ocean.
+## The big. ocean!
+## The big.. ocean!</code></pre>
 <pre class="r"><code># Find elements that end with a period
-grep(&quot;\\.$&quot;, example_vec, value = T)</code></pre>
-<pre><code>## [1] &quot;The big ocean.&quot;</code></pre>
+grep(&quot;\\.$&quot;, example_vec, value = T) %&gt;% cat(., sep = &quot;\n&quot;)</code></pre>
+<pre><code>## The big ocean.</code></pre>
 <pre class="r"><code># Find elements that end with &quot;ocean&quot; or &quot;Ocean&quot;
-grep(&quot;(ocean$|Ocean$)&quot;, example_vec, value = T)</code></pre>
-<pre><code>## [1] &quot;The big ocean&quot; &quot;The big Ocean&quot;</code></pre>
+grep(&quot;(ocean$|Ocean$)&quot;, example_vec, value = T) %&gt;% cat(., sep = &quot;\n&quot;)</code></pre>
+<pre><code>## The big ocean
+## The big Ocean</code></pre>
 <pre class="r"><code># Find elements that end with &quot;cean&quot; but not &quot;Ocean&quot;
-grep(&quot;[^O]cean$&quot;, example_vec, value = T)</code></pre>
-<pre><code>## [1] &quot;The big ocean&quot;</code></pre>
+grep(&quot;[^O]cean$&quot;, example_vec, value = T) %&gt;% cat(., sep = &quot;\n&quot;)</code></pre>
+<pre><code>## The big ocean</code></pre>
 </div>
 <div id="repetition" class="section level3">
 <h3>Repetition</h3>
 <ul>
 <li><code>*</code>: Repeat 0 or more times</li>
 <li><code>+</code>: Repeat 1 or more times</li>
-<li><code>{3}</code>: Repeat exactly 3 times</li>
+<li><code>{2}</code>: Repeat exactly 2 times</li>
 <li><code>{2, 4}</code>: Repeat 2 to 4 times</li>
 </ul>
-<pre class="r"><code># Find elements that start with &quot;The big&quot;
-grep(&quot;^The big\\.*&quot;, example_vec, value = T)</code></pre>
-<pre><code>## [1] &quot;The big ocean&quot;    &quot;The big Ocean&quot;    &quot;The big ocean.&quot;   &quot;The big. ocean!&quot; 
-## [5] &quot;The big.. ocean!&quot;</code></pre>
 <pre class="r"><code># Find elements that start with &quot;The big.&quot;
-grep(&quot;^The big\\.+&quot;, example_vec, value = T)</code></pre>
-<pre><code>## [1] &quot;The big. ocean!&quot;  &quot;The big.. ocean!&quot;</code></pre>
+grep(&quot;^The big\\.+&quot;, example_vec, value = T) %&gt;% cat(., sep = &quot;\n&quot;)</code></pre>
+<pre><code>## The big. ocean!
+## The big.. ocean!</code></pre>
 <pre class="r"><code># Replace substring beginning with the first period, if it exists
-gsub(&quot;\\.(.*)$&quot;, &quot;REPLACEMENT&quot;, example_vec)</code></pre>
-<pre><code>## [1] &quot;The big ocean&quot;            &quot;The big Ocean&quot;           
-## [3] &quot;The big oceanREPLACEMENT&quot; &quot;The bigREPLACEMENT&quot;      
-## [5] &quot;The bigREPLACEMENT&quot;</code></pre>
-<pre class="r"><code># Rplace substring beginning with the last period, if it exists
-gsub(&quot;\\.[^\\.]*$&quot;, &quot;REPLACEMENT&quot;, example_vec)</code></pre>
-<pre><code>## [1] &quot;The big ocean&quot;            &quot;The big Ocean&quot;           
-## [3] &quot;The big oceanREPLACEMENT&quot; &quot;The bigREPLACEMENT&quot;      
-## [5] &quot;The big.REPLACEMENT&quot;</code></pre>
+gsub(&quot;\\.(.*)$&quot;, &quot;REPLACEMENT&quot;, example_vec) %&gt;% cat(., sep = &quot;\n&quot;)</code></pre>
+<pre><code>## The big ocean
+## The big Ocean
+## The big oceanREPLACEMENT
+## The bigREPLACEMENT
+## The bigREPLACEMENT</code></pre>
+<pre class="r"><code># Replace substring beginning with the last period, if it exists
+gsub(&quot;\\.[^\\.]*$&quot;, &quot;REPLACEMENT&quot;, example_vec) %&gt;% cat(., sep = &quot;\n&quot;)</code></pre>
+<pre><code>## The big ocean
+## The big Ocean
+## The big oceanREPLACEMENT
+## The bigREPLACEMENT
+## The big.REPLACEMENT</code></pre>
 <pre class="r"><code># Find matched substrings beginning with the first period
-regmatches(example_vec, regexpr(&quot;\\.(.*)$&quot;, example_vec))</code></pre>
-<pre><code>## [1] &quot;.&quot;         &quot;. ocean!&quot;  &quot;.. ocean!&quot;</code></pre>
+regmatches(example_vec, regexpr(&quot;\\.(.*)$&quot;, example_vec)) %&gt;% cat(., sep = &quot;\n&quot;)</code></pre>
+<pre><code>## .
+## . ocean!
+## .. ocean!</code></pre>
 <pre class="r"><code># Find the substrings that don&#39;t match to &quot;big..&quot;
 regmatches(example_vec, regexpr(&quot;big(\\.{2})&quot;, example_vec), invert = T)</code></pre>
 <pre><code>## [[1]]
@@ -184,8 +200,9 @@ regmatches(example_vec, regexpr(&quot;big(\\.{2})&quot;, example_vec), invert = 
 <h2>Resources</h2>
 <p>Here are some resources and references I used while writing this blog post.</p>
 <ul>
+<li>You can test or look up your regex at <a href="https://regex101.com/#python" class="uri">https://regex101.com/#python</a></li>
+<li><a href="https://rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf">RStudio cheat sheet</a></li>
 <li><a href="https://jhu-advdatasci.github.io/2018/lectures/10-regex.html">JHU Data Science lecture on regex</a></li>
-<li>Test your regex <a href="https://regex101.com/#python">here</a></li>
 </ul>
 </div>
 <div class="footnotes">
