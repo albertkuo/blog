@@ -115,21 +115,23 @@
 <p><strong>Delete, Copy, and Paste</strong></p>
 <ul>
 <li><code>x</code> or <code>dl</code> - delete letter</li>
-<li><code>d</code> - delete command, which you can chain with any of the navigation keys
+<li><code>d</code> - delete, which you can chain with a navigation key or use after selection
 <ul>
 <li><code>dw</code> or <code>de</code> - delete to end of word</li>
 <li><code>d$</code> - delete to end of line</li>
-<li><code>dd</code> - delete entire line (again, you can chain this command with a number, e.g. <code>2dd</code>)</li>
+<li><code>dd</code> - delete entire line (again, you can chain commands with a number, e.g. <code>2dd</code>)</li>
 </ul></li>
 <li><code>r</code> or <code>s</code> or <code>cl</code> - replace character</li>
-<li><code>c</code> - replace command (equivalent to <code>d</code> + <code>i</code>)
+<li><code>c</code> - replace (equivalent to <code>d</code> + <code>i</code>)
 <ul>
 <li><code>cw</code> or <code>ce</code> - replace to end of word</li>
 <li><code>c$</code> - replace to end of line</li>
 <li><code>cd</code> - replace entire line</li>
 </ul></li>
-<li><code>y</code> - yank (“copy”), typically used after selection</li>
+<li><code>y</code> - yank (“copy”), typically used after selection, but you can also chain with a navigation key
+<ul>
 <li><code>yy</code> - yank entire line</li>
+</ul></li>
 <li><code>p</code> - paste after cursor (note: paste will also paste whatever you have deleted or replaced last)</li>
 <li><code>P</code> - paste before cursor</li>
 </ul>

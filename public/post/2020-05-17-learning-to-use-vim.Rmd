@@ -58,17 +58,17 @@ In this section, I've listed all the commands that I think are likely to be usef
 **Delete, Copy, and Paste**
 
 * `x` or `dl` - delete letter
-* `d` - delete command, which you can chain with any of the navigation keys
+* `d` - delete, which you can chain with a navigation key or use after selection
   * `dw` or `de` - delete to end of word
   * `d$` - delete to end of line
-  * `dd` - delete entire line (again, you can chain this command with a number, e.g. `2dd`)
+  * `dd` - delete entire line (again, you can chain commands with a number, e.g. `2dd`)
 * `r` or `s` or `cl` - replace character
-* `c` - replace command (equivalent to `d` + `i`)
+* `c` - replace (equivalent to `d` + `i`)
   * `cw` or `ce` - replace to end of word
   * `c$` - replace to end of line
   * `cd` - replace entire line
-* `y` - yank ("copy"), typically used after selection
-* `yy` - yank entire line
+* `y` - yank ("copy"), typically used after selection, but you can also chain with a navigation key
+  * `yy` - yank entire line
 * `p` - paste after cursor (note: paste will also paste whatever you have deleted or replaced last)
 * `P` - paste before cursor
 
