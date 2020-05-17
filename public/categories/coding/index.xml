@@ -6,10 +6,19 @@
     <description>Recent content in Coding on Blog | Albert</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/coding/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Learning to Use Vim</title>
+      <link>/post/learning-to-use-vim/</link>
+      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/learning-to-use-vim/</guid>
+      <description>Even though vim has been my default text editor for a couple of years now, I’m still woefully ignorant about how to actually use it. Because 95% of my coding time is spent in RStudio, I really only use vim to briefly edit some bash scripts and therefore my unfamiliarity with it isn’t an urgent issue. Nonetheless, I tried to rectify this shortcoming a few months ago by changing my RStudio settings to “vim mode” and forcing myself to use vim commands all the time.</description>
+    </item>
     
     <item>
       <title>Introduction to Regular Expressions (regex) in R</title>

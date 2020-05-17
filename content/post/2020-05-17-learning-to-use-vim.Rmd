@@ -1,0 +1,109 @@
+---
+title: Learning to Use Vim
+author: ''
+date: '2020-05-17'
+slug: learning-to-use-vim
+categories:
+  - coding
+tags:
+  - vim
+showDate: yes
+draft: no
+---
+
+Even though vim has been my default text editor for a couple of years now, I'm still woefully ignorant about how to actually use it. Because 95% of my coding time is spent in RStudio, I really only use vim to briefly edit some bash scripts and therefore my unfamiliarity with it isn't an *urgent* issue. Nonetheless, I tried to rectify this shortcoming a few months ago by changing my RStudio settings to "vim mode" and forcing myself to use vim commands all the time. Unfortunately, all this seems to have done is to make myself enter the insert mode before working exactly the way I did before. 
+
+In writing this blog post, I'm hoping to change this once and for all! There are plenty of vim guides and resources out there (I list some in the resources section at the bottom of the page), so there's really no excuse for why I still can't use vim well. As with my previous posts that function as guides, however, I think that it will be helpful for me to write something that's structured in a way that makes the most sense to me.
+
+## Basic Knowledge 
+
+Let's get some basic things out of the way first. It's important to know that there are 2 modes in vim. In the default **command mode**, the characters you type are commands and you can't insert any characters into the text. To edit the text, you'll need to enter the **insertion mode** by typing `i` or one of the other insertion commands I've listed under keyboard shortcuts. To leave insertion mode and return to the command mode, press `Esc`. To exit the file, type `:q` in the command mode or one of the other exiting command modifications I've listed under keyboard shortcuts.
+
+## Keyboard Shortcuts
+
+In this section, I've listed all the commands that I think are likely to be useful to begin with.
+
+**Navigation**
+
+* `h`, `j`, `k`, `l` - left, down, up, right
+* `w` - next word (you can chain with a number, e.g. `2w`)
+* `e` - next end of word 
+* `b` - previous word
+* `0` - beginning of line
+* `$` - end of line
+* `gg` - beginning of file
+* `G` - end of file
+* `NG` or `:N` - go to line number N
+* `f` or `t` - go to next instance of the following character in the line 
+* `{`, `}` - previous and next paragraph
+* `H`, `M`, `L` - top, middle, and bottom of screen
+* `zz` - center screen at cursor position
+* `zt`, `zb` - make cursor position the top, bottom of screen
+
+**Insertion**
+
+* `i` - insert before cursor
+* `a` - insert after cursor
+* `o` - insert at next line
+* `O` - insert at previous line
+* `I` - insert at beginning of line
+* `A` - insert at end of line
+* `Shift + i` - enter insert mode from selection (likely most useful with `Ctrl-v`)
+
+**Undo and redo**
+
+* `u` - undo
+* `Ctrl-R` - redo
+
+**Delete, Copy, and Paste**
+
+* `x` or `dl` - delete letter
+* `d` - delete command, which you can chain with any of the navigation keys
+  * `dw` or `de` - delete to end of word
+  * `d$` - delete to end of line
+  * `dd` - delete entire line (again, you can chain this command with a number, e.g. `2dd`)
+* `r` or `s` or `cl` - replace character
+* `c` - replace command (equivalent to `d` + `i`)
+  * `cw` or `ce` - replace to end of word
+  * `c$` - replace to end of line
+  * `cd` - replace entire line
+* `y` - yank ("copy"), typically used after selection
+* `yy` - yank entire line
+* `p` - paste after cursor (note: paste will also paste whatever you have deleted or replaced last)
+* `P` - paste before cursor
+
+**Selection**
+
+* `v` - select at character-level granularity
+* `V` - select at line-level granularity
+* `Ctrl-v` - select by columns
+
+**Search and replace**
+
+* `/text` - search for text going forward
+* `?text` - search for text going backwards
+* `n` - navigate to next search result
+* `N` - navigate to previous search result
+* `:%s/text/replacement/c` - search and replace first instance
+* `:%s/text/replacement/gc` - search and replace all instances
+
+**Exiting**
+
+* `:q` - quit (if you've made unsaved changes, you'll want to use either `:wq` or `:q!`)
+* `:wq` - write (save) and quit
+* `:q!` - quit without saving
+
+## Impressions & Experience So Far
+
+After a few hours of practice, I've discovered that there are some things that are already easier with vim. For example, the `d` and `c` commands are useful because it means that oftentimes, I can delete text without having to select with my mouse + backspace.
+
+There are other things that are still quite difficult for me to do efficiently, such as the visual selection mode, likely because I'm not familiar enough with the navigation keys. I'm also not convinced that the search and replace command is better than just using `Ctrl-f` in RStudio (for one, the confirm option with `c` doesn't seem to work in RStudio). Lastly, it's not clear to me how I can paste (or "yank") to the clipboard, particularly from within RStudio.
+
+Despite these issues, it's quite fun to essentially learn a new way of typing and I can imagine being comfortable with and preferring to use vim-style editing eventually.
+
+## Resources
+
+* You can type "vimtutor" in your terminal/shell to enter a surprisingly useful and hands-on tutorial.
+* You can play a game, [Vim adventures](https://vim-adventures.com/), to learn vim (though only the first few levels are free). 
+* RStudio has a handy list of vim commands available if you type `:help` while under vim mode. Other cheat sheets for vim are available [here](https://vim.rtorr.com/) and [here](https://www.shortcutfoo.com/app/dojos/vim/cheatsheet).
+* A [straightforward guide for beginners]( https://www.linux.com/training-tutorials/vim-101-beginners-guide-vim/) that I based this post on.
