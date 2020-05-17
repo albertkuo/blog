@@ -34,7 +34,7 @@ In this section, I've listed all the commands that I think are likely to be usef
 * `gg` - beginning of file
 * `G` - end of file
 * `NG` or `:N` - go to line number N
-* `f` or `t` - go to next instance of the following character in the line 
+* `f` or `t` - go to next instance of the following character in current line 
 * `{`, `}` - previous and next paragraph
 * `H`, `M`, `L` - top, middle, and bottom of screen
 * `zz` - center screen at cursor position
@@ -61,7 +61,7 @@ In this section, I've listed all the commands that I think are likely to be usef
 * `d` - delete, which you can chain with a navigation key or use after selection
   * `dw` or `de` - delete to end of word
   * `d$` - delete to end of line
-  * `dd` - delete entire line (again, you can chain commands with a number, e.g. `2dd`)
+  * `dd` - delete entire line (again, you can chain commands with a number, e.g. `2dd` or `d2d`)
 * `r` or `s` or `cl` - replace character
 * `c` - replace (equivalent to `d` + `i`)
   * `cw` or `ce` - replace to end of word
