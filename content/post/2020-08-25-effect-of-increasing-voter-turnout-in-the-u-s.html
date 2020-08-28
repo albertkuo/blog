@@ -19,11 +19,11 @@ draft: no
 <div id="results" class="section level1">
 <h1>Results</h1>
 <p><strong>tl;dr: Increasing voter turnout does in fact benefit the Democratic party. But the effect is smaller than I expected.</strong></p>
-<p>Below, I’ve plotted the actual 2016 presidential election results (dark blue points) versus what the election results might have looked like if everyone had voted (light blue points).<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p>Below, I’ve plotted the actual 2016 presidential election results (dark blue points) versus what the election results might have looked like if everyone had voted (light blue points).</p>
 <p><img src="/post/2020-08-25-effect-of-increasing-voter-turnout-in-the-u-s_files/election_2016_plot.png" /></p>
-<p>Panel (a) is for all states<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> and panel (b) is the same plot showing only “swing” states, which are particularly important in the election due to how the <a href="https://en.wikipedia.org/wiki/Electoral_College_(United_States)">U.S. electoral college</a> works.</p>
-<p>Based on my analysis, four states would have flipped from Republican to Democrat: Michigan, Wisconsin, Florida, and Pennsylvania. This is a difference of 75 electoral votes, which would have been more than enough to elect Hillary Clinton instead of Donald Trump (only 37 electoral votes are needed). But this is assuming that <em>everyone</em> voted. It’s much more likely that any voluntary increase in turnout would be far more modest. Since 1960, the voter turnout rate has ranged from 49% to 63% (Data source #8). In 2016, it was 56%. If we assume that the overall voter turnout only increases by roughly 10%, then only Michigan could have plausibly flipped and Trump would have still won the election.</p>
-<p>It’s true that political candidates may succeed in increasing voter turnout specifically among voters more favorable to them. In fact, this was what happened in 2008 for Barack Obama. In 2008, the black vote turnout was about 10% higher compared to 2016, while it was only 1-2% higher for other racial groups: Non-Hispanic White, Hispanic White, and Asian (Data sources #2, 5). However, even if we use the voter turnout rates from 2008, it’s still the case that only Michigan would have flipped.</p>
+<p>Panel (a) is for all states<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> and panel (b) is the same plot showing only “swing” states, which are particularly important in the election due to how the <a href="https://en.wikipedia.org/wiki/Electoral_College_(United_States)">U.S. electoral college</a> works. The GOP vote percentage (x-axis) is the share of votes won by the GOP candidate (Donald Trump) out of all votes cast for either the GOP or Democratic candidate.</p>
+<p>Based on my analysis, four states would have flipped from Republican to Democrat: Michigan, Wisconsin, Pennsylvania, and Florida. This is a difference of 75 electoral votes, which would have been more than enough to elect the Democratic candidate, Hillary Clinton, instead of Donald Trump (only 37 electoral votes are needed). But this is assuming that <em>everyone</em> voted. It’s much more likely that any voluntary increase in turnout would be far more modest. Since 1960, the voter turnout rate has ranged from 49% to 63% (Data source #8). In 2016, it was 56%. If we assume that the overall voter turnout only increases by roughly 10%, then only Michigan could have plausibly flipped and Trump would have still won the election.</p>
+<p>It’s true that political candidates may succeed in increasing voter turnout specifically among voters more favorable to them. In fact, this was what happened in 2008 for Barack Obama, the first black president to be elected in the U.S. In 2008, the black vote turnout was about 10% higher compared to 2016, while it was only 1-2% higher for other racial groups: Non-Hispanic White, Hispanic White, and Asian (Data sources #2, 5). However, even if we use the voter turnout rates from 2008, it’s still the case that only Michigan would have flipped.</p>
 <p><img src="/post/2020-08-25-effect-of-increasing-voter-turnout-in-the-u-s_files/election_2016_plot_2.png" /></p>
 <p>Having said that, no one knows how tight the margins will be for every new election. If more states end up looking like Michigan in the upcoming 2020 election, how high the voter turnout is could be a deciding factor. For example, there is evidence that the changing demographics in the U.S. are favorable to the Democratic party. If we take the party preferences and turnout of 2016 and the demographics of 2019, we would see the following results for the swing states.</p>
 <p><img src="/post/2020-08-25-effect-of-increasing-voter-turnout-in-the-u-s_files/election_2019_plot.png" /></p>
@@ -58,7 +58,8 @@ age_tb_2008 = tibble(age = c(&quot;18-29&quot;, &quot;30-49&quot;, &quot;50-64&q
                      turnout_age_2008 = c(0.484, 0.607, 0.695, 0.710)) # Data source #2 (Note: age groups are different: 18-29, 30-44, 45-59, 60+)
 race_tb_2008 = tibble(race = c(&quot;White&quot;, &quot;Black&quot;, &quot;Hispanic&quot;, &quot;Asian&quot;), 
                       turnout_race_2008 = c(0.652, 0.691, 0.465, 0.321)) # Data sources #2, #5</code></pre>
-<p>Now using this information (party preference and turnout rate by demographic group) along with state-level demographic data, I can calculate the expected party preference for each state based solely on its demographics.</p>
+<p>Now using this information (party preference and turnout rate by demographic group) along with state-level demographic data, what I can do (as a side exploratory analysis) is to calculate the expected party preference for each state based solely on its demographics.</p>
+<p>As it turns out, this gives me unrealistic results – what ends up happening is that states with larger white populations skew Republican and states with a larger minority populations skew Democratic. But this isn’t necessarily what happens in reality. Some states like Vermont have predominantly white populations but tend to vote Democrat, while other states like Mississippi have much lower white populations but tend to vote Republican. There are many factors that can contribute to this, such as historical party preferences by regions or states, differences between states in terms of the urban versus rural makeup, and differences in other demographic factors like income and college education that have not been accounted for.</p>
 <pre class="r"><code># Demographics by state
 demog_raw = read_csv(&quot;../../csv/sc-est2019-alldata5.csv&quot;, col_types = cols()) # Data source #4
 demog = demog_raw %&gt;%
@@ -96,11 +97,11 @@ dt_state_2016 = dt_demog_state %&gt;%
   summarize_at(vars(party_pref), ~weighted.mean(., w = turnout_weight2016)) %&gt;%
   ungroup() %&gt;%
   arrange(party_pref) </code></pre>
-<p>As it turns out, this gives me unrealistic results – what ends up happening is that states with larger white populations skew Republican and states with a larger minority populations skew Democratic. But this isn’t necessarily what happens in reality. Some states like Vermont have predominantly white populations but tend to vote Democrat, while other states like Mississippi have much lower white populations but tend to vote Republican. There are many factors that can contribute to this, such as historical party preferences by regions or states, differences between states in terms of the urban versus rural makeup, and differences in other demographic factors like income and college education that have not been accounted for.</p>
 </div>
-<div id="state-bias-factor" class="section level2">
-<h2>State bias factor</h2>
-<p>To resolve this issue, I calculate what I call a “state bias” factor. I take the previously computed party preference based on demographic data and compare it to the actual presidential election results from 2016. The ratio of these two values is determined to be the state bias. For example, California’s predicted party preference is 0.65 and its ratio of GOP:Democratic votes is 0.53, so its state bias is 0.53/0.65 = 0.82. Since the state bias is less than 1, that means that California skews even more Democratic than what its demographics would suggest.</p>
+<div id="state-bias" class="section level2">
+<h2>State bias</h2>
+<p>This difference between the party preference based on a state’s demographics and what the state ended up voting in the 2016 election is what I call the “state bias” factor. For example, California’s predicted party preference is 0.65 and its ratio of GOP:Democratic votes is 0.53, so its state bias is 0.53/0.65 = 0.82. Since the state bias is less than 1, that means that California skews even more Democratic than what its demographics would suggest.</p>
+<p>While an interesting side point, the state bias doesn’t actually affect my main analysis in any way. In my code, the <code>state_bias</code> variable is used as just a shortcut to perform some computations.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> For my analysis, I simply start with the 2016 election results and directly add the estimated effect from increasing voter turnout. I explain this in more detail in the next section.</p>
 <pre class="r"><code># Calculate state bias
 voting_results_2016_raw = read_csv(&quot;../../csv/2016_US_County_Level_Presidential_Results.csv&quot;, col_types = cols()) # Data source #7
 voting_results_2016 = voting_results_2016_raw %&gt;%
@@ -121,40 +122,46 @@ state_tb = dt_state_2016 %&gt;%
 </div>
 <div id="putting-it-all-together" class="section level2">
 <h2>Putting it all together</h2>
-<p>Now I can compute what would have happened if everyone in the country had voted. For each state, I calculate its predicted party preference based on its demographics and assume a turnout rate of 100% (or any other counterfactual turnout rate). Then I take this predicted party preference and multiply it by the state bias to obtain a hypothetical election result. Below are the plots I displayed and discussed at the beginning of the post.</p>
-<pre class="r"><code># Calculate state_level party preference in 2016 (adjusted for state bias)
+<p>For every state, I calculate the difference between the GOP vote percentage based on the expected voter turnout and the GOP vote percentage under a 100% turnout rate (or any other counterfactual turnout rate). I take the difference between these two values and add it to the 2016 election result.</p>
+<p>For example, for California, based on the party preferences by demographic groups, the GOP vote percentage was 39.6% under the expected voter turnout and 38.2% under a 100% turnout. The difference in vote percentage between these two voter turnout rates is therefore -1.4%. The actual GOP vote percentage for California in the 2016 election was 34.7%. Thus, my estimate for the GOP vote percentage under a 100% turnout is 34.7 - 1.4 = 33.3%.</p>
+<p>Repeating this calculation for different demographic distributions and counterfactual turnout rates, I generated the plots that I showed and discussed at the beginning of the post.</p>
+<pre class="r"><code># Calculate state_level party preference in 2016
 dt_state_2016 = dt_demog_state %&gt;%
   group_by(state, name) %&gt;%
   summarize_at(vars(party_pref), ~(weighted.mean(., w = turnout_weight2016))) %&gt;%
   ungroup() %&gt;%
   left_join(., state_tb, by = &quot;name&quot;) %&gt;%
-  mutate(party_pref_adj_expected_turnout = party_pref*state_bias) %&gt;%
-  arrange(party_pref_adj_expected_turnout)
+  mutate(party_pref_expected_turnout = party_pref) %&gt;%
+  arrange(party_pref_expected_turnout)
 
-# Calculate state-level party preference in 2016 under 2008 turnout for race (adjusted for state bias)
+# Calculate state-level party preference in 2016 under 2008 turnout for race
 dt_state_2016_turnout2008 = dt_demog_state %&gt;%
   group_by(state, name) %&gt;%
   summarize_at(vars(party_pref), ~(weighted.mean(., w = turnout_2008*popestimate2016))) %&gt;%
   ungroup() %&gt;%
   left_join(., state_tb, by = &quot;name&quot;) %&gt;%
-  mutate(party_pref_adj_2008_turnout = party_pref*state_bias) %&gt;%
-  arrange(party_pref_adj_2008_turnout)
+  mutate(party_pref_2008_turnout = party_pref) %&gt;%
+  arrange(party_pref_2008_turnout)
 
-# Calculate state-level party preference in 2016 under full turnout for all groups (adjusted for state bias)
+# Calculate state-level party preference in 2016 under full turnout for all groups
 dt_state_2016_full = dt_demog_state %&gt;%
   group_by(state, name) %&gt;%
   summarize_at(vars(party_pref), ~(weighted.mean(., w = popestimate2016))) %&gt;%
   ungroup() %&gt;%
   left_join(., state_tb, by = &quot;name&quot;) %&gt;%
-  mutate(party_pref_adj_full_turnout = party_pref*state_bias) %&gt;%
-  arrange(party_pref_adj_full_turnout)</code></pre>
-<pre class="r"><code>dt_state_2016_combined = dt_state_2016 %&gt;% 
-  left_join(., dt_state_2016_turnout2008 %&gt;% select(name, party_pref_adj_2008_turnout), by = &quot;name&quot;) %&gt;%
-  left_join(., dt_state_2016_full %&gt;% select(name, party_pref_adj_full_turnout), by = &quot;name&quot;) %&gt;%
-  select(name, party_pref_adj_expected_turnout, party_pref_adj_full_turnout, party_pref_adj_2008_turnout) %&gt;%
-  mutate(name = reorder(name, party_pref_adj_expected_turnout)) %&gt;%
-  pivot_longer(cols = starts_with(&quot;party_pref_adj&quot;), names_to = &quot;turnout_type&quot;, names_prefix = &quot;party_pref_adj_&quot;, values_to = &quot;party_pref&quot;) %&gt;%
-  mutate(gop_vote_percentage = party_pref/(party_pref + 1)) </code></pre>
+  mutate(party_pref_full_turnout = party_pref) %&gt;%
+  arrange(party_pref_full_turnout)</code></pre>
+<pre class="r"><code># Calculate adjusted party preferences
+dt_state_2016_combined = dt_state_2016 %&gt;% 
+  left_join(., dt_state_2016_turnout2008 %&gt;% select(name, party_pref_2008_turnout), by = &quot;name&quot;) %&gt;%
+  left_join(., dt_state_2016_full %&gt;% select(name, party_pref_full_turnout), by = &quot;name&quot;) %&gt;%
+  mutate(party_pref_adj_expected_turnout = party_pref_expected_turnout*state_bias,
+         gop_vote_percentage_expected_turnout = party_pref_adj_expected_turnout/(party_pref_adj_expected_turnout + 1),
+         gop_vote_percentage_2008_turnout = gop_vote_percentage_expected_turnout + (party_pref_2008_turnout/(party_pref_2008_turnout + 1) - party_pref_expected_turnout/(party_pref_expected_turnout + 1)),
+         gop_vote_percentage_full_turnout = gop_vote_percentage_expected_turnout + (party_pref_full_turnout/(party_pref_full_turnout + 1) - party_pref_expected_turnout/(party_pref_expected_turnout + 1)),
+         name = reorder(name, gop_vote_percentage_expected_turnout)) %&gt;%
+    select(name, gop_vote_percentage_expected_turnout, gop_vote_percentage_full_turnout, gop_vote_percentage_2008_turnout) %&gt;%
+  pivot_longer(cols = starts_with(&quot;gop_vote_percentage&quot;), names_to = &quot;turnout_type&quot;, names_prefix = &quot;gop_vote_percentage_&quot;, values_to = &quot;gop_vote_percentage&quot;)</code></pre>
 <pre class="r"><code># Plot 2016 election with 2016 demographics
 p1 = dt_state_2016_combined %&gt;%
   filter(turnout_type %in% c(&quot;expected_turnout&quot;, &quot;full_turnout&quot;)) %&gt;%
@@ -197,10 +204,10 @@ p2 = dt_state_2016_combined %&gt;%
   theme(legend.title = element_text(size = 10),
         legend.title.align = 0.5)
 
-title &lt;- ggdraw() + draw_label(&quot;2016 Election&quot;)
+title = ggdraw() + draw_label(&quot;2016 Election&quot;)
 plot_grid(title, p1, p2, labels = c(&quot;&quot;, &quot;a&quot;, &quot;b&quot;), ncol = 1, rel_heights = c(0.08, 1, 1))</code></pre>
 <p><img src="/post/2020-08-25-effect-of-increasing-voter-turnout-in-the-u-s_files/figure-html/unnamed-chunk-8-1.png" width="576" /></p>
-<pre class="r"><code># ggsave(file = &quot;~/Desktop/election_2016_plot.png&quot;, width = 6, height = 8)</code></pre>
+<pre class="r"><code>ggsave(file = &quot;~/Desktop/election_2016_plot.png&quot;, width = 6, height = 8)</code></pre>
 <pre class="r"><code># Plot 2016 election with 2008 race turnout
 dt_state_2016_combined %&gt;%
   filter(turnout_type %in% c(&quot;expected_turnout&quot;, &quot;2008_turnout&quot;)) %&gt;%
@@ -224,30 +231,33 @@ dt_state_2016_combined %&gt;%
         legend.title = element_text(size = 10),
         legend.title.align = 0.5)</code></pre>
 <p><img src="/post/2020-08-25-effect-of-increasing-voter-turnout-in-the-u-s_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<pre class="r"><code># ggsave(file = &quot;~/Desktop/election_2016_plot_2.png&quot;, width = 6, height = 4)</code></pre>
-<pre class="r"><code># Calculate state_level party preference in 2019 (adjusted for state bias)
+<pre class="r"><code>ggsave(file = &quot;~/Desktop/election_2016_plot_2.png&quot;, width = 6, height = 4)</code></pre>
+<pre class="r"><code># Calculate state_level party preference in 2019
 dt_state_2019 = dt_demog_state %&gt;%
   group_by(state, name) %&gt;%
   summarize_at(vars(party_pref), ~(weighted.mean(., w = turnout_weight2019))) %&gt;%
   ungroup() %&gt;%
   left_join(., state_tb, by = &quot;name&quot;) %&gt;%
-  mutate(party_pref_adj_expected_turnout = party_pref*state_bias) %&gt;%
-  arrange(party_pref_adj_expected_turnout)
+  mutate(party_pref_expected_turnout = party_pref) %&gt;%
+  arrange(party_pref_expected_turnout)
 
-# Calculate state-level party preference in 2019 under full turnout for all groups (adjusted for state bias)
+# Calculate state-level party preference in 2019 under full turnout for all groups
 dt_state_2019_full = dt_demog_state %&gt;%
   group_by(state, name) %&gt;%
   summarize_at(vars(party_pref), ~(weighted.mean(., w = popestimate2019))) %&gt;%
   ungroup() %&gt;%
   left_join(., state_tb, by = &quot;name&quot;) %&gt;%
-  mutate(party_pref_adj_full_turnout = party_pref*state_bias) %&gt;%
-  arrange(party_pref_adj_full_turnout)</code></pre>
-<pre class="r"><code>dt_state_2019_combined = dt_state_2019 %&gt;% 
-  left_join(., dt_state_2019_full %&gt;% select(name, party_pref_adj_full_turnout), by = &quot;name&quot;) %&gt;%
-  select(name, party_pref_adj_expected_turnout, party_pref_adj_full_turnout) %&gt;%
-  mutate(name = reorder(name, party_pref_adj_expected_turnout)) %&gt;%
-  pivot_longer(cols = starts_with(&quot;party_pref_adj&quot;), names_to = &quot;turnout_type&quot;, names_prefix = &quot;party_pref_adj_&quot;, values_to = &quot;party_pref&quot;) %&gt;%
-  mutate(gop_vote_percentage = party_pref/(party_pref + 1))</code></pre>
+  mutate(party_pref_full_turnout = party_pref) %&gt;%
+  arrange(party_pref_full_turnout)</code></pre>
+<pre class="r"><code># Calculate adjusted party preferences
+dt_state_2019_combined = dt_state_2019 %&gt;% 
+  left_join(., dt_state_2019_full %&gt;% select(name, party_pref_full_turnout), by = &quot;name&quot;) %&gt;%
+  mutate(party_pref_adj_expected_turnout = party_pref_expected_turnout*state_bias,
+         gop_vote_percentage_expected_turnout = party_pref_adj_expected_turnout/(party_pref_adj_expected_turnout + 1),
+         gop_vote_percentage_full_turnout = gop_vote_percentage_expected_turnout + (party_pref_full_turnout/(party_pref_full_turnout + 1) - party_pref_expected_turnout/(party_pref_expected_turnout + 1)),
+         name = reorder(name, gop_vote_percentage_expected_turnout)) %&gt;%
+    select(name, gop_vote_percentage_expected_turnout, gop_vote_percentage_full_turnout) %&gt;%
+  pivot_longer(cols = starts_with(&quot;gop_vote_percentage&quot;), names_to = &quot;turnout_type&quot;, names_prefix = &quot;gop_vote_percentage_&quot;, values_to = &quot;gop_vote_percentage&quot;)</code></pre>
 <pre class="r"><code># Plot 2016 election with 2019 demographics
 dt_state_2019_combined %&gt;%
   filter(gop_vote_percentage &gt;= 0.45 &amp; gop_vote_percentage &lt;= 0.55) %&gt;%
@@ -270,7 +280,7 @@ dt_state_2019_combined %&gt;%
         legend.title = element_text(size = 10),
         legend.title.align = 0.5)</code></pre>
 <p><img src="/post/2020-08-25-effect-of-increasing-voter-turnout-in-the-u-s_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-<pre class="r"><code># ggsave(file = &quot;~/Desktop/election_2019_plot.png&quot;, width = 6, height = 4)</code></pre>
+<pre class="r"><code>ggsave(file = &quot;~/Desktop/election_2019_plot.png&quot;, width = 6, height = 4)</code></pre>
 </div>
 <div id="final-thoughts" class="section level2">
 <h2>Final thoughts</h2>
@@ -281,10 +291,8 @@ dt_state_2019_combined %&gt;%
 <li><strong>State-level analysis</strong>: I only used demographic data on a state-level. If I had more time, I could have done a district/county-level analysis (such data is available). In addition, Maine and Nebraska also assign electors based on congressional districts rather than the whole state.</li>
 <li><strong>Uniform demographic behavior</strong>: I assume that turnout rates and party preferences by demographic groups were the same in all states.</li>
 <li><strong>No interactions between demographics</strong>: When I compute turnout rates or party preferences, I assume that the numbers for sex, race, and age can be iteratively aggregated. For example, the turnout rate for an 18-year old Asian female is computed to be the mean of the turnout rate for the age group 18-25, the turnout rate for Asians, and the turnout rate for women. The party preference is aggregated by taking the product.</li>
-<li><strong>Non-demographic factors</strong>: It’s a bit silly to think that whether someone votes Democrat or Republican can be completely determined by their sex, race, and age. To some extent, I’ve addressed this with the quick and dirty solution of the “state bias” factor. I think this solution is sufficient for the purposes of demonstrating a hypothetical what-if scenario for the 2016 election. But if I were a political analyst working on the 2020 election, I would want to look at polling data, for example, and generally better understand and quantify voting behavior.</li>
 <li><strong>Non-voting population</strong>: I assume that the non-voting population votes exactly the same way as the voting population based on their demographics.</li>
-<li><strong>No third party</strong>: I assume there are only 2 parties, so every party preference metric is calculated as a GOP:Democratic ratio.</li>
-<li><strong>State bias factor</strong>: The state bias factor distorts the effect size of demographic changes in the voter base on the GOP vote percentage. However, in the scenarios I’m examining, the effect size of the demographic changes are small to begin with and the state bias factor is bounded, so the distortion is relatively small. In particular, the state bias for the four swing states of Michigan, Wisconsin, Pennsylvania, and Florida are all between 0.96 and 1.33 and the difference in effect size with and without the state bias is at most 0.15% for these four states.</li>
+<li><strong>No third party</strong>: I assume that there are only 2 parties, so every party preference metric is calculated as a GOP:Democratic ratio.</li>
 </ol>
 </div>
 <div id="data-issues" class="section level3">
@@ -327,7 +335,7 @@ dt_state_2019_combined %&gt;%
 <hr />
 <ol>
 <li id="fn1"><p>Even though there are quite a few articles on this topic, which I’ve listed under “Related articles,” none of them do the specific quantitative analysis I was looking for.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>The GOP vote percentage is calculated as the share of votes won by the GOP candidate Donald Trump out of all votes cast for either the GOP or Democratic candidate.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>I wasn’t aware of how extreme of an outlier D.C. was until I made this plot!<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>I wasn’t aware of how extreme of an outlier D.C. was until I made this plot!<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>It’s also in my code because I originally did my calculations slightly differently, where the state bias variable would actually affect to the analysis results, albeit to only a small degree.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
