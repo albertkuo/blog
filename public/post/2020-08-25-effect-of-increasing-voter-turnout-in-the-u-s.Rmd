@@ -1,7 +1,7 @@
 ---
 title: What is the Effect of Increasing Voter Turnout in the U.S.?
 author: ''
-date: '2020-08-27'
+date: '2020-08-28'
 slug: effect-of-increasing-voter-turnout-in-the-u-s
 categories:
   - statistics
@@ -302,9 +302,14 @@ dt_state_2019_full = dt_demog_state %>%
 # Calculate adjusted party preferences
 dt_state_2019_combined = dt_state_2019 %>% 
   left_join(., dt_state_2019_full %>% select(name, party_pref_full_turnout), by = "name") %>%
-  mutate(party_pref_adj_expected_turnout = party_pref_expected_turnout*state_bias,
-         gop_vote_percentage_expected_turnout = party_pref_adj_expected_turnout/(party_pref_adj_expected_turnout + 1),
-         gop_vote_percentage_full_turnout = gop_vote_percentage_expected_turnout + (party_pref_full_turnout/(party_pref_full_turnout + 1) - party_pref_expected_turnout/(party_pref_expected_turnout + 1)),
+  left_join(., dt_state_2016 %>% select(name, party_pref_expected_turnout) %>% 
+              rename(party_pref_2016_turnout = party_pref_expected_turnout), by = "name") %>%
+  mutate(party_pref_adj_2016_turnout = party_pref_2016_turnout*state_bias,
+         gop_vote_percentage_2016_turnout = party_pref_adj_2016_turnout/(party_pref_adj_2016_turnout + 1),
+         gop_vote_percentage_expected_turnout = gop_vote_percentage_2016_turnout + 
+           (party_pref_expected_turnout/(party_pref_expected_turnout + 1) - party_pref_2016_turnout/(party_pref_2016_turnout + 1)),
+         gop_vote_percentage_full_turnout = gop_vote_percentage_expected_turnout + 
+           (party_pref_full_turnout/(party_pref_full_turnout + 1) - party_pref_expected_turnout/(party_pref_expected_turnout + 1)),
          name = reorder(name, gop_vote_percentage_expected_turnout)) %>%
     select(name, gop_vote_percentage_expected_turnout, gop_vote_percentage_full_turnout) %>%
   pivot_longer(cols = starts_with("gop_vote_percentage"), names_to = "turnout_type", names_prefix = "gop_vote_percentage_", values_to = "gop_vote_percentage")
