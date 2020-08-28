@@ -164,7 +164,7 @@ dt_state_2016 = dt_demog_state %&gt;%
 <div id="state-bias" class="section level2">
 <h2>State bias</h2>
 <p>This difference between the party preference based on a state’s demographics and what the state ended up voting in the 2016 election is what I call the “state bias” factor. For example, California’s predicted party preference is 0.65 and its ratio of GOP:Democratic votes is 0.53, so its state bias is 0.53/0.65 = 0.82. Since the state bias is less than 1, that means that California skews even more Democratic than what its demographics would suggest.</p>
-<p>While an interesting side point, the state bias doesn’t actually affect my main analysis in any way. In my code, the <code>state_bias</code> variable is used as just a shortcut to perform some computations.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> For my analysis, I simply start with the 2016 election results and directly add the estimated effect from increasing voter turnout. I explain this in more detail in the next section.</p>
+<p>While an interesting side point, the state bias doesn’t directly affect the calculations for my main analysis. In my code, the <code>state_bias</code> variable is used as just a shortcut to perform some computations.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> For my analysis, I simply start with the 2016 election results and add the estimated effect from increasing voter turnout. I explain this in more detail in the next section.</p>
 <pre class="r"><code># Calculate state bias
 voting_results_2016_raw = read_csv(&quot;../../csv/2016_US_County_Level_Presidential_Results.csv&quot;, col_types = cols()) # Data source #7
 voting_results_2016 = voting_results_2016_raw %&gt;%
