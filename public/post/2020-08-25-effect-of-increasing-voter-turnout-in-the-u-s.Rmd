@@ -43,11 +43,11 @@ Having said that, no one knows how tight the margins will be for every new elect
 
 Wisconsin, Florida, and Pennsylvania are now predicted to have vote percentages closer to the boundary of 50% and it's more likely that increasing voter turnout might flip those states from Republican to Democrat. 
 
-In summary, I think that it's unlikely that any reasonable increase in voter turnout would have changed the 2016 election results. However, that doesn't mean it won't make a difference in the 2020 election. 
+In summary, I think that it's unlikely that any reasonable increase in voter turnout would have changed the 2016 presidential election results. However, that doesn't mean it won't make a difference in the 2020 presidential election. 
 
 # Analysis details
 
-If you're interested in how I did my analysis, keep reading on. I will walk through it step-by-step.
+If you're interested in how I did my analysis, keep reading. I walk through my approach step-by-step.
 
 ## Party preference and turnout by demographic groups
 
@@ -153,7 +153,7 @@ state_tb = dt_state_2016 %>%
 
 ## Putting it all together
 
-For every state, I calculate the difference between the GOP vote percentage based on the expected voter turnout and the GOP vote percentage under a 100% turnout rate (or any other counterfactual turnout rate). I take the difference between these two values and add it to the 2016 election result. 
+For every state, I calculate the difference between the GOP vote percentage based on the expected voter turnout^[Based solely on turnout rates by demographic groups.] and the GOP vote percentage under a 100% turnout rate (or any other counterfactual turnout rate). I take the difference between these two values and add it to the 2016 election result. 
 
 For example, for California, based on the party preferences by demographic groups, the GOP vote percentage was 39.6% under the expected voter turnout and 38.2% under a 100% turnout. The difference in vote percentage between these two voter turnout rates is therefore -1.4%. The actual GOP vote percentage for California in the 2016 election was 34.7%. Thus, my estimate for the GOP vote percentage under a 100% turnout is 34.7 - 1.4 = 33.3%.
 
@@ -169,7 +169,7 @@ dt_state_2016 = dt_demog_state %>%
   mutate(party_pref_expected_turnout = party_pref) %>%
   arrange(party_pref_expected_turnout)
 
-# Calculate state-level party preference in 2016 under 2008 turnout for race
+# Calculate state-level party preference in 2016 under 2008 turnout
 dt_state_2016_turnout2008 = dt_demog_state %>%
   group_by(state, name) %>%
   summarize_at(vars(party_pref), ~(weighted.mean(., w = turnout_2008*popestimate2016))) %>%
@@ -247,7 +247,7 @@ p2 = dt_state_2016_combined %>%
 
 title = ggdraw() + draw_label("2016 Election")
 plot_grid(title, p1, p2, labels = c("", "a", "b"), ncol = 1, rel_heights = c(0.08, 1, 1))
-ggsave(file = "~/Desktop/election_2016_plot.png", width = 6, height = 8)
+# ggsave(file = "~/Desktop/election_2016_plot.png", width = 6, height = 8)
 ```
 
 ```{r}
@@ -274,7 +274,7 @@ dt_state_2016_combined %>%
         legend.title = element_text(size = 10),
         legend.title.align = 0.5)
 
-ggsave(file = "~/Desktop/election_2016_plot_2.png", width = 6, height = 4)
+# ggsave(file = "~/Desktop/election_2016_plot_2.png", width = 6, height = 4)
 ```
 
 
@@ -333,7 +333,7 @@ dt_state_2019_combined %>%
         legend.title = element_text(size = 10),
         legend.title.align = 0.5)
 
-ggsave(file = "~/Desktop/election_2019_plot.png", width = 6, height = 4)
+# ggsave(file = "~/Desktop/election_2019_plot.png", width = 6, height = 4)
 ```
 
 ## Final thoughts 
@@ -345,13 +345,13 @@ I think what I've shown is a pretty reasonable ballpark hypothetical of what wou
 1. **State-level analysis**: I only used demographic data on a state-level. If I had more time, I could have done a district/county-level analysis (such data is available). In addition, Maine and Nebraska also assign electors based on congressional districts rather than the whole state.
 2. **Uniform demographic behavior**: I assume that turnout rates and party preferences by demographic groups were the same in all states. 
 3. **No interactions between demographics**: When I compute turnout rates or party preferences, I assume that the numbers for sex, race, and age can be iteratively aggregated. For example, the turnout rate for an 18-year old Asian female is computed to be the mean of the turnout rate for the age group 18-25, the turnout rate for Asians, and the turnout rate for women. The party preference is aggregated by taking the product.
-4. **Non-voting population**: I assume that the non-voting population votes exactly the same way as the voting population based on their demographics. 
+4. **Generalizability to non-voting population**: I assume that the non-voting population votes exactly the same way as the voting population based on their demographics. 
 5. **No third party**: I assume that there are only 2 parties, so every party preference metric is calculated as a GOP:Democratic ratio.
 
 ### Data issues
 
-1. **Survey data**: Party preferences and voter turnouts by demographics are based on surveys. Surveys can exhibit all sorts of bias (e.g. sampling bias, response bias).
-2. **Voting-eligible population**: The population numbers by demographic groups I use comes from the voting-age population. This is different from the voting-eligible population, since not all residents over the age of 18 are eligible to vote (e.g. non-citizens, felons depending on the state). 
+1. **Survey data**: Party preferences and voter turnouts by demographics are based on surveys. Surveys can exhibit all sorts of bias (e.g. sampling bias, response bias). Some of my data sources do mention that they try to correct for this, but I didn't look further into what they did.
+2. **Voting-eligible population**: The population numbers by demographic groups I use comes from the voting-age population. This is different from the voting-eligible population, since not all residents over the age of 18 are eligible to vote (e.g. non-citizens, some felons). 
 3. **Various data sources**: The age groups don't match exactly between data sources. The sources for different demographic variables and different races may be different. However, I've annotated every data source in the code comments for a reproducible analysis.
 4. **Limited to 4 races**: I only counted residents in 4 race groups (Non-Hispanic White, Black, Hispanic White, and Asian), given the limited data on other races.
 
