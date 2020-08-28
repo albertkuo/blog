@@ -35,7 +35,7 @@ draft: no
 <p>If you’re interested in how I did my analysis, keep reading. I walk through my approach step-by-step.</p>
 <div id="party-preference-and-turnout-by-demographic-groups" class="section level2">
 <h2>Party preference and turnout by demographic groups</h2>
-<p>To understand how increasing the voter turnout may affect the election, I collected data on two things: the estimated turnout rate (i.e. What % of a demographic group voted?) and the party preference (i.e. What is the ratio of Republican vs Democratic votes for a demographic group?). If both the turnout rates and party preferences differ between demographic groups, then increasing the turnout rate can shift the election outcome. I looked at 3 demographic variables: sex, age, and race.</p>
+<p>To understand how increasing the voter turnout may affect the election, I collected data on two things: the estimated turnout rate (i.e. What % of a demographic group voted?) and the party preference (i.e. What is the ratio of Republican vs Democratic votes for a demographic group?). The idea is that if both the turnout rates and party preferences differ between demographic groups, then increasing the voter turnout can shift the election outcome. I looked at 3 demographic variables: sex, age, and race.</p>
 <pre class="r"><code># Sex
 sex_tb = tibble(sex = c(&quot;Male&quot;, &quot;Female&quot;),
                 party_pref_sex = c(52/41, 39/54), # Data source #1
@@ -291,6 +291,7 @@ dt_state_2019_combined %&gt;%
 <li><strong>State-level analysis</strong>: I only used demographic data on a state-level. If I had more time, I could have done a district/county-level analysis (such data is available). In addition, Maine and Nebraska also assign electors based on congressional districts rather than the whole state.</li>
 <li><strong>Uniform demographic behavior</strong>: I assume that turnout rates and party preferences by demographic groups were the same in all states.</li>
 <li><strong>No interactions between demographics</strong>: When I compute turnout rates or party preferences, I assume that the numbers for sex, race, and age can be iteratively aggregated. For example, the turnout rate for an 18-year old Asian female is computed to be the mean of the turnout rate for the age group 18-25, the turnout rate for Asians, and the turnout rate for women. The party preference is aggregated by taking the product.</li>
+<li><strong>Non-demographic factors</strong>: There are other known factors that drive different party preferences and voter turnout, such as education and income. On a state level, states are known to exhibit different turnout rates that are unlikely to be completely explained by the demographic distribution (this implies that I’m overestimating the effect of increasing voter turnout when I underestimate the state turnout rate and vice versa).</li>
 <li><strong>Generalizability to non-voting population</strong>: I assume that the non-voting population votes exactly the same way as the voting population based on their demographics.</li>
 <li><strong>No third party</strong>: I assume that there are only 2 parties, so every party preference metric is calculated as a GOP:Democratic ratio.</li>
 </ol>
@@ -336,7 +337,7 @@ dt_state_2019_combined %&gt;%
 <ol>
 <li id="fn1"><p>Even though there are quite a few articles on this topic, which I’ve listed under “Related articles,” none of them do the specific quantitative analysis I was looking for.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 <li id="fn2"><p>I wasn’t aware of how extreme of an outlier D.C. was until I made this plot!<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>It’s also in my code because I originally did my calculations slightly differently, where the state bias variable would actually affect to the analysis results, albeit to only a small degree.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>It’s also in my code because I originally did my calculations slightly differently, where the state bias variable could actually affect the analysis results, albeit to only a small degree.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 <li id="fn4"><p>Based solely on turnout rates by demographic groups.<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
