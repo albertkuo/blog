@@ -18,7 +18,7 @@ draft: false
 <ol style="list-style-type: decimal">
 <li><a href="https://github.com/trinker/pacman"><code>pacman</code></a> for loading packages:</li>
 </ol>
-<p>This package contains an awesome function called <code>p_load</code>. I prefer the concise way it lets you load packages, as opposed to writing <code>library(package)</code> over and over again. Moreover, <code>p_load</code> automatically checks if you have installed the package and if you haven’t, installs it for you from CRAN. While this is the only function from <code>pacman</code> that I consistently use, the package has a couple more intuitively named functions for managing packages (e.g. <code>p_load_gh</code>, <code>p_unload</code>, <code>p_update</code>) that I can also see being useful, if only I could remember they exist.</p>
+<p>This package contains an awesome function called <code>p_load</code>. I prefer the concise way it lets you load packages, as opposed to writing <code>library(package)</code> over and over again. Moreover, <code>p_load</code> automatically checks if you have installed the package and if you haven’t, installs it for you from CRAN. While this is the only function from <code>pacman</code> that I consistently use, the package has a couple more intuitively named functions for managing packages (e.g. <code>p_load_gh</code>, <code>p_unload</code>, <code>p_update</code>) that I can also see being useful, if only I could remember they exist.</p>
 <pre class="r"><code>library(pacman)
 p_load(tidyverse, janitor, skimr, broom, here)</code></pre>
 <ol start="2" style="list-style-type: decimal">
@@ -34,27 +34,142 @@ dt = dt_raw %&gt;% clean_names()</code></pre>
 <p>This package has a function called <code>skim</code> that’s basically a better version of <code>summary</code>. It gives you a tally of missing observations and plots a mini histogram of each numeric variable, which I think is super neat.</p>
 <pre class="r"><code>data(iris)
 skim(iris)</code></pre>
-<pre><code>## Skim summary statistics
-##  n obs: 150 
-##  n variables: 5 
-## 
-## ── Variable type:factor ─────────────────────────────────────────────────
-##  variable missing complete   n n_unique                       top_counts
-##   Species       0      150 150        3 set: 50, ver: 50, vir: 50, NA: 0
-##  ordered
-##    FALSE
-## 
-## ── Variable type:numeric ────────────────────────────────────────────────
-##      variable missing complete   n mean   sd  p0 p25  p50 p75 p100
-##  Petal.Length       0      150 150 3.76 1.77 1   1.6 4.35 5.1  6.9
-##   Petal.Width       0      150 150 1.2  0.76 0.1 0.3 1.3  1.8  2.5
-##  Sepal.Length       0      150 150 5.84 0.83 4.3 5.1 5.8  6.4  7.9
-##   Sepal.Width       0      150 150 3.06 0.44 2   2.8 3    3.3  4.4
-##      hist
-##  ▇▁▁▂▅▅▃▁
-##  ▇▁▁▅▃▃▂▂
-##  ▂▇▅▇▆▅▂▂
-##  ▁▂▅▇▃▂▁▁</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-3">Table 1: </span>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="left">iris</td>
+</tr>
+<tr class="even">
+<td align="left">Number of rows</td>
+<td align="left">150</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of columns</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">_______________________</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Column type frequency:</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">factor</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">numeric</td>
+<td align="left">4</td>
+</tr>
+<tr class="even">
+<td align="left">________________________</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Group variables</td>
+<td align="left">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: factor</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="left">ordered</th>
+<th align="right">n_unique</th>
+<th align="center">top_counts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Species</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="left">FALSE</td>
+<td align="right">3</td>
+<td align="center">set: 50, ver: 50, vir: 50</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">p0</th>
+<th align="right">p25</th>
+<th align="right">p50</th>
+<th align="right">p75</th>
+<th align="right">p100</th>
+<th align="left">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Sepal.Length</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">5.84</td>
+<td align="right">0.83</td>
+<td align="right">4.3</td>
+<td align="right">5.1</td>
+<td align="right">5.80</td>
+<td align="right">6.4</td>
+<td align="right">7.9</td>
+<td align="left">▆▇▇▅▂</td>
+</tr>
+<tr class="even">
+<td align="left">Sepal.Width</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">3.06</td>
+<td align="right">0.44</td>
+<td align="right">2.0</td>
+<td align="right">2.8</td>
+<td align="right">3.00</td>
+<td align="right">3.3</td>
+<td align="right">4.4</td>
+<td align="left">▁▆▇▂▁</td>
+</tr>
+<tr class="odd">
+<td align="left">Petal.Length</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">3.76</td>
+<td align="right">1.77</td>
+<td align="right">1.0</td>
+<td align="right">1.6</td>
+<td align="right">4.35</td>
+<td align="right">5.1</td>
+<td align="right">6.9</td>
+<td align="left">▇▁▆▇▂</td>
+</tr>
+<tr class="even">
+<td align="left">Petal.Width</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1.20</td>
+<td align="right">0.76</td>
+<td align="right">0.1</td>
+<td align="right">0.3</td>
+<td align="right">1.30</td>
+<td align="right">1.8</td>
+<td align="right">2.5</td>
+<td align="left">▇▁▇▅▃</td>
+</tr>
+</tbody>
+</table>
 <ol start="4" style="list-style-type: decimal">
 <li><a href="https://github.com/tidymodels/broom"><code>broom</code></a> for working with model output:</li>
 </ol>
@@ -81,5 +196,6 @@ tidy(model_lm)</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li><a href="https://github.com/r-lib/here"><code>here</code></a> for paths:</li>
 </ol>
-<p>By default, R uses the user home directory as the working directory. This is generally not ideal, because it’s likely that all the files you want to read and write are in some local folder, not your home directory. To get around this, one way is to use <code>setwd</code> at the top of your R script, i.e. <code>setwd(&quot;Users/myusername/myfolder/2019/project_a/&quot;)</code>. But this can be problematic when you share your code, since it means your collaborator will have to change that line of code to match their directory structure. And it will break if you change any of your parent directory names, e.g. “2019” or “project_a.” The function <code>here</code> solves this by automatically identifying which directory makes most sense as the root directory, for example, by finding an <code>.Rproj</code> or <code>.git</code> file. Most of my code is either in a git repository or part of an R project or both, so this solution works well for me.</p>
-<p>I’ve found that <code>here</code> is not necessary for R markdown files though, since by default, an R markdown file uses the directory of the file itself as the base directory. Since I prefer to write my analyses and reports in R markdown in general, I don’t use <code>here</code> quite as much as you might expect.</p>
+<p>By default, R uses the user home directory as the working directory. This is generally not ideal, because it’s likely that all the files you want to read and write are in some local folder, not your home directory. To get around this, one way is to use <code>setwd</code> at the top of your R script, i.e. <code>setwd("Users/myusername/myfolder/2019/project_a/")</code>. But this can be problematic when you share your code, since it means your collaborator will have to change that line of code to match their directory structure. And it will break if you change any of your parent directory names, e.g. “2019” or “project_a.”</p>
+<p>The function <code>here</code> solves this by automatically identifying which directory makes most sense as the root directory, for example, by finding an <code>.Rproj</code> or <code>.git</code> file. Most of my code is either in a git repository or part of an R project or both, so this solution works well for me. As a quick example, you can write the file path as <code>here("./data/sample_data.csv")</code> or <code>here("data", "sample_data.csv")</code>. I’ve usually found the former to be the more convenient syntax, since it’s more compatible with autocomplete, but there may be cases where the latter is also useful.</p>
+<p>The package is perhaps less necessary for R markdown files because by default, an R markdown file uses the directory of the file itself as the base directory. It’s especially true if I’m working on an individual one-off Rmd file, since I may not have an <code>.Rproj</code> or <code>.git</code> file in place. But that happens pretty rarely these days. If I’m working on an <code>Rmd</code> file within an R project, I still prefer to use <code>here</code> to be consistent.</p>
