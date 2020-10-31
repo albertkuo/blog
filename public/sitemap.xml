@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/advice-for-prospective-phd-students-in-biostatistics/</loc>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/probability-of-winning-an-nba-game-a-minute-by-minute-breakdown/</loc>
+    <lastmod>2020-10-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/experiences-as-a-senior-phd-student/</loc>
+    <lastmod>2020-10-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/effect-of-increasing-voter-turnout-in-the-u-s/</loc>
     <lastmod>2020-08-28T00:00:00+00:00</lastmod>
   </url>
@@ -98,14 +113,14 @@
   </url>
   
   <url>
-    <loc>/tags/advice/</loc>
-    <lastmod>2020-02-02T00:00:00+00:00</lastmod>
+    <loc>/categories/advice/</loc>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/advice/</loc>
-    <lastmod>2019-12-14T00:00:00+00:00</lastmod>
+    <loc>/tags/advice/</loc>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -117,7 +132,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-08-28T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -129,7 +144,7 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2019-12-14T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -219,7 +234,7 @@
   
   <url>
     <loc>/tags/phd/</loc>
-    <lastmod>2020-02-02T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -264,13 +279,13 @@
   </url>
   
   <url>
-    <loc>/tags/r/</loc>
-    <lastmod>2020-01-08T00:00:00+00:00</lastmod>
+    <loc>/categories/r/</loc>
+    <lastmod>2020-10-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/r/</loc>
+    <loc>/tags/r/</loc>
     <lastmod>2020-01-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -300,8 +315,8 @@
   </url>
   
   <url>
-    <loc>/tags/statistics/</loc>
-    <lastmod>2020-08-28T00:00:00+00:00</lastmod>
+    <loc>/tags/sports/</loc>
+    <lastmod>2020-10-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -312,8 +327,14 @@
   </url>
   
   <url>
+    <loc>/tags/statistics/</loc>
+    <lastmod>2020-10-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/</loc>
-    <lastmod>2020-02-02T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

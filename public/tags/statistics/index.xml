@@ -6,10 +6,19 @@
     <description>Recent content in Statistics on Blog | Albert</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Probability of Winning an NBA Game: A Minute-by-Minute Breakdown</title>
+      <link>/post/probability-of-winning-an-nba-game-a-minute-by-minute-breakdown/</link>
+      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/probability-of-winning-an-nba-game-a-minute-by-minute-breakdown/</guid>
+      <description>Your favorite NBA team is down 17 points and there are only 12 minutes left in the quarter. What is the probability that they pull a comeback and win the game? This kind of question is one that I frequently have while watching basketball and one that I’ve always felt should be answerable. I’ve found that sports commentary loves to provide arbitrary, super specific statistics (e.g. no team has won Game 7 of an Eastern Conference final after being outscored in the first half and losing Game 6 by a margin more than 10 points), I suspected that the data I needed exists somewhere – all I need, quite simply, is a minute-by-minute points breakdown of previous NBA games.</description>
+    </item>
     
     <item>
       <title>What is the Effect of Increasing Voter Turnout in the U.S.?</title>
