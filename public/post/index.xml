@@ -12,21 +12,33 @@
     
     
     <item>
+      <title>Probability of Winning an NBA Game: A Minute-by-Minute Breakdown</title>
+      <link>/post/probability-of-winning-an-nba-game-a-minute-by-minute-breakdown/</link>
+      <pubDate>Fri, 20 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/probability-of-winning-an-nba-game-a-minute-by-minute-breakdown/</guid>
+      <description>Your NBA team is down 17 points and there are only 8 minutes left in the game. What is the probability that they pull a comeback and win the game?
+It’s possible to answer this using historical data (i.e. in the past, how many teams have won after being in this situation). Given that sports commentators love to provide super specific, seemingly arbitrary statistics (e.g. no team has won Game 7 of an ECF after losing Game 6 by more than 10 points), I knew that I should be able to access the relevant data somewhere and calculate these probabilities.</description>
+    </item>
+    
+    <item>
+      <title>Introduction to SQL (for an R user)</title>
+      <link>/post/introduction-to-sql/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/introduction-to-sql/</guid>
+      <description>Although SQL is commonly used in industry, it’s not something that’s often used or taught in academia. Since I don’t use it regularly, it’s hard to retain. To resolve this, I’ve created the following basic guide for SQL commands along with their equivalents in R/dplyr. Hopefully, this will allow me to pick SQL back up again more quickly in the future.
+This guide is primarily based on sqlzoo.
+Selecting columns and rows SELECT The SELECT command selects columns from the table.</description>
+    </item>
+    
+    <item>
       <title>Advice for Prospective PhD Students (in biostatistics)</title>
       <link>/post/advice-for-prospective-phd-students-in-biostatistics/</link>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/post/advice-for-prospective-phd-students-in-biostatistics/</guid>
       <description>It’s application season for graduate admissions again! As a current PhD student, I thought I would share some advice for prospective students. I’d previously written on whether you should get a PhD. In this post, I will talk about things you can do to prepare for a biostatistics PhD and the application process. As with any advice I give on this blog, it is based on my personal experience – I was a math and statistics major in undergrad at UChicago and I’m now a biostatistics PhD student at Johns Hopkins – so your mileage may vary.</description>
-    </item>
-    
-    <item>
-      <title>Probability of Winning an NBA Game: A Minute-by-Minute Breakdown</title>
-      <link>/post/probability-of-winning-an-nba-game-a-minute-by-minute-breakdown/</link>
-      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/probability-of-winning-an-nba-game-a-minute-by-minute-breakdown/</guid>
-      <description>Your favorite NBA team is down 17 points and there are only 12 minutes left in the quarter. What is the probability that they pull a comeback and win the game? This kind of question is one that I frequently have while watching basketball and one that I’ve always felt should be answerable. I’ve found that sports commentary loves to provide arbitrary, super specific statistics (e.g. no team has won Game 7 of an Eastern Conference final after being outscored in the first half and losing Game 6 by a margin more than 10 points), I suspected that the data I needed exists somewhere – all I need, quite simply, is a minute-by-minute points breakdown of previous NBA games.</description>
     </item>
     
     <item>

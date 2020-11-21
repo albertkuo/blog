@@ -6,7 +6,7 @@
     <description>Recent content in R on Blog | Albert</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,10 +14,11 @@
     <item>
       <title>Probability of Winning an NBA Game: A Minute-by-Minute Breakdown</title>
       <link>/post/probability-of-winning-an-nba-game-a-minute-by-minute-breakdown/</link>
-      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 20 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>/post/probability-of-winning-an-nba-game-a-minute-by-minute-breakdown/</guid>
-      <description>Your favorite NBA team is down 17 points and there are only 12 minutes left in the quarter. What is the probability that they pull a comeback and win the game? This kind of question is one that I frequently have while watching basketball and one that I’ve always felt should be answerable. I’ve found that sports commentary loves to provide arbitrary, super specific statistics (e.g. no team has won Game 7 of an Eastern Conference final after being outscored in the first half and losing Game 6 by a margin more than 10 points), I suspected that the data I needed exists somewhere – all I need, quite simply, is a minute-by-minute points breakdown of previous NBA games.</description>
+      <description>Your NBA team is down 17 points and there are only 8 minutes left in the game. What is the probability that they pull a comeback and win the game?
+It’s possible to answer this using historical data (i.e. in the past, how many teams have won after being in this situation). Given that sports commentators love to provide super specific, seemingly arbitrary statistics (e.g. no team has won Game 7 of an ECF after losing Game 6 by more than 10 points), I knew that I should be able to access the relevant data somewhere and calculate these probabilities.</description>
     </item>
     
     <item>
