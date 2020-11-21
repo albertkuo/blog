@@ -54,7 +54,7 @@ game_ids = [game["GAME_ID"] for game in games if game["TEAM_ID"] in nba_team_ids
 print(game_ids[1:10])
 ```
 
-Now once you have the game IDs, you can access the play-by-play data for that game. The play-by-play refers to the table that looks like [this](https://www.espn.com/nba/playbyplay?gameId=401248438), so there is information not only about all the shots that were made, but also other plays like blocks, rebounds, etc. down to the second. In the code chunk below, I show how to download the play-by-play, remove non-scoring rows, and clean up the columns a bit for one game ID. Again, you want to loop this over all your game IDs, making sure to add a 0.5 second time delay between requests. There are about 27,000 games in total from 2000-2020, so it took me about 4-5 hours to download the play-by-play for all the games sequentially on my local computer. 
+Now once you have the game IDs, you can access the play-by-play data for each game. The play-by-play refers to the table that looks like [this](https://www.espn.com/nba/playbyplay?gameId=401248438), so there is information not only about all the shots that were made, but also other plays like blocks, rebounds, etc. down to the second. In the code chunk below, I show how to download the play-by-play, remove non-scoring rows, and clean up the columns a bit for one game ID. Again, you want to loop this over all your game IDs, making sure to add a 0.5 second time delay between requests. There are about 27,000 games in total from 2000-2020, so it took me about 4-5 hours to download the play-by-play for all the games sequentially on my local computer. 
 
 ```{python}
 from nba_api.stats.endpoints import playbyplay
