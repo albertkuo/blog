@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Introduction to SQL (for an R user)</title>
+      <link>/post/introduction-to-sql/</link>
+      <pubDate>Sat, 28 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/introduction-to-sql/</guid>
+      <description>Although SQL is commonly used in industry, it’s not something that’s often used or taught in academia. I learned it on my own a few years ago, but since I don’t use it regularly, it’s hard to retain. To resolve this, I’ve created the following guide for basic SQL commands along with their equivalents in R/dplyr. Hopefully, this will allow me to pick it back up again more quickly in the future.</description>
+    </item>
+    
+    <item>
       <title>Probability of Winning an NBA Game: A Minute-by-Minute Breakdown</title>
       <link>/post/probability-of-winning-an-nba-game-a-minute-by-minute-breakdown/</link>
       <pubDate>Fri, 20 Nov 2020 00:00:00 +0000</pubDate>
@@ -19,17 +28,6 @@
       <guid>/post/probability-of-winning-an-nba-game-a-minute-by-minute-breakdown/</guid>
       <description>Your NBA team is down 17 points and there are only 8 minutes left in the game. What is the probability that they pull a comeback and win the game?
 It’s possible to answer this using historical data (i.e. in the past, how many teams have won after being in this situation). Given that sports commentators love to provide super specific, seemingly arbitrary statistics (e.g. no team has won Game 7 of an ECF after losing Game 6 by more than 10 points), I knew that I should be able to access the relevant data somewhere and calculate these probabilities.</description>
-    </item>
-    
-    <item>
-      <title>Introduction to SQL (for an R user)</title>
-      <link>/post/introduction-to-sql/</link>
-      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/introduction-to-sql/</guid>
-      <description>Although SQL is commonly used in industry, it’s not something that’s often used or taught in academia. Since I don’t use it regularly, it’s hard to retain. To resolve this, I’ve created the following basic guide for SQL commands along with their equivalents in R/dplyr. Hopefully, this will allow me to pick SQL back up again more quickly in the future.
-This guide is primarily based on sqlzoo.
-Selecting columns and rows SELECT The SELECT command selects columns from the table.</description>
     </item>
     
     <item>
