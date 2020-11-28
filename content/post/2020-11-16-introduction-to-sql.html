@@ -1,0 +1,169 @@
+---
+title: Introduction to SQL (for an R user)
+author: ''
+date: '2020-11-28'
+slug: introduction-to-sql
+categories:
+  - coding
+tags:
+  - SQL
+  - R
+showDate: true
+draft: false
+---
+
+
+
+<p>Although SQL is commonly used in industry, it’s not something that’s often used or taught in academia. I learned it on my own a few years ago, but since I don’t use it regularly, it’s hard to retain. To resolve this, I’ve created the following guide for basic SQL commands along with their equivalents in R/dplyr. Hopefully, this will allow me to pick it back up again more quickly in the future.</p>
+<p>This guide is primarily based on <a href="https://sqlzoo.net/wiki/SQL_Tutorial">sqlzoo</a>.</p>
+<div id="selecting-columns-and-rows" class="section level2">
+<h2>Selecting columns and rows</h2>
+<div id="select" class="section level3">
+<h3>SELECT</h3>
+<p>The <code>SELECT</code> command selects or creates columns from the table. This is like <code>dplyr::select</code> or <code>dplyr::mutate</code>.</p>
+<pre class="sql"><code>SELECT city, country
+FROM table</code></pre>
+<p>Here are some other ways to use <code>SELECT</code>:</p>
+<ul>
+<li><strong>Select all columns:</strong> SELECT *</li>
+<li><strong>Create a new column from existing columns:</strong> SELECT gdp/population</li>
+<li><strong>Rename a column with alias:</strong> SELECT gdp/100 AS gdp2 <em>– AS is optional</em></li>
+<li><strong>Round a column:</strong> SELECT ROUND(gdp/100, 2) <em>– round to 2 decimal places</em></li>
+<li><strong>Distinct entries:</strong> SELECT DISTINCT country</li>
+<li><strong>Case when:</strong> SELECT CASE WHEN country = ‘France’ THEN ‘Europe’ WHEN country = ‘India’ THEN ‘Asia’ ELSE ‘Other’ END continent</li>
+<li><strong>Return first value that is not NULL:</strong> SELECT COALESCE(city, ‘None’)</li>
+<li><strong>Concatenate a string:</strong> SELECT concat(city, “City”)</li>
+<li><strong>Select top 2 rows:</strong> SELECT TOP 2 * FROM table <em>– the command is LIMIT, used after FROM, for MySQL</em></li>
+</ul>
+<p>Note that since you can use <code>SELECT</code> to essentially create new columns, it can be useful to use a <code>SELECT</code> within <code>SELECT</code>.</p>
+</div>
+<div id="where" class="section level3">
+<h3>WHERE</h3>
+<p>The <code>WHERE</code> command filters rows from the table. This is like <code>dplyr::filter</code>.</p>
+<pre class="sql"><code>SELECT city
+FROM table
+WHERE country = &#39;France&#39;</code></pre>
+<p>Here are some other ways to use <code>WHERE</code>:</p>
+<ul>
+<li><strong>Not equal:</strong> WHERE country &lt;&gt; ‘France’</li>
+<li><strong>Element in a list:</strong>
+<ul>
+<li>WHERE country IN (‘France’, ‘Germany’)</li>
+<li>WHERE country NOT IN (‘France’, ‘Germany’)</li>
+</ul></li>
+<li><strong>Pattern match strings:</strong>
+<ul>
+<li>WHERE country LIKE ‘F%’ <em>– country starts with F</em></li>
+<li>WHERE country LIKE ‘_F%’ <em>– second letter of country is F</em></li>
+</ul></li>
+<li><strong>Numeric ranges:</strong> WHERE population BETWEEN 100 and 200</li>
+<li><strong>NULL values:</strong> WHERE population IS NULL</li>
+<li><strong>Boolean operators: </strong>
+<ul>
+<li>WHERE population &gt; 100 OR country = ‘France’ <em>– either condition must be true</em></li>
+<li>WHERE population &gt; 100 AND country = ‘France’ <em>– both conditions must be true</em></li>
+<li>WHERE population &gt; 100 XOR country = ‘France’ <em>– one of the conditions must be true but not both</em></li>
+</ul></li>
+<li><strong>SELECT within SELECT:</strong>
+<ul>
+<li>WHERE population &gt; (SELECT population FROM table where country = ‘France’) <em>– greater than population of France</em></li>
+<li>WHERE population &gt; ALL(SELECT population FROM table WHERE country IN (‘France’, ‘Germany’)) <em>– greater than population of France and Germany</em></li>
+</ul></li>
+</ul>
+</div>
+<div id="order-by" class="section level3">
+<h3>ORDER BY</h3>
+<p>The <code>ORDER BY</code> command orders the rows in the table. By default, it arranges rows from “smallest” to “largest.” This is like <code>dplyr::arrange</code>.</p>
+<pre class="sql"><code>SELECT city
+FROM table
+ORDER BY country</code></pre>
+<p>Here are some other ways to use <code>ORDER BY</code>:</p>
+<ul>
+<li><strong>Order from largest to smallest:</strong> ORDER BY country DESC</li>
+<li><strong>Order with multiple columns:</strong> ORDER BY country, population</li>
+<li><strong>Order with a boolean value:</strong> ORDER BY country IN (‘France’, ‘Germany’) <em>– puts France and Germany last</em></li>
+<li><strong>Order randomly:</strong> ORDER BY RAND()</li>
+</ul>
+</div>
+</div>
+<div id="aggregating-rows" class="section level2">
+<h2>Aggregating rows</h2>
+<div id="sum-count-max-avg" class="section level3">
+<h3>SUM, COUNT, MAX, AVG</h3>
+<p>These commands calculate aggregate values, optionally by groups. For example, below I count the number of cities and the sum of their populations for each country. This is like <code>dplyr::summarize</code> and <code>dplyr::group_by</code>.</p>
+<pre class="sql"><code>SELECT COUNT(city), SUM(population)
+FROM table
+GROUP BY country</code></pre>
+<ul>
+<li><strong>Sum of column:</strong> SELECT SUM(population)</li>
+<li><strong>Max of column:</strong> SELECT MAX(population)</li>
+<li><strong>Mean of column:</strong> SELECT AVG(population)</li>
+<li><strong>Count number of entries/rows:</strong> SELECT COUNT(city)</li>
+</ul>
+<p>Note that to filter on groups, we use the <code>HAVING</code> command instead of the <code>WHERE</code> command.</p>
+<ul>
+<li><strong>Filter on groups:</strong> HAVING SUM(population) &gt; 100</li>
+</ul>
+</div>
+</div>
+<div id="joining-tables" class="section level2">
+<h2>Joining tables</h2>
+<div id="join" class="section level3">
+<h3>JOIN</h3>
+<p>The <code>JOIN</code> command joins tables with a matching column(s). This is like the join commands from dplyr: <code>dplyr::inner_join</code>, <code>dplyr::left_join</code>, <code>dplyr::right_join</code>, and <code>dplyr::full_join</code>.</p>
+<pre class="sql"><code>SELECT brand, price
+FROM sales JOIN purchases ON (sales.id = purchases.id)</code></pre>
+<p>Here are some other ways to use <code>JOIN</code>:</p>
+<ul>
+<li><strong>Match on multiple columns:</strong> FROM sales JOIN purchases ON (sales.id = purchases.id AND sales.date = purchases.date)</li>
+<li><strong>Only return rows in both tables (default when you use JOIN):</strong> FROM sales INNER JOIN purchases ON (sales.id = purchases.id)</li>
+<li><strong>Only return rows in left table:</strong> FROM sales LEFT JOIN purchases ON (sales.id = purchases.id)</li>
+<li><strong>Only return rows in right table:</strong> FROM sales RIGHT JOIN purchases ON (sales.id = purchases.id)</li>
+<li><strong>Return rows in either table:</strong> FROM sales FULL OUTER JOIN purchases ON (sales.id = purchases.id)</li>
+</ul>
+</div>
+<div id="cross-join" class="section level3">
+<h3>CROSS JOIN</h3>
+<p>The <code>CROSS JOIN</code> command creates every combination of columns from two tables. I don’t believe I’ve ever needed to do a cross join in R, but as described <a href="https://jarrettmeyer.com/2018/07/10/cross-join-dplyr">here</a>, you can modify the <code>dplyr::full_join</code> command to do a cross join.</p>
+<pre class="sql"><code>SELECT sales.brand, purchases.brand
+FROM sales CROSS JOIN purchases</code></pre>
+</div>
+<div id="union" class="section level3">
+<h3>UNION</h3>
+<p>The <code>UNION</code> command stacks rows (distinct values only). The <code>UNION ALL</code> command does the same thing, allowing for duplicate values. This is like <code>rbind</code> or <code>dplyr::bind_rows</code>.</p>
+<pre class="sql"><code>SELECT id FROM A
+UNION
+SELECT id FROM B</code></pre>
+</div>
+</div>
+<div id="window-functions" class="section level2">
+<h2>Window functions</h2>
+<div id="rank" class="section level3">
+<h3>RANK</h3>
+<p>The <code>RANK</code> command creates the ranked order. You can create a ranking in R by using <code>dplyr::mutate</code> and <code>rank</code>.</p>
+<pre class="sql"><code>SELECT RANK() OVER (ORDER BY population DESC)
+FROM table</code></pre>
+<ul>
+<li><strong>To rank within partitions:</strong> SELECT RANK() OVER (PARTITION BY city ORDER BY population)</li>
+</ul>
+</div>
+<div id="lag-and-lead" class="section level3">
+<h3>LAG and LEAD</h3>
+<p>The <code>LAG</code> command shows data from the preceding row. Similarly, the <code>LEAD</code> command shows data from the following row. This is like <code>dplyr::lag</code> and <code>dplyr::lead</code>.</p>
+<pre class="sql"><code>SELECT cases, LAG(cases, 1) OVER (ORDER BY day) AS pcases
+FROM covid</code></pre>
+<ul>
+<li><strong>To lag within partitions:</strong> SELECT LAG(cases, 1) OVER (PARTITION BY city ORDER BY day)</li>
+</ul>
+</div>
+</div>
+<div id="insert-update-and-delete" class="section level2">
+<h2>Insert, update, and delete</h2>
+<p>The <code>INSERT</code> command inserts rows into a table. The <code>UPDATE</code> command modifies rows. The <code>DELETE</code> command deletes rows.</p>
+<pre class="sql"><code>INSERT INTO table VALUES (&#39;Beijing&#39;, &#39;China&#39;)
+UPDATE table SET city = &#39;Shanghai&#39;, country = &#39;China&#39; WHERE city = &#39;Beijing&#39;
+DELETE FROM table WHERE country = &#39;China&#39;</code></pre>
+<ul>
+<li><strong>Insert with select</strong>: INSERT INTO table (SELECT city, country FROM table WHERE population &gt; 100)</li>
+</ul>
+</div>
