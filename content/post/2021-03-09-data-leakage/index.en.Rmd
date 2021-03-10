@@ -4,13 +4,14 @@ author: ''
 date: '2021-03-09'
 slug: data-leakage
 categories:
-  - ml
+  - statistics
 tags:
   - ml
   - machine learning
+  - statistics
   - data leakage
 showDate: true
-draft: true
+draft: false
 ---
 
 In my research, something I do fairly often is to build prediction models -- given a set of variables (e.g. patient characteristics), we want to predict an outcome of interest (e.g. disease status). Typically, to prevent overfitting, we do cross-validation, so we have a separate training and test set, we train the model on the training set, and evaluate the performance of the model on the test set. This sounds like a simple practice to follow in theory, but as the scope of your data processing and feature selection steps increases, it becomes easy to accidentally violate the separation between the training and the test set and you may wind up borrowing information from the test set to train your model. 
