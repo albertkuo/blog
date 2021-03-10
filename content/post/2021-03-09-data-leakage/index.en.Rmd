@@ -1,0 +1,65 @@
+---
+title: Data Leakage Examples in Machine Learning
+author: ''
+date: '2021-03-09'
+slug: data-leakage
+categories:
+  - ml
+tags:
+  - ml
+  - machine learning
+  - data leakage
+showDate: true
+draft: true
+---
+
+In my research, something I do fairly often is to build prediction models -- given a set of variables (e.g. patient characteristics), we want to predict an outcome of interest (e.g. disease status). Typically, to prevent overfitting, we do cross-validation, so we have a separate training and test set, we train the model on the training set, and evaluate the performance of the model on the test set. This sounds like a simple practice to follow in theory, but as the scope of your data processing and feature selection steps increases, it becomes easy to accidentally violate the separation between the training and the test set and you may wind up borrowing information from the test set to train your model. 
+
+In general, when your training procedure for your model makes use of information that you shouldn't have access to, this is called "[data leakage](https://en.wikipedia.org/wiki/Leakage_(machine_learning))." 
+
+I had to learn this problem the hard way, and I've actually made this mistake more than once in different projects, so I feel like it's worth writing about. To help illustrate ways in which data leakage can inadvertently happen, I will walk through some examples below. 
+
+## Examples
+
+
+### 1. Imputation & preprocessing
+
+When you have missing values in your data, you may want to impute values for them. However, you also want to make sure that you are imputing values only using information from the training data. For example, let's say you are going to impute all the missing age values by taking the mean age. It's important that you use the mean age in the training data, rather than the mean age in the whole dataset. The problem with using the mean age in the whole dataset is that it is calculated using ages from both the training and test set. This means that when you impute any missing age values in the training set with the overall mean age, there is information from the test set that's "leaking" into the training set and therefore your trained model.
+
+For the same reason, any kind of preprocessing you may perform on your data like centering (e.g. subtracting the mean value) or scaling (e.g. dividing by the standard deviation) should be done only using values from the training set (e.g. the sample mean and sample standard deviation of the feature in the training set). 
+
+If you are an R user using the `caret` package, you can just follow [their guide](https://topepo.github.io/caret/pre-processing.html#the-preprocess-function) and it will be the correct way of doing imputation. They aren't super explicit about avoiding the situation where you accidentally impute from the whole dataset, but you'll notice that in their code (copied below), the data that is fed into the `preProcess` function (which can be used to do both imputation and preprocessing) is only the training dataset (and not the whole dataset) and the output of `preProcess` is then used to preprocess both the training and test set.
+
+```{r eval = F}
+library(caret)
+preProcValues <- preProcess(training, method = c("center", "scale"))
+
+trainTransformed <- predict(preProcValues, training)
+testTransformed <- predict(preProcValues, test)
+```
+
+### 2. Feature selection & dimension reduction
+
+Something that's common to do when you have a large number of features is to do some sort of filtering of the features. In genomics, oftentimes this means doing things like filtering out genes that are "low-quality" in some way. For example, we may want to filter out genes with high sparsity, i.e. have a value of 0 for a large number of patients. Since the criteria for filtering out these genes/features is derived from the data, it's important that you are only looking at the training dataset, rather than the whole dataset, to determine whether to filter out a feature or not. So you would calculate the sparsity of each gene among the training samples, rather than all samples. Otherwise, you would be using information coming from the test set to do your feature selection. 
+
+Another operation that you may apply to data with a large number of features is to do some sort of dimension reduction like PCA. Again, you want to make sure that you are doing PCA only using the training data, rather than the whole dataset, and that you then project the test set onto the principal components of the training data. Below is an example of how to do this in R using the iris dataset.
+
+```{r eval = F}
+train <- iris[1:10, 1:4]
+test <- iris[11:20, 1:4]
+
+# Run PCA
+pc <- prcomp(train)
+
+# Get projections
+train_pc <- pc$x
+test_pc <- predict(pc, newdata = test)
+```
+
+### 3. Preprocessing based on outcome
+
+Another mistake I've made is to preprocess the data differently based on the outcome of interest. For example, I may have decided, through some convoluted procedure, that the data for cancer patients and non-cancer patients was going to be normalized differently. If cancer status is the outcome of interest, this poses a big problem in the test set, because it means that I'm manipulating the data differently based on the outcome of interest (which is supposed to be unknown!). To avoid accidentally making this mistake, I would recommend storing your test set outcome variable and test set features separately from the get-go, so that you are forced to explicitly call the test set outcome variable when you need it (and you should only need it to assess the performance of the model).
+
+## Conclusion
+
+With these examples laid out in writing, perhaps it's relatively easy to identify them as clear violations of fundamental machine learning principles. It may even be baffling to the reader how such obvious mistakes could have occurred! However, in my experience, I've found that these mistakes are surprisingly easy to make, especially when the analysis becomes more complicated and involves multiple data processing steps. You may be adapting some code from your exploratory analyses into a classification model, which then results in inadvertent data leakage. In the weeds of your analysis, such instances of data leakage become more subtle and are easy to overlook.
