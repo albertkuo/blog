@@ -1,4 +1,4 @@
-baseurl                 = "/"               # Your domain name. Must end with "/"
+baseurl                 = "https:blog.albertkuo.me/"               # Your domain name. Must end with "/"
 languageCode            = "en-us"
 defaultContentLanguage  = "en"
 isMultilingual          = false
@@ -7,6 +7,7 @@ theme = "hugo-theme-sam"
 pygmentsStyle           = "monokai"                     # https://help.farbox.com/pygments.html
 pygmentsCodefences      = true
 googleAnalytics         = "UA-98438367-2"             # Tracking code, eg. "UA-111111111-1"
+ignoreFiles             = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
 
 [params]
     dateform            = "Jan 02, 2006"
