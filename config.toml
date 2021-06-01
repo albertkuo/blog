@@ -1,4 +1,4 @@
-baseurl                 = "https:blog.albertkuo.me/"               # Your domain name. Must end with "/"
+baseurl                 = "/"               # Your domain name. Must end with "/"
 languageCode            = "en-us"
 defaultContentLanguage  = "en"
 isMultilingual          = false
