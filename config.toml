@@ -37,7 +37,3 @@ googleAnalytics         = "UA-98438367-2"             # Tracking code, eg. "UA-1
 [[params.mainMenu]]
     link = "/about"
     text = "about"
-
-[module]
-  [[module.imports]]
-    path = "wowchemy-hugo-modules/wowchemy"
