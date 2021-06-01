@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Blog | Albert</title>
+    <link>/categories/r/</link>
+    <description>Recent content in R on Blog | Albert</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Nov 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Probability of Winning an NBA Game: A Minute-by-Minute Breakdown</title>
+      <link>/post/probability-of-winning-an-nba-game-a-minute-by-minute-breakdown/</link>
+      <pubDate>Fri, 20 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/probability-of-winning-an-nba-game-a-minute-by-minute-breakdown/</guid>
+      <description>Your NBA team is down 17 points and there are only 8 minutes left in the game. What is the probability that they pull a comeback and win the game?
+It’s possible to answer this using historical data (i.e. in the past, how many teams have won after being in this situation). Given that sports commentators love to provide super specific, seemingly arbitrary statistics (e.g. no team has won Game 7 of an ECF after losing Game 6 by more than 10 points), I knew that I should be able to access the relevant data somewhere and calculate these probabilities.</description>
+    </item>
+    
+    <item>
+      <title>Introduction to Regular Expressions (regex) in R</title>
+      <link>/post/introduction-to-regular-expressions-regex-in-r/</link>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/introduction-to-regular-expressions-regex-in-r/</guid>
+      <description>If you haven’t used regular expressions (regex) before, they are basically a way to write search patterns for strings. I’ve always found them to be inscrutable and unintuitive, so even though the search pattern I have in mind is usually very simple and should, in theory, require only a basic regex, I always have to Google what the correct syntax is. Today, I’m going to try to solve this problem by writing my own guide to regex.</description>
+    </item>
+    
+    <item>
+      <title>A Few of My Favorite R Packages</title>
+      <link>/post/a-few-of-my-favorite-r-packages/</link>
+      <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/a-few-of-my-favorite-r-packages/</guid>
+      <description>I just finished my second year in the PhD program, which means 2 years of writing a lot of R code. Today, I wanted to share some useful (and perhaps lesser known) R packages that I use.
+pacman for loading packages:  This package contains an awesome function called p_load. I prefer the concise way it lets you load packages, as opposed to writing library(package) over and over again. Moreover, p_load automatically checks if you have installed the package and if you haven’t, installs it for you from CRAN.</description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown</title>
+      <link>/post/2015-07-23-r-rmarkdown/</link>
+      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2015-07-23-r-rmarkdown/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+You can embed an R code chunk like this:
+summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+    </item>
+    
+  </channel>
+</rss>

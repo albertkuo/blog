@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Politics on Blog | Albert</title>
+    <link>/tags/politics/</link>
+    <description>Recent content in Politics on Blog | Albert</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 Aug 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/politics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>What is the Effect of Increasing Voter Turnout in the U.S.?</title>
+      <link>/post/effect-of-increasing-voter-turnout-in-the-u-s/</link>
+      <pubDate>Fri, 28 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/effect-of-increasing-voter-turnout-in-the-u-s/</guid>
+      <description>On campaign trails across the U.S., the same message is often repeated: vote! Their goal is to encourage more people to vote, especially the people who are likely to vote for them. But which party benefits more from increasing overall voter turnout? The conventional wisdom today is that it benefits the Democratic party more than the Republican party. This is based on the working knowledge that young people of color are believed to have lower voting turnouts and are also more likely to vote for Democratic candidates.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Phd on Blog | Albert</title>
+    <link>/tags/phd/</link>
+    <description>Recent content in Phd on Blog | Albert</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 30 Oct 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/phd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Advice for Prospective PhD Students (in biostatistics)</title>
+      <link>/post/advice-for-prospective-phd-students-in-biostatistics/</link>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/advice-for-prospective-phd-students-in-biostatistics/</guid>
+      <description>It’s application season for graduate admissions again! As a current PhD student, I thought I would share some advice for prospective students. I’d previously written on whether you should get a PhD. In this post, I will talk about things you can do to prepare for a biostatistics PhD and the application process. As with any advice I give on this blog, it is based on my personal experience – I was a math and statistics major in undergrad at UChicago and I’m now a biostatistics PhD student at Johns Hopkins – so your mileage may vary.</description>
+    </item>
+    
+    <item>
+      <title>Experiences as a Senior PhD Student</title>
+      <link>/post/experiences-as-a-senior-phd-student/</link>
+      <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/experiences-as-a-senior-phd-student/</guid>
+      <description>Today, I wanted to write about the transition from the early stages to the later stages of a biostatistics PhD program and talk more about my experience. Currently, I’m in my 4th year of the biostats PhD program at Johns Hopkins, which means that I have about 1-2 years left in my (5-year) program. I’ve touched upon some of what being a PhD student is like in a previous post, but I think an “update” is due because the day-to-day experience does change quite dramatically as you progress in your PhD.</description>
+    </item>
+    
+    <item>
+      <title>My Preliminary Oral Exam</title>
+      <link>/post/my-preliminary-oral-exam/</link>
+      <pubDate>Sun, 02 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/my-preliminary-oral-exam/</guid>
+      <description>In my PhD program, we are required to take a “preliminary oral exam.” It’s the second major hurdle to getting your PhD, the first being the written comprehensive exam and the last being the thesis defense, and it typically takes place during your third year.
+The structure of the oral exam is the following. First, I was asked to leave the room for a few minutes as the committee members decide what order they’re going to ask questions and other logistics.</description>
+    </item>
+    
+    <item>
+      <title>Should You Get a PhD (in biostatistics)?</title>
+      <link>/post/should-you-get-a-phd-in-biostatistics/</link>
+      <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/should-you-get-a-phd-in-biostatistics/</guid>
+      <description>Throughout the process of applying to graduate school, I felt unsure about whether getting a PhD was a good idea. I remember Googling “should I get a PhD” just to see what I could find out of curiosity. Chances are, if you’re reading this post, you’re in a similar boat. As a now second-year PhD student in biostatistics, I think I have a better idea of whether being in a PhD program has been a good choice for me and I’ll share what I think would’ve been useful for me to know back when I was applying.</description>
+    </item>
+    
+  </channel>
+</rss>

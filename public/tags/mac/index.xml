@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mac on Blog | Albert</title>
+    <link>/tags/mac/</link>
+    <description>Recent content in Mac on Blog | Albert</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 14 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Clearing Out Space in My Macbook</title>
+      <link>/post/clearing-out-space-in-my-macbook/</link>
+      <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/clearing-out-space-in-my-macbook/</guid>
+      <description>Annoying alert that disk space is running low (2-3 GB left of memory!) Checking mac storage - manage, removed some applications I rarely use (only bought me a few GB). But it unhelpfully tells me that 60GB was in “System.” To find out what is in System, use utility called Disk Inventory X and discovered some things I still have old R version 3.4 and 3.5 (a few GB) the MacTex distribution takes up a lot of space (in addition to the 2016 version, I even still had the old versions 2014, 2015).</description>
+    </item>
+    
+  </channel>
+</rss>

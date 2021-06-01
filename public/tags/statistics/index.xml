@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Statistics on Blog | Albert</title>
+    <link>/tags/statistics/</link>
+    <description>Recent content in Statistics on Blog | Albert</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Nov 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Probability of Winning an NBA Game: A Minute-by-Minute Breakdown</title>
+      <link>/post/probability-of-winning-an-nba-game-a-minute-by-minute-breakdown/</link>
+      <pubDate>Fri, 20 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/probability-of-winning-an-nba-game-a-minute-by-minute-breakdown/</guid>
+      <description>Your NBA team is down 17 points and there are only 8 minutes left in the game. What is the probability that they pull a comeback and win the game?
+It’s possible to answer this using historical data (i.e. in the past, how many teams have won after being in this situation). Given that sports commentators love to provide super specific, seemingly arbitrary statistics (e.g. no team has won Game 7 of an ECF after losing Game 6 by more than 10 points), I knew that I should be able to access the relevant data somewhere and calculate these probabilities.</description>
+    </item>
+    
+    <item>
+      <title>What is the Effect of Increasing Voter Turnout in the U.S.?</title>
+      <link>/post/effect-of-increasing-voter-turnout-in-the-u-s/</link>
+      <pubDate>Fri, 28 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/effect-of-increasing-voter-turnout-in-the-u-s/</guid>
+      <description>On campaign trails across the U.S., the same message is often repeated: vote! Their goal is to encourage more people to vote, especially the people who are likely to vote for them. But which party benefits more from increasing overall voter turnout? The conventional wisdom today is that it benefits the Democratic party more than the Republican party. This is based on the working knowledge that young people of color are believed to have lower voting turnouts and are also more likely to vote for Democratic candidates.</description>
+    </item>
+    
+    <item>
+      <title>10 Tips and Tricks for Statistical Proofs</title>
+      <link>/post/tips-and-tricks-for-statistical-proofs/</link>
+      <pubDate>Tue, 21 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/tips-and-tricks-for-statistical-proofs/</guid>
+      <description>I’ve been taking probability theory this year and I noticed that a lot of proofs will assume that the reader already knows some commonly used “tricks.” If you aren’t familiar with them, it can be hard to follow the proofs in the textbook,1 let alone prove it yourself. I felt like this was happening to me a lot, so in an effort to better familiarize myself, I’ve written down some useful tips and tricks, along with explanations and/or examples.</description>
+    </item>
+    
+  </channel>
+</rss>

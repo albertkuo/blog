@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Packages on Blog | Albert</title>
+    <link>/tags/packages/</link>
+    <description>Recent content in Packages on Blog | Albert</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 14 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/packages/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Creating an R Package (for the first time!)</title>
+      <link>/post/creating-an-r-package-for-the-first-time/</link>
+      <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/creating-an-r-package-for-the-first-time/</guid>
+      <description>There are already a lot of great resources1 that teach you how to make an R package. But I thought it would still be worthwhile to walk through how I created my first one – at the very least, it’ll be helpful for myself when I write my next R package.
+Here is my step-by-step guide to building a (minimally functional) R package.
+Step 1: Set up your packages and directory To create your own R package, you will need to use two packages, devtools and roxygen2.</description>
+    </item>
+    
+    <item>
+      <title>A Few of My Favorite R Packages</title>
+      <link>/post/a-few-of-my-favorite-r-packages/</link>
+      <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/a-few-of-my-favorite-r-packages/</guid>
+      <description>I just finished my second year in the PhD program, which means 2 years of writing a lot of R code. Today, I wanted to share some useful (and perhaps lesser known) R packages that I use.
+pacman for loading packages:  This package contains an awesome function called p_load. I prefer the concise way it lets you load packages, as opposed to writing library(package) over and over again. Moreover, p_load automatically checks if you have installed the package and if you haven’t, installs it for you from CRAN.</description>
+    </item>
+    
+  </channel>
+</rss>
