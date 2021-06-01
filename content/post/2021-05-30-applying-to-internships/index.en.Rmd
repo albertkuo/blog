@@ -89,7 +89,7 @@ Regarding how much time you want to spend personalizing each application to the 
 
 **Number of Applications**: The number of applications you will submit is perhaps hard to predict. It depends on how successful you are at getting interviews and offers. But just remember that each stage in the application process can winnow down the list of companies very rapidly, since you can't expect that you will get an interview/offer for every place you applied to. For reference, I applied to ~50 postings. Of those 50, I never heard back from ~25, was rejected by ~15, and was invited to interview by ~10. In the end, I had 1 offer from 50 applications.^[Since I took my first offer, it's possible that I would have gotten more offers had I continued with other companies' interviews, but that's again hard to predict.]
 
-## Part 1: Interviews
+## Part 3: Interviews 
 
 ### Interview Structure
 
